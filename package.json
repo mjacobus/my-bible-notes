@@ -1,5 +1,5 @@
 {
-  "name": "bible-tools",
+  "name": "my-bible-notes",
   "private": true,
   "dependencies": {
     "@popperjs/core": "^2.9.2",
