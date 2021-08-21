@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe ControllerAcl do
   subject(:acl) { described_class.new(request) }
 
-  let(:user) { User.new }
+  let(:user) { Db::User.new }
   let(:request) { Struct.new(:params).new(controller: controller, action: action) }
   let(:controller) { 'foo_bar/baz' }
   let(:action) { 'index' }
@@ -42,7 +42,7 @@ RSpec.describe ControllerAcl do
     let(:list) {  described_class.controller_actions_for_acl }
 
     it 'returns a list of all controller and actions' do
-      expect(list).to include('admin/users#index')
+      expect(list).to include('admin/db_users#index')
     end
 
     it 'does not include garbage' do

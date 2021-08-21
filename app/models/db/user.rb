@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class User < ApplicationRecord
+class Db::User < ApplicationRecord
   def permissions
     @permissions ||= begin
       begin

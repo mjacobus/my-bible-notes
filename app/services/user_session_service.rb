@@ -10,7 +10,7 @@ class UserSessionService
     oauth_config = @oauth_config_factory.from_env(oauth)
     user = find_or_create_by_oauth(oauth_config)
 
-    if User.count.zero?
+    if Db::User.count.zero?
       user.master = true
       user.enabled = true
     end
@@ -21,7 +21,7 @@ class UserSessionService
   end
 
   def current_user
-    User.find_by(id: @session['user_id'], enabled: true)
+    Db::User.find_by(id: @session['user_id'], enabled: true)
   end
 
   def destroy
@@ -31,7 +31,7 @@ class UserSessionService
   private
 
   def find_or_create_by_oauth(config)
-    user = User.find_or_initialize_by(
+    user = Db::User.find_or_initialize_by(
       oauth_provider: config.provider,
       oauth_uid: config.uid
     )

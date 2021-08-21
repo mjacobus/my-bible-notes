@@ -2,10 +2,10 @@
 
 class TestFactories
   def users
-    @users ||= UserFactory.new(self)
+    @users ||= Db::UserFactory.new(self)
   end
 
-  class UserFactory < Factory
+  class Db::UserFactory < TestFactories::Factory
     def attributes(overrides = {})
       { name: "User-#{seq}" }.merge(overrides)
     end

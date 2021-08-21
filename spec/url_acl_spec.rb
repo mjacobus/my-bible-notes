@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe UrlAcl do
   subject(:acl) { described_class.new(url) }
 
-  let(:user) { User.new }
+  let(:user) { Db::User.new }
   let(:url) { 'http://example.com/users' }
   let(:controller) { 'users' }
 

@@ -7,7 +7,7 @@ RSpec.describe UsersController, type: :controller do
   let(:enabled) { true }
   let(:master) { true }
   let(:user) do
-    User.create!(
+    Db::User.create!(
       name: 'admin',
       master: master,
       enabled: enabled
@@ -25,7 +25,7 @@ RSpec.describe UsersController, type: :controller do
       it 'assigns all users' do
         get :index
 
-        expect(assigns(:users)).to eq(User.order(:email))
+        expect(assigns(:users)).to eq(Db::User.order(:email))
       end
     end
 

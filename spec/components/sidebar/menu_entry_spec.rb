@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Sidebar::MenuEntry do
   subject(:entry) { described_class.new('foo', url) }
 
-  let(:url) { 'http://example.com/admin/users' }
+  let(:url) { 'http://example.com/admin/db_users' }
 
   describe '#active' do
     it 'returns true when controller matches current controller' do

@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :require_master_user
 
   def index
-    @users = User.order(:email)
+    @users = Db::User.order(:email)
   end
 
   def enable
@@ -36,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def change_user_attribute(attribute_name, new_value)
-    user = User.find(params[:id])
+    user = Db::User.find(params[:id])
     user.attributes = { attribute_name => new_value }
     user.save!
   end
