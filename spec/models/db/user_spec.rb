@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe Db::User, type: :model do
   let(:factory) { factories.users }
   let(:user) { factory.build }
 

@@ -8,7 +8,7 @@ RSpec.describe UserSessionService do
 
   let(:session) { {} }
   let(:factory) { instance_double(OauthConfigFactory) }
-  let(:user) { User.last }
+  let(:user) { Db::User.last }
 
   describe '#create_from_oauth' do
     before do
@@ -31,9 +31,9 @@ RSpec.describe UserSessionService do
 
     context 'when user does not exist' do
       it 'creates an user' do
-        User.create!
+        Db::User.create!
 
-        expect { perform }.to change(User, :count).by(1)
+        expect { perform }.to change(Db::User, :count).by(1)
 
         expect(user.name).to eq('the-name')
         expect(user.email).to eq('the-email')
@@ -47,7 +47,7 @@ RSpec.describe UserSessionService do
 
     context 'when the user exists' do
       before do
-        User.create!(
+        Db::User.create!(
           oauth_provider: oauth_config.provider,
           oauth_uid: oauth_config.uid,
           email: 'other-email',
@@ -57,7 +57,7 @@ RSpec.describe UserSessionService do
       end
 
       it 'updates the user' do
-        expect { perform }.not_to change(User, :count)
+        expect { perform }.not_to change(Db::User, :count)
 
         expect(user.name).to eq('the-name')
         expect(user.email).to eq('the-email')
@@ -93,7 +93,7 @@ RSpec.describe UserSessionService do
   describe '#current_user' do
     context 'when session id is present and user is enabled' do
       before do
-        session['user_id'] = User.create!(enabled: true).id
+        session['user_id'] = Db::User.create!(enabled: true).id
       end
 
       it 'returns the current user' do
@@ -103,7 +103,7 @@ RSpec.describe UserSessionService do
 
     context 'when session id is present but user is not enabled' do
       before do
-        session['user_id'] = User.create!(enabled: false).id
+        session['user_id'] = Db::User.create!(enabled: false).id
       end
 
       it 'returns nil' do

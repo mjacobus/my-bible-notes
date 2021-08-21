@@ -31,11 +31,11 @@ class Sidebar::SidebarComponent < ApplicationComponent
   end
 
   def users
-    entry(User.model_name.human, users_path, icon: 'people')
+    entry(Db::User.model_name.human, users_path, icon: 'people')
   end
 
   def admin_users
-    entry(User.model_name.human, admin_users_path, icon: 'people')
+    entry(Db::User.model_name.human, admin_db_users_path, icon: 'people')
   end
 
   def logout

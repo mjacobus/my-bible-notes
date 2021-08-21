@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-ActiveAdmin.register User do
+ActiveAdmin.register Db::User do
   permit_params :master, :enabled, controller_accesses: []
 
   index do
