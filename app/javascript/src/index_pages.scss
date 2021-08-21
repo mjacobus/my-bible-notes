@@ -1,0 +1,36 @@
+.title {
+  font-weight: bold;
+}
+
+.kh-border {
+  border: 1px solid #ddd !important;
+  margin: 20px 0;
+  padding: 10px;
+}
+
+.kh-border-radius {
+  border-radius: 20px;
+}
+
+.index-list {
+  .item {
+    border: 1px solid #ddd !important;
+    margin: 20px 0;
+    padding: 20px;
+    position: relative;
+  }
+}
+
+.index-list,
+.show-page {
+  i {
+    color: #ccc;
+  }
+  i.green {
+    color: green;
+  }
+
+  .AttributeComponent {
+    margin-bottom: 0;
+  }
+}

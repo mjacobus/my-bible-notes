@@ -1,0 +1,88 @@
+// .Sidebar_SidebarComponent
+#sidebar-component {
+  #sidebar,
+  #sidebar-button-container {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #4a6da7;
+    color: #fff;
+    transition: margin 0.2s;
+  }
+
+  #sidebar-button-container {
+    z-index: 998;
+    width: 56px;
+    padding: 0;
+    height: 40px;
+    margin: 0;
+  }
+
+  [data-toggle-sidebar] {
+    width: 100%;
+    color: white;
+    background: #395c96;
+    font-size: 30px;
+  }
+
+  [data-toggle-sidebar]:hover {
+    color: #ddd;
+  }
+
+  #sidebar a {
+    color: white;
+    text-decoration: none;
+    font-size: 12px;
+  }
+
+  #sidebar a.active {
+    font-weight: bold;
+  }
+
+  #sidebar.hidden {
+    margin-left: -250px;
+    transition: all 0.3s;
+  }
+
+  a[data-toggle="collapse"] {
+    position: relative;
+  }
+
+  #content {
+    padding: 0 20px;
+    margin-left: 250px;
+  }
+
+  #content.sidebar-hidden {
+    margin-left: 0px;
+  }
+
+  @media (max-width: 768px) {
+    #content {
+      margin-left: 0px;
+    }
+    #sidebar {
+      margin-left: -250px;
+    }
+    #sidebar.hidden {
+      margin-left: 0;
+    }
+  }
+
+  .top-level {
+    background: #395c96;
+    font-size: 12px;
+  }
+
+  details summary {
+    list-style: none;
+  }
+
+  details .sub-item {
+    margin-left: 10px;
+  }
+}
+

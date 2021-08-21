@@ -1,0 +1,31 @@
+.DropdownMenuComponent {
+  .dropdown-toggle:after {
+    content: none;
+  }
+
+  li.dropdown-item {
+    padding: 0;
+  }
+
+  a {
+    display: block;
+    padding: 0.25rem 1rem;
+  }
+
+  &.list_options {
+    position: relative;
+    height: 38px;
+
+    button {
+      text-align: right;
+      margin-right: 10px;
+      float: right;
+    }
+  }
+
+  &.item_options {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+  }
+}

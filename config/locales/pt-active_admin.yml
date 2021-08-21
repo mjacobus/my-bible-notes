@@ -1,0 +1,34 @@
+---
+pt-BR:
+  active_admin:
+    resources:
+      db/publisher: # Registered resource
+        new_model: 'Novo Publicador' # new action item
+        edit_model: 'Editar Publicador' # edit action item
+        delete_model: 'Remover Publicador' # delete action item
+        menu_entry: 'Publicadores'
+      db/territories:
+        sections:
+          other: "Outros"
+          files: "Arquivos"
+          general: "Geral"
+          building_inputs: "Dados do Prédio"
+          assignment: "Designação"
+          preaching_methods: "Pregação"
+  views:
+    links:
+      show: "Visualizar"
+    pagination:
+      previous: "Anterior"
+      next: "Próxima"
+      last: "Última"
+      first: "Primeira"
+      truncate: "..."
+    menu:
+      territories: "Territórios"
+      others: "Outros"
+    dashboard:
+      territories: "Territórios"
+      overview: "Resumo"
+      number_of_publishers: "Número de Publicadores"
+      total_apartment_building_territories: "Regular %{total}"

@@ -1,0 +1,38 @@
+<nav id="sidebar" class="<%= bem %>">
+  <div class="position-relative text-center <%= bem('hide-button-container') %>">
+    <button data-toggle-sidebar class="btn <%= 'hide-button' %>"><i class="bi bi-arrow-left-circle-fill"></i></button>
+  </div>
+
+  <div class="px-3 fs-6">
+    <div class="sidebar-user mt-3 <%= bem('user-info') %>">
+      <%= image_tag("#{current_user.avatar}?sz=32", class: 'avatar-32') %> <%= current_user.name %>
+    </div>
+
+    <% menu_entries.each do |entry| %>
+      <% if entry.visible?(current_user) %>
+        <% if entry.children.empty? %>
+          <div class="top-level p-2 my-2 <%= bem('menu-item') %>">
+            <a href="<%= entry.url %>" class="<%= 'active' if entry.active?(request.url) %>">
+              <% if entry.icon %><i class="bi bi-<%= entry.icon %>"></i><% end %> <%= entry.text %>
+            </a>
+          </div>
+        <% else %>
+          <details <%= 'open' if entry.active?(request.url) %>>
+            <summary class="p-2 top-level my-2">
+              <% if entry.icon %><i class="bi bi-<%= entry.icon %>"></i><% end %> <%= entry.text %> <i class="bi bi-arrows-collapse"></i>
+            </summary>
+            <% entry.children.each do |child| %>
+              <% if child.visible?(current_user) %>
+                <div class="sub-item py-2 <%= bem('menu-item') %>">
+                  <a href="<%= child.url %>" class="<%= 'active' if child.active?(request.url) %>">
+                    <% if child.icon %><i class="bi bi-<%= child.icon %>"></i><% end %> <%= child.text %>
+                  </a>
+                </div>
+              <% end %>
+            <% end %>
+          </details>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+</nav>

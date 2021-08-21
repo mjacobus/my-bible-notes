@@ -1,0 +1,117 @@
+require:
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
+Metrics/AbcSize:
+  Exclude:
+    - "db/migrate/**/*"
+    - "spec/support/test_factories.rb"
+    - "app/components/**/*"
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/routes.rb'
+    - 'spec/**/*'
+    - 'app/admin/*'
+
+Metrics/MethodLength:
+  Exclude:
+    - 'db/migrate/**.rb'
+    - "app/components/**/*"
+
+Metrics/ParameterLists:
+  Exclude:
+    - "app/components/**/*"
+
+Layout/LineLength:
+  Max: 100
+  Exclude:
+    - 'db/seeds.rb'
+    - 'app/components/**/*'
+   
+Style/AccessorGrouping:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/GuardClause:
+  Enabled: false
+
+Style/IfUnlessModifier:
+  Enabled: false
+
+Layout/MultilineMethodCallIndentation:
+  EnforcedStyle: indented
+
+Layout/MultilineOperationIndentation:
+  Enabled: true
+  EnforcedStyle: indented
+
+Layout/FirstArrayElementIndentation:
+  EnforcedStyle: consistent
+
+Lint/MissingSuper:
+  Enabled: false
+
+Naming/RescuedExceptionsVariableName:
+  PreferredName: 'exception'
+
+Naming/PredicateName:
+  Enabled: false
+
+Style/FormatStringToken:
+  EnforcedStyle: template
+
+Rails/SkipsModelValidations:
+  Exclude:
+    - 'spec/**/*'
+
+RSpec:
+  Exclude:
+    - 'spec/factories/**/*'
+
+RSpec/ExampleLength:
+  Max: 10
+
+RSpec/ExpectChange:
+  Enabled: false
+
+RSpec/FilePath:
+  Exclude:
+    - 'spec/requests/**/*'
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/MultipleMemoizedHelpers:
+  Exclude:
+    - "spec/requests/**/*"
+
+RSpec/NestedGroups:
+  Max: 4
+
+# while that is a good rule, AR objects can't be properly instance_double'd
+RSpec/VerifiedDoubles:
+  Enabled: false
+
+AllCops:
+  NewCops: enable
+  Exclude:
+    - 'tmp/**/*'
+    - 'node_modules/**/*'
+    - 'script/**/*'
+    - 'log/**/*'
+    - 'docker/**/*'
+    - 'doc/**/*'
+    - 'bin/**/*'
+    - 'Rakefile'
+    - 'config.ru'
+    - 'config/**/*'
+    - 'db/schema.rb'
+    - 'node_modules/**/*'
+    - 'vendor/**/*'

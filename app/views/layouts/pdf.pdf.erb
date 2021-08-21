@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+  </head>
+
+  <style>
+    body {
+      font-family: Verdana, Arial, 'OpenSansRegular';
+      font-size: 12px;
+    }
+
+    /* https://github.com/wkhtmltopdf/wkhtmltopdf/issues/1524#issuecomment-85072480 */
+    tr {
+      page-break-inside: avoid;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    td, th {
+      border: 1px solid #ddd;
+      padding: 3px;
+      margin: 0;
+    }
+  </style>
+
+  <body onload="number_pages">
+    <div id="content">
+      <%= yield %>
+    </div>
+  </body>
+</html>

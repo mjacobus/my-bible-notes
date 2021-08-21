@@ -1,0 +1,8 @@
+<span class="<%= bem %>">
+  <span class="<%= bem('content') %> <%=  default_selector %>"><%= content %></span>
+  <button class="<%= bem('button') %> btn btn-link float-right" data-clipboard-selector="<%= selector || ".#{default_selector}" %>">
+    <%= icon('check', hidden: true, 'data-clipboard-copy-confirmation' => 'true', class: :green) %>
+    <%= icon('files', 'data-clipboard-icon' => 'true') %>
+  </button>
+</span>
+

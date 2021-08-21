@@ -1,0 +1,10 @@
+<div data-component="dropdown-menu" class="dropdown <%= bem %> <%= type %> <%= container_classes %>">
+  <button class="<%= bem('button') %> btn list-unstyled dropdown-toggle <%= classes %>" type="button" id="dropdownMenu2" data-bs-toggle="dropdown" aria-expanded="false">
+    <%= icon(icon_name) { title } %>
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <% items.each do |item| %>
+      <li class="dropdown-item <%= bem('item') %>"> <%= item %></li>
+    <% end %>
+  </ul>
+</div>

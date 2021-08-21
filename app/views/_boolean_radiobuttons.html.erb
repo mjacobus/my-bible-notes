@@ -1,0 +1,9 @@
+<%
+options = [[t(true), true], [t(false), false]]
+
+if allow_nil
+  options.unshift(['Não sei', ""])
+end
+%>
+
+<%= f.input field, as: :radio_buttons, collection: options %>

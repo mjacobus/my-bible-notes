@@ -1,0 +1,21 @@
+{
+  "name": "bible-tools",
+  "private": true,
+  "dependencies": {
+    "@popperjs/core": "^2.9.2",
+    "@rails/actioncable": "^6.0.0",
+    "@rails/activestorage": "^6.0.0",
+    "@rails/ujs": "^6.0.0",
+    "@rails/webpacker": "4.2.2",
+    "bootstrap": "^5.0.0",
+    "delegated-events": "^1.1.2",
+    "jquery": "^3.6.0",
+    "minimist": "^1.2.5",
+    "prettier": "^2.3.1",
+    "turbolinks": "^5.2.0"
+  },
+  "version": "0.1.0",
+  "devDependencies": {
+    "webpack-dev-server": "^3.10.3"
+  }
+}

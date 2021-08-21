@@ -1,0 +1,60 @@
+---
+pt-BR:
+  'true': 'Sim'
+  'false': 'Não'
+
+  activerecord:
+    models:
+      user: "Usuário"
+    attributes:
+      user:
+        name: "Nome"
+        email: "Email"
+        avatar: "Foto"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+        controller_accesses: "Acessos"
+        master: "Administrador"
+        enabled: "Ativo"
+  app:
+    attributes:
+      name: "Nome"
+    title: "Bible Tools"
+    titles:
+      meeting_attendance: "Contagem de Assistência"
+      week_talks: "Discursos da semana"
+      public_talks: "Discursos"
+    messages:
+      page_x_of_y: "Página %{x} de %{y}"
+      unassigned_territory: "Território não designado"
+      page_not_found: "Página não encontrada"
+      no_records_found: "Nenhum registro encontrado"
+      contact_admin: "Se você já logou mas não tem acesso, contate o admin de sua congregação."
+      confirm_delete: 'Tem certeza que quer excluir este registro?'
+      confirm_unassignment: 'Tem certeza que este território foi devolvido?'
+      confirm_delete_x: 'Tem certeza que quer excluir "%{record}"?'
+      x_out_of_z_apartments: '%{registered} registrados dos %{expected} esperados'
+      assign_campaigns_to_territories: 'Vincular campanha ao o(s) território(s)'
+      confirm_campaign_assignment: 'Tem certeza que quer vincular esta campanha a todos os territórios do tipo "%{territory_type}"?'
+      number_of_attendees: 'Assistência total: %{attendees} '
+      access_denied: 'Acesso negado'
+      cannot_delete_record: 'Registro não pode ser excluído'
+      x_contacts:
+        one: "%{count} contato"
+        other: "%{count} contatos"
+    links:
+      clear_filters: "Limpar filtros"
+      filter: "Filtrar"
+      search: "Buscar"
+      copy: "Copiar"
+      actions: "Ações"
+      edit: "Edit"
+      new: "Novo"
+      view: "Visualizar"
+      delete: "Excluir"
+      edit: "Editar"
+      google_login: "Entrar com minha conta do Gmail"
+      home: "Página Inicial"
+      logout: "Sair"
+      admin: "Admin"
+      others: "Outros"

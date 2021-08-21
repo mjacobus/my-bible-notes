@@ -1,0 +1,7 @@
+<% if current_user && !current_user.enabled? %>
+  <div class="alert alert-warning" role="alert">
+    <%= t('app.messages.contact_admin') %>
+  </div>
+<% elsif current_user %>
+  <%= render Home::DashboardComponent.new %>
+<% end %>

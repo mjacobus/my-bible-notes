@@ -1,0 +1,19 @@
+.AttributeComponent {
+  margin: 0.7rem 0;
+  display: block;
+
+  &__label {
+    text-transform: uppercase;
+    color: gray;
+    display: block;
+    font-size: 0.7rem;
+  }
+
+  &__text {
+    color: $dark;
+  }
+
+  &__text--link {
+    color: $jw-blue;
+  }
+}

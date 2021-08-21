@@ -1,0 +1,16 @@
+<%= content_tag(container_tag, container_options) do %>
+  <% if show_label %>
+    <span class="<%= bem('label') %>"><%= label_content %></span>
+  <% end %>
+  <% if link %>
+    <a href="<%= link %>" class="<%= bem('text') %> <%= bem('text', 'link') %>">
+  <% else %>
+      <span class="<%= bem('text') %>">
+  <% end %>
+      <%= icon_name ? icon(icon_name, class: 'icon-soft') { content } : content %>
+  <% if link %>
+    </a>
+  <% else %>
+    </span>
+  <% end %>
+<% end %>

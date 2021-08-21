@@ -1,0 +1,12 @@
+version: '3'
+services:
+  db:
+    image: "postgres:12.5"
+    volumes:
+      - ./var/postgresql:/lib/postgresql/data
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: pguser
+      POSTGRES_PASSWORD: pgpass
+      ALLOW_IP_RANGE: 0.0.0.0/0
