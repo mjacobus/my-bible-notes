@@ -6,7 +6,7 @@ Tag scriptures, create a timeline. Share them if you like.
 
 [![Build Status](https://github.com/mjacobus/my-bible-notes/actions/workflows/rails-unit-tests.yml/badge.svg)](https://github.com/mjacobus/my-bible-notes/actions/workflows/rails-unit-tests.yml?query=branch%3Amaster)
 [![Rubocop](https://github.com/mjacobus/my-bible-notes/actions/workflows/rubocop.yml/badge.svg)](https://github.com/mjacobus/my-bible-notes/actions/workflows/rubocop.yml?query=branch%3Amaster)
-[![Maintainability](https://api.codeclimate.com/v1/badges/65fad0b0ff0bed478231/maintainability)](https://codeclimate.com/github/mjacobus/my-bible-notes/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/e89bb4eb8004195f2420/maintainability)](https://codeclimate.com/github/mjacobus/my-bible-notes/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/mjacobus/my-bible-notes/badge.svg?branch=master)](https://coveralls.io/github/mjacobus/my-bible-notes?branch=master)
 
 ### How to run/install the app:
