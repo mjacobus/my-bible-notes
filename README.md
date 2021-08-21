@@ -1,6 +1,8 @@
-# Kingdom Hall Tools
+# My Bible Notes
 
-A few utilities for Kingdom Hall users.
+Tag scriptures, create a timeline. Share them if you like.
+
+- [Site](https://mybiblenotes.herokuapp.com/#)
 
 [![Build Status](https://github.com/mjacobus/my-bible-notes/actions/workflows/rails-unit-tests.yml/badge.svg)](https://github.com/mjacobus/my-bible-notes/actions/workflows/rails-unit-tests.yml?query=branch%3Amaster)
 [![Rubocop](https://github.com/mjacobus/my-bible-notes/actions/workflows/rubocop.yml/badge.svg)](https://github.com/mjacobus/my-bible-notes/actions/workflows/rubocop.yml?query=branch%3Amaster)
