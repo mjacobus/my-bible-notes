@@ -26,6 +26,7 @@ pt-BR:
       week_talks: "Discursos da semana"
       public_talks: "Discursos"
     messages:
+      profile_update_required: "Por favor atualize o seu perfil"
       saved: "Salvo"
       page_x_of_y: "Página %{x} de %{y}"
       unassigned_territory: "Território não designado"

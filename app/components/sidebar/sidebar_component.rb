@@ -23,7 +23,7 @@ class Sidebar::SidebarComponent < ApplicationComponent
   end
 
   def profile
-    entry(t('app.links.profile'), edit_profile_path, icon: 'person-badge')
+    entry(t('app.links.profile'), profile_path, icon: 'person-badge')
   end
 
   def admin_section

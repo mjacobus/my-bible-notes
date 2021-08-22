@@ -41,7 +41,7 @@ RSpec.describe UserSessionService do
         expect(user.oauth_provider).to eq('the-provider')
         expect(user.oauth_uid).to eq('the-uid')
         expect(user).not_to be_master
-        expect(user).not_to be_enabled
+        expect(user).to be_enabled
       end
     end
 

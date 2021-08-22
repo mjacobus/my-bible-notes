@@ -2,6 +2,7 @@
 
 class ApplicationController < ActionController::Base
   before_action :require_authorization
+  before_action :check_profile
   helper_method :current_user
 
   layout :layout
@@ -22,6 +23,13 @@ class ApplicationController < ActionController::Base
   def require_authorization
     unless ControllerAcl.new(request).authorized?(current_user)
       redirect_to('/', flash: { error: t('app.messages.access_denied') })
+    end
+  end
+
+  def check_profile
+    if current_user&.pending_profile_changes?
+      flash[:error] = I18n.t('app.messages.profile_update_required')
+      redirect_to(profile_path)
     end
   end
 

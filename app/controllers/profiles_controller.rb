@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
 class ProfilesController < ApplicationController
-  def edit
+  skip_before_action :require_authorization
+  skip_before_action :check_profile
+
+  def show
     render component
   end
 
