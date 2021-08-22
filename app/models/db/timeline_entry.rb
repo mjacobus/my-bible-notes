@@ -2,6 +2,7 @@
 
 class Db::TimelineEntry < ApplicationRecord
   VALID_PRECISIONS = %w[precise about after before].freeze
+  belongs_to :timeline
 
   validates :title, presence: true
   validates :year, presence: true

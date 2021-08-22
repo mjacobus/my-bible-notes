@@ -5,6 +5,7 @@ require 'rails_helper'
 RSpec.describe Db::TimelineEntry, type: :model do
   let(:entry) { factories.timeline_entries.build }
 
+  it { is_expected.to belong_to(:timeline) }
   it { is_expected.to validate_presence_of(:title) }
   it { is_expected.to validate_presence_of(:year) }
   it { is_expected.to validate_presence_of(:precision) }

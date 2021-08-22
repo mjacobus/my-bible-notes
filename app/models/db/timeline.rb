@@ -2,6 +2,8 @@
 
 class Db::Timeline < ApplicationRecord
   belongs_to :user
+  has_many :entries, class_name: 'TimelineEntry', dependent: :destroy
+
   default_scope -> { order(:name) }
   scope :by_slug, ->(slug) { find_by!(slug: slug) }
 
