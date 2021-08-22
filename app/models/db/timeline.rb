@@ -9,4 +9,6 @@ class Db::Timeline < ApplicationRecord
   def slug=(value)
     super(value.to_s.parameterize)
   end
+
+  delegate :username, to: :user
 end

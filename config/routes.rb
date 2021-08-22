@@ -17,6 +17,10 @@ Rails.application.routes.draw do
     end
   end
 
+  scope '/:username' do
+    resources :timelines
+  end
+
   if Rails.env.development?
     get '/dev/login', to: 'development#login'
   end
