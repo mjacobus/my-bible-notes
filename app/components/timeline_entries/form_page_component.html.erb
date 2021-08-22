@@ -6,13 +6,22 @@
     <%= f.input :title %>
   <% end %>
   <%= input_wrapper do %>
-    <%= f.input :year %>
+    <%= f.input :from_year %>
   <% end %>
   <%= input_wrapper do %>
-    <%= f.input :precision, as: :select, collection: precisions, include_blank: true %>
+    <%= f.input :from_precision, as: :select, collection: precisions, include_blank: true %>
   <% end %>
   <%= input_wrapper do %>
-    <%= f.input :date_complement %>
+    <%= f.input :from_date_complement %>
+  <% end %>
+  <%= input_wrapper do %>
+    <%= f.input :to_year %>
+  <% end %>
+  <%= input_wrapper do %>
+    <%= f.input :to_precision, as: :select, collection: precisions, include_blank: true %>
+  <% end %>
+  <%= input_wrapper do %>
+    <%= f.input :to_date_complement %>
   <% end %>
   <%= input_wrapper do %>
     <%= f.input :explanation %>

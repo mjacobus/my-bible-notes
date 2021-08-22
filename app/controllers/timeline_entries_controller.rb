@@ -6,7 +6,19 @@ class TimelineEntriesController < ApplicationController
   skip_before_action :require_authorization
 
   key :entry
-  permit :title, :year, :date_complement, :explanation, :precision, :confirmed
+
+  permit(
+    :title,
+    :from_year,
+    :to_year,
+    :from_date_complement,
+    :to_date_complement,
+    :from_precision,
+    :to_precision,
+    :confirmed,
+    :explanation
+  )
+
   scope { timeline.entries }
   component_class_template 'TimelineEntries::%{type}PageComponent'
 
