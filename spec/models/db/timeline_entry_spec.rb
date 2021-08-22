@@ -17,7 +17,7 @@ RSpec.describe Db::TimelineEntry, type: :model do
     expect(entry).not_to be_valid
   end
 
-  it 'does not permit zero as year' do
+  it 'does not permit year before -4050' do
     entry.year = -4051
 
     expect(entry).not_to be_valid

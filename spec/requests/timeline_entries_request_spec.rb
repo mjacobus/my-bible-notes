@@ -39,7 +39,7 @@ RSpec.describe TimelineEntriesController, type: :request do
     end
 
     it 'renders the correct component' do
-      skip "Object comparison is not working here"
+      skip 'Object comparison is not working here'
 
       mock_renderer
 
@@ -48,7 +48,7 @@ RSpec.describe TimelineEntriesController, type: :request do
       expected_component = index_component.new(
         key.to_s.pluralize.to_sym => scope,
         current_user: current_user,
-        timeline: timeline,
+        timeline: timeline
       )
       expect(renderer).to have_rendered_component(expected_component)
     end

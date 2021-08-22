@@ -2,10 +2,10 @@
 
 class Db::TimelineEntry < ApplicationRecord
   VALID_PRECISIONS = %w[
-    precise 
-    about 
+    precise
+    about
     before
-    after 
+    after
   ].freeze
 
   belongs_to :timeline
