@@ -38,27 +38,15 @@ module CrudController
   private
 
   def index_component(records)
-    if use_key?
-      return component_class(:index).new(pluralized_key => records)
-    end
-
-    component_class(:index).new(records)
+    component_class(:index).new(pluralized_key => records, current_user: current_user)
   end
 
   def show_component(record)
-    if use_key?
-      return component_class(:show).new(key => record)
-    end
-
-    component_class(:show).new(record)
+    component_class(:show).new(key => record, current_user: current_user)
   end
 
   def form_component(record)
-    if use_key?
-      return component_class(:form).new(key => record)
-    end
-
-    component_class(:form).new(record)
+    component_class(:form).new(key => record, current_user: current_user)
   end
 
   def record

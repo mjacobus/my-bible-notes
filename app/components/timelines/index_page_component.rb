@@ -8,9 +8,13 @@ class Timelines::IndexPageComponent < PageComponent
     link_to('foo')
   end
 
-  def menu
-    DropdownMenuComponent.new(type: :list_options).tap do |menu|
-      menu.item { menu.link(t('app.links.new'), urls.new_timeline_path(current_user) ) }
-    end
+  def setup
+    breadcrumb.add(t('app.links.timelines'))
+  end
+
+  private
+
+  def menu_items(menu)
+    [menu.link(t('app.links.new'), urls.new_timeline_path(current_user))]
   end
 end
