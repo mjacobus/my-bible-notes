@@ -9,15 +9,6 @@ class UserSessionService
   def create_from_oauth(oauth)
     oauth_config = @oauth_config_factory.from_env(oauth)
     user = find_or_create_by_oauth(oauth_config)
-
-    if Db::User.count.zero?
-      user.master = true
-    end
-
-    unless user.persisted?
-      user.enabled = true
-    end
-
     user.save(validate: false)
 
     @session['user_id'] = user.id
@@ -33,11 +24,20 @@ class UserSessionService
 
   private
 
+  # rubocop:disable Metrics/MethodLength
   def find_or_create_by_oauth(config)
     user = Db::User.find_or_initialize_by(
       oauth_provider: config.provider,
       oauth_uid: config.uid
     )
+
+    if Db::User.count.zero?
+      user.master = true
+    end
+
+    unless user.persisted?
+      user.enabled = true
+    end
 
     user.attributes = {
       email: config.email,
@@ -47,4 +47,5 @@ class UserSessionService
 
     user
   end
+  # rubocop:enable Metrics/MethodLength
 end
