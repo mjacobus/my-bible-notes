@@ -10,6 +10,7 @@ class Sidebar::SidebarComponent < ApplicationComponent
   def menu_entries
     [
       home_link,
+      timeline_section,
       admin_section,
       profile,
       logout
@@ -26,6 +27,12 @@ class Sidebar::SidebarComponent < ApplicationComponent
     entry(t('app.links.profile'), profile_path, icon: 'person-badge')
   end
 
+  def timeline_section
+    entry(t('app.links.timelines'), '#', icon: 'clock-history').tap do |section|
+      section.append_child(timelines_path)
+    end
+  end
+
   def admin_section
     if current_user.master?
       entry('Admin', '#', icon: 'pencil').tap do |section|
@@ -34,6 +41,11 @@ class Sidebar::SidebarComponent < ApplicationComponent
       end
     end
   end
+
+  def timelines_path
+    entry(Db::Timeline.model_name.human, urls.timelines_path(current_user), icon: 'clock-history')
+  end
+
 
   def users
     entry(Db::User.model_name.human, users_path, icon: 'people')
