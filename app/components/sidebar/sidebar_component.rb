@@ -11,6 +11,7 @@ class Sidebar::SidebarComponent < ApplicationComponent
     [
       home_link,
       admin_section,
+      profile,
       logout
     ].compact
   end
@@ -19,6 +20,10 @@ class Sidebar::SidebarComponent < ApplicationComponent
 
   def home_link
     entry(t('app.links.home'), root_path, icon: 'house-door')
+  end
+
+  def profile
+    entry(t('app.links.profile'), edit_profile_path, icon: 'person-badge')
   end
 
   def admin_section

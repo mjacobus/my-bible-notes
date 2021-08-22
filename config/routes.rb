@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
 
+  resource :profile, only: [:edit, :update]
+
   resources :users, only: %i[index] do
     member do
       patch :enable

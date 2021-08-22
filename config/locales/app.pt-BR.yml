@@ -5,11 +5,12 @@ pt-BR:
 
   activerecord:
     models:
-      user: "Usuário"
+      db/user: "Usuário"
     attributes:
-      user:
+      db/user:
         name: "Nome"
         email: "Email"
+        username: "Nome de usuário"
         avatar: "Foto"
         created_at: "Criado em"
         updated_at: "Atualizado em"
@@ -25,6 +26,7 @@ pt-BR:
       week_talks: "Discursos da semana"
       public_talks: "Discursos"
     messages:
+      saved: "Salvo"
       page_x_of_y: "Página %{x} de %{y}"
       unassigned_territory: "Território não designado"
       page_not_found: "Página não encontrada"
@@ -43,6 +45,8 @@ pt-BR:
         one: "%{count} contato"
         other: "%{count} contatos"
     links:
+      update: "Atualizar"
+      profile: "Perfil"
       clear_filters: "Limpar filtros"
       filter: "Filtrar"
       search: "Buscar"

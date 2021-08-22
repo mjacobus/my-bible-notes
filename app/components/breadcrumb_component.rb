@@ -13,7 +13,7 @@ class BreadcrumbComponent < ApplicationComponent
     items.any?
   end
 
-  def add_item(text, url = nil)
+  def add(text, url = nil)
     @items << Item.new(text, url)
   end
 

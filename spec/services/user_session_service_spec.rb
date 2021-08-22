@@ -31,7 +31,7 @@ RSpec.describe UserSessionService do
 
     context 'when user does not exist' do
       it 'creates an user' do
-        Db::User.create!
+        factories.users.create
 
         expect { perform }.to change(Db::User, :count).by(1)
 
@@ -52,7 +52,8 @@ RSpec.describe UserSessionService do
           oauth_uid: oauth_config.uid,
           email: 'other-email',
           name: 'other-name',
-          avatar: 'other-avatar'
+          avatar: 'other-avatar',
+          username: 'foo'
         )
       end
 
@@ -93,7 +94,7 @@ RSpec.describe UserSessionService do
   describe '#current_user' do
     context 'when session id is present and user is enabled' do
       before do
-        session['user_id'] = Db::User.create!(enabled: true).id
+        session['user_id'] = factories.users.create(enabled: true).id
       end
 
       it 'returns the current user' do
@@ -103,7 +104,7 @@ RSpec.describe UserSessionService do
 
     context 'when session id is present but user is not enabled' do
       before do
-        session['user_id'] = Db::User.create!(enabled: false).id
+        session['user_id'] = factories.users.create(enabled: false).id
       end
 
       it 'returns nil' do

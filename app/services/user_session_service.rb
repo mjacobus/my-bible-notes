@@ -15,7 +15,7 @@ class UserSessionService
       user.enabled = true
     end
 
-    user.save!
+    user.save(validate: false)
 
     @session['user_id'] = user.id
   end

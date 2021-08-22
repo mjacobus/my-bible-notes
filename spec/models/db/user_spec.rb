@@ -6,6 +6,15 @@ RSpec.describe Db::User, type: :model do
   let(:factory) { factories.users }
   let(:user) { factory.build }
 
+  it { is_expected.to validate_presence_of(:username) }
+  it { is_expected.to validate_uniqueness_of(:username).case_insensitive }
+
+  it 'parameterizes username' do
+    user.username = 'Coração'
+
+    expect(user.username).to eq('coracao')
+  end
+
   describe '#permissions' do
     it 'is initially an empty hash' do
       user.permissions_config = ''

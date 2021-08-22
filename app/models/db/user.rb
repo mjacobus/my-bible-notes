@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 class Db::User < ApplicationRecord
+  validates :username, presence: true, uniqueness: { case_sensitive: false }
+
+  def username=(value)
+    super(value.to_s.parameterize)
+  end
+
   def permissions
     @permissions ||= begin
       begin
