@@ -7,6 +7,10 @@ class Db::User < ApplicationRecord
     super(value.to_s.parameterize)
   end
 
+  def pending_profile_changes?
+    !username.present?
+  end
+
   def permissions
     @permissions ||= begin
       begin
