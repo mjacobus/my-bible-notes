@@ -2,6 +2,7 @@
 
 class Db::Timeline < ApplicationRecord
   belongs_to :user
+  default_scope -> { order(:name) }
   scope :find_by_slug, ->(slug) { find_by!(slug: slug) }
 
   validates :name, presence: true

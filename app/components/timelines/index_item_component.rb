@@ -5,6 +5,10 @@ class Timelines::IndexItemComponent < ApplicationComponent
   has :timeline
   menu_type :item_options
 
+  def icon_name
+    timeline.public? ? 'unlock' : 'lock'
+  end
+
   private
 
   def menu_items(menu)
