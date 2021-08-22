@@ -12,6 +12,6 @@ class CreateTimelines < ActiveRecord::Migration[6.1]
       t.timestamps
     end
 
-    add_index :timelines, [:slug, :user_id], unique: true
+    add_index :timelines, %i[slug user_id], unique: true
   end
 end

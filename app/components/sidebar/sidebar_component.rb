@@ -48,7 +48,6 @@ class Sidebar::SidebarComponent < ApplicationComponent
     entry(Db::Timeline.model_name.human, urls.timelines_path(current_user), icon: 'clock-history')
   end
 
-
   def users
     entry(Db::User.model_name.human, users_path, icon: 'people')
   end

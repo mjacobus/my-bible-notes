@@ -11,6 +11,6 @@ class TimelinesController < ApplicationController
   component_class_template 'Timelines::%{type}PageComponent'
 
   def record
-    @record ||= find_scope.find_by_slug(params[:id])
+    @record ||= find_scope.find_by(slug: params[:id])
   end
 end
