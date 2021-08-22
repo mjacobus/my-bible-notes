@@ -88,7 +88,7 @@ RSpec.describe TimelinesController, type: :request do
       perform_request
 
       expected_component = form_component.new(
-        key => record,
+        key => scope.new,
         current_user: current_user
       )
       expect(renderer).to have_rendered_component(expected_component)

@@ -28,8 +28,10 @@ class Sidebar::SidebarComponent < ApplicationComponent
   end
 
   def timeline_section
-    entry(t('app.links.timelines'), '#', icon: 'clock-history').tap do |section|
-      section.append_child(timelines_path)
+    unless current_user.pending_profile_changes?
+      entry(t('app.links.timelines'), '#', icon: 'clock-history').tap do |section|
+        section.append_child(timelines_path)
+      end
     end
   end
 

@@ -10,7 +10,7 @@ module RequestSpecHelper
         factories.users.create(enabled: true, master: false, username: 'regular')
       end
       let(:current_user) { regular_user }
-      let(:regular_user) { factories.users.create(enabled: true, master: true, username: 'admin') }
+      let(:admin_user) { factories.users.create(enabled: true, master: true, username: 'admin') }
       let(:skip_login) { false }
       let(:factories) { TestFactories.new }
       let(:routes) { Routes.new }
