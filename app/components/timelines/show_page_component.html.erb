@@ -1,0 +1,8 @@
+<%= render breadcrumb %>
+<%= render flash %>
+<%= render menu %>
+
+<%= render attribute(timeline.name).with_label(:name) %>
+<%= render attribute(timeline.slug).with_label(:slug) %>
+<%= render attribute(t(timeline.public.to_s)).with_label(:public) %>
+<%= render attribute(timeline.description).with_label(:description) %>

@@ -6,6 +6,8 @@ RSpec.describe Db::User, type: :model do
   let(:factory) { factories.users }
   let(:user) { factory.build }
 
+  it { is_expected.to have_many(:timelines).dependent(:destroy) }
+
   it { is_expected.to validate_presence_of(:username) }
   it { is_expected.to validate_uniqueness_of(:username).case_insensitive }
 
@@ -58,6 +60,13 @@ RSpec.describe Db::User, type: :model do
       expect(user.permissions).to eq(expected)
       expect(user.reload.permissions).to eq(expected)
       expect(user.controller_accesses).to eq(['foo#bar'])
+    end
+  end
+
+  describe '#timelines' do
+    it 'returns the timeline scope' do
+      user.save
+      user.timelines.create(factories.timelines.attributes.except(:user_id))
     end
   end
 end

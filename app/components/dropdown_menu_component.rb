@@ -22,4 +22,9 @@ class DropdownMenuComponent < ApplicationComponent
       "pull-#{@pull}"
     end
   end
+
+  def link(label, url, options = {})
+    options[:class] = class_names(options[:class], 'dropdown-item')
+    link_to(label, url, options)
+  end
 end

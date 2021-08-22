@@ -1,11 +1,14 @@
 # frozen_string_literal: true
 
 class PageComponent < ApplicationComponent
+  include MenuAwareComponent
+  menu_type :list_options
+
   def initialize(*args)
     super
 
-    if respond_to?(:setup_breadcrumb, true)
-      send(:setup_breadcrumb)
+    if respond_to?(:setup, true)
+      send(:setup)
     end
   end
 
@@ -21,5 +24,15 @@ class PageComponent < ApplicationComponent
 
   def flash
     FlashComponent.new
+  end
+
+  def pagination
+    PaginationComponent.new(items)
+  end
+
+  def self.paginate(method)
+    define_method :items do
+      send(method)
+    end
   end
 end

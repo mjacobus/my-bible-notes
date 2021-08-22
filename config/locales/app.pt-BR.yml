@@ -6,7 +6,15 @@ pt-BR:
   activerecord:
     models:
       db/user: "Usuário"
+      db/timeline: "Linha do Tempo"
     attributes:
+      db/timeline:
+        name: "Nome"
+        slug: "Url"
+        description: "Descrição"
+        public: "Público"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
       db/user:
         name: "Nome"
         email: "Email"
@@ -20,6 +28,9 @@ pt-BR:
   app:
     attributes:
       name: "Nome"
+      slug: "Url"
+      description: "Descrição"
+      public: "Público"
     title: "Bible Tools"
     titles:
       meeting_attendance: "Contagem de Assistência"
@@ -46,6 +57,7 @@ pt-BR:
         one: "%{count} contato"
         other: "%{count} contatos"
     links:
+      timelines: "Linhas do Tempo"
       update: "Atualizar"
       profile: "Perfil"
       clear_filters: "Limpar filtros"

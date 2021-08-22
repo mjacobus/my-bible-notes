@@ -3,11 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe ProfilesController, type: :request do
-  before do
-    admin_user.save!
-    login_user(admin_user)
-  end
-
   describe '#edit' do
     let(:perform_request) { get('/profile') }
 
@@ -18,8 +13,8 @@ RSpec.describe ProfilesController, type: :request do
     end
 
     it 'also responds with success when profile is not complete' do
-      admin_user.username = nil
-      admin_user.save(validate: false)
+      current_user.username = nil
+      current_user.save(validate: false)
 
       perform_request
 
@@ -31,7 +26,7 @@ RSpec.describe ProfilesController, type: :request do
 
       perform_request
 
-      expected_component = Profile::EditPageComponent.new(user: admin_user)
+      expected_component = Profile::EditPageComponent.new(user: current_user)
       expect(renderer).to have_rendered_component(expected_component)
     end
   end
@@ -53,12 +48,12 @@ RSpec.describe ProfilesController, type: :request do
 
         perform_request
 
-        expected_component = Profile::EditPageComponent.new(user: admin_user)
+        expected_component = Profile::EditPageComponent.new(user: current_user)
         expect(renderer).to have_rendered_component(expected_component)
       end
 
       it 'updates the username' do
-        expect { perform_request }.to change { admin_user.reload.username }.to('the-username')
+        expect { perform_request }.to change { current_user.reload.username }.to('the-username')
       end
 
       it 'displays message' do
@@ -82,7 +77,7 @@ RSpec.describe ProfilesController, type: :request do
 
         perform_request
 
-        expected_component = Profile::EditPageComponent.new(user: admin_user)
+        expected_component = Profile::EditPageComponent.new(user: current_user)
         expect(renderer).to have_rendered_component(expected_component)
       end
     end

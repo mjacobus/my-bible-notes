@@ -1,0 +1,9 @@
+<%= render breadcrumb %>
+<%= render flash %>
+<%= render menu %>
+
+<% timelines.each do |timeline| %>
+  <%= render Timelines::IndexItemComponent.new(timeline: timeline) %>
+<% end %>
+
+<%= render pagination %>

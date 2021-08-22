@@ -10,7 +10,7 @@ module Profile
 
     private
 
-    def setup_breadcrumb
+    def setup
       breadcrumb.add(t('app.links.profile'))
     end
   end
