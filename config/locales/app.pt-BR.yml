@@ -7,12 +7,22 @@ pt-BR:
     models:
       db/user: "Usuário"
       db/timeline: "Linha do Tempo"
+      db/timeline_entry: "Evento"
     attributes:
       db/timeline:
         name: "Nome"
         slug: "Url"
         description: "Descrição"
         public: "Público"
+        created_at: "Criado em"
+        updated_at: "Atualizado em"
+      db/timeline_entry:
+        title: "Nome"
+        explanation: "Explicação"
+        confirmed: "Confirmado"
+        precision: "Precisão"
+        date_complement: "Complemento da data"
+        year: "Ano"
         created_at: "Criado em"
         updated_at: "Atualizado em"
       db/user:
@@ -33,6 +43,11 @@ pt-BR:
       public: "Público"
       bce: "a.C."
       ce: "d.C."
+      precisions:
+        about: "Por volta de"
+        before: "Antes de"
+        after: "Depois de"
+        precise: "Exatamente"
     title: "Bible Tools"
     titles:
       meeting_attendance: "Contagem de Assistência"

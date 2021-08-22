@@ -1,1 +1,26 @@
-<div>Add TimelineEntries::FormPage template here</div>
+<%= render breadcrumb  %>
+<%= render flash  %>
+
+<%= simple_form_for(entry, url: url, as: :entry) do |f| %>
+  <%= input_wrapper do %>
+    <%= f.input :title %>
+  <% end %>
+  <%= input_wrapper do %>
+    <%= f.input :year %>
+  <% end %>
+  <%= input_wrapper do %>
+    <%= f.input :precision, as: :select, collection: precisions, include_blank: true %>
+  <% end %>
+  <%= input_wrapper do %>
+    <%= f.input :date_complement %>
+  <% end %>
+  <%= input_wrapper do %>
+    <%= f.input :explanation %>
+  <% end %>
+  <%= input_wrapper do %>
+    <%= f.input :confirmed %>
+  <% end %>
+  <%= input_wrapper do %>
+    <%= f.submit(class: 'btn btn-primary mt-3 float-right') %>
+  <% end %>
+<% end %>
