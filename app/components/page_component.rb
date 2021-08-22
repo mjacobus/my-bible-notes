@@ -22,4 +22,17 @@ class PageComponent < ApplicationComponent
   def flash
     FlashComponent.new
   end
+
+  def pagination
+    PaginationComponent.new(items)
+  end
+
+  def self.paginate(method)
+    define_method :items do
+      send(method)
+    end
+    unless public
+      private field
+    end
+  end
 end

@@ -1,5 +1,8 @@
+<%= render breadcrumb %>
+<%= render flash %>
 <div class="index-page">
   <% timelines.each do |timeline| %>
     <%= render Timelines::IndexItemComponent.new(timeline: timeline) %>
   <% end %>
 </div>
+<%= render pagination %>
