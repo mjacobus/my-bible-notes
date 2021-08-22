@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Db::User < ApplicationRecord
+  has_many :timelines, dependent: :destroy
+
   validates :username, presence: true, uniqueness: { case_sensitive: false }
 
   def username=(value)

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class TestFactories
+  # rubocop:disable Style/MissingRespondToMissing:
   class Factory
     attr_reader :factories
 
@@ -25,6 +26,10 @@ class TestFactories
       random || create(overrides)
     end
 
+    def valid_random_id_or(first_option = nil)
+      first_option || random_or_create.id
+    end
+
     def seq
       sequency
     end
@@ -39,10 +44,15 @@ class TestFactories
       model_class.new(attributes(overrides))
     end
 
+    def method_missing(method, *args)
+      factories.send(method, *args)
+    end
+
     private
 
     def model_class
       @model_class ||= self.class.to_s.sub('TestFactories::', '').sub('Factory', '').constantize
     end
   end
+  # rubocop:enable Style/MissingRespondToMissing:
 end
