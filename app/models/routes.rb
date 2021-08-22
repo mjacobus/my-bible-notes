@@ -15,7 +15,7 @@ class Routes
   end
 
   def timeline_path(timeline, args = {})
-    @helpers.timeline_path(timeline.username, timeline.slug, args)
+    @helpers.timeline_path(timeline.username, timeline, args)
   end
 
   def new_timeline_path(user, args = {})
@@ -23,7 +23,23 @@ class Routes
   end
 
   def edit_timeline_path(timeline, args = {})
-    @helpers.edit_timeline_path(timeline.username, timeline.slug, args)
+    @helpers.edit_timeline_path(timeline.username, timeline, args)
+  end
+
+  def timeline_entries_path(timeline, args = {})
+    @helpers.timeline_entries_path(timeline.username, timeline, args)
+  end
+
+  def timeline_entry_path(entry, args = {})
+    @helpers.timeline_entry_path(entry.timeline.username, entry.timeline, entry, args)
+  end
+
+  def new_timeline_entry_path(timeline, args = {})
+    @helpers.new_timeline_entry_path(timeline.user.username, timeline, args)
+  end
+
+  def edit_timeline_entry_path(entry, args = {})
+    @helpers.edit_timeline_entry_path(entry.timeline.username, entry.timeline, entry, args)
   end
 
   def to(record, args = {})

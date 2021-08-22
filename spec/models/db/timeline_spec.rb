@@ -42,4 +42,10 @@ RSpec.describe Db::Timeline, type: :model do
       expect(found.id).to eq(timeline.id)
     end
   end
+
+  it 'returns slug when calling #to_param' do
+    timeline.slug = 'foobar'
+
+    expect(timeline.to_param).to eq('foobar')
+  end
 end
