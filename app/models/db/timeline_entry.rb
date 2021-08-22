@@ -8,7 +8,6 @@ class Db::TimelineEntry < ApplicationRecord
   validates :year, presence: true
   validate :year_validation
   validates :precision, presence: true, inclusion: { in: VALID_PRECISIONS }
-  validates :confirmed, presence: true
 
   def era
     if year.to_i.positive?

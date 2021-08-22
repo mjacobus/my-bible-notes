@@ -10,7 +10,6 @@ RSpec.describe Db::TimelineEntry, type: :model do
   it { is_expected.to validate_presence_of(:year) }
   it { is_expected.to validate_presence_of(:precision) }
   it { is_expected.to validate_inclusion_of(:precision).in_array(%w[precise about after before]) }
-  it { is_expected.to validate_presence_of(:confirmed) }
 
   it 'does not permit zero as year' do
     entry.year = 0
@@ -43,5 +42,9 @@ RSpec.describe Db::TimelineEntry, type: :model do
     entry.year = -51
 
     expect(entry.formatted_year).to eq('51 a.C.')
+  end
+
+  specify '#confirmed is initially false' do
+    expect(described_class.new.confirmed).to be false
   end
 end
