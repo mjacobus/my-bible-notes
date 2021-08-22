@@ -9,9 +9,13 @@ module RequestSpecHelper
       let(:avatar) do
         'https://lh3.googleusercontent.com/-QTW2nlN4-NU/AAAAAAAAAAI/AAAAAAAAAAA/AMZuucnAmijxFSFomGTNwgC-PRjxi5qPVg/s96-c/photo.jpgend'
       end
-      let(:regular_user) { User.new(id: 1, enabled: true, master: false, avatar: avatar) }
+      let(:regular_user) do
+        Db::User.new(id: 1, enabled: true, master: false, avatar: avatar, username: 'regular')
+      end
       let(:current_user) { regular_user }
-      let(:admin_user) { User.new(id: 2, enabled: true, master: true, avatar: avatar) }
+      let(:admin_user) do
+        Db::User.new(id: 2, enabled: true, master: true, avatar: avatar, username: 'admin')
+      end
       let(:skip_login) { false }
       let(:factories) { TestFactories.new }
       let(:routes) { Routes.new }

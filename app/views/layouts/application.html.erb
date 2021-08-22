@@ -27,11 +27,6 @@
       </div>
 
       <div id="content" class="container-fluid width-auto position-relative">
-        <% if flash[:error] %>
-          <div class="alert alert-danger" role="alert">
-            <%= flash[:error] %>
-          </div>
-        <% end %>
         <%= yield %>
       </div>
     </div>

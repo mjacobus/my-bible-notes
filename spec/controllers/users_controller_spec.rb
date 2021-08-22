@@ -10,7 +10,8 @@ RSpec.describe UsersController, type: :controller do
     Db::User.create!(
       name: 'admin',
       master: master,
-      enabled: enabled
+      enabled: enabled,
+      username: 'some-username'
     )
   end
 

@@ -1,0 +1,11 @@
+<%= render breadcrumb %>
+<%= render flash %>
+
+<%= simple_form_for(user, url: url, as: :profile) do |f| %>
+  <%= input_wrapper do %>
+    <%= f.input :username %>
+  <% end %>
+  <%= input_wrapper do %>
+    <%= f.submit(class: 'btn btn-primary mt-3 float-right', value: t('app.links.update')) %>
+  <% end %>
+<% end %>
