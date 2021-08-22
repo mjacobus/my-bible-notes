@@ -9,9 +9,18 @@ RSpec.describe ProfilesController, type: :request do
   end
 
   describe '#edit' do
-    let(:perform_request) { get('/profile/edit') }
+    let(:perform_request) { get('/profile') }
 
     it 'responds with success' do
+      perform_request
+
+      expect(response).to be_successful
+    end
+
+    it 'also responds with success when profile is not complete' do
+      admin_user.username = nil
+      admin_user.save(validate: false)
+
       perform_request
 
       expect(response).to be_successful

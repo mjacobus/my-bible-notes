@@ -8,7 +8,7 @@ class Db::User < ApplicationRecord
   end
 
   def pending_profile_changes?
-    !username.present?
+    username.blank?
   end
 
   def permissions

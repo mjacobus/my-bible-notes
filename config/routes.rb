@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   get '/auth/:provider/callback', to: 'sessions#create'
   get 'logout', to: 'sessions#destroy'
 
-  resource :profile, only: [:edit, :update]
+  resource :profile, only: [:show, :update]
 
   resources :users, only: %i[index] do
     member do

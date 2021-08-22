@@ -2,6 +2,7 @@
 
 class SessionsController < ApplicationController
   skip_before_action :require_authorization
+  skip_before_action :check_profile
 
   def create
     session_service.create_from_oauth(request.env['omniauth.auth'])

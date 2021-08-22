@@ -12,6 +12,9 @@ class UserSessionService
 
     if Db::User.count.zero?
       user.master = true
+    end
+
+    unless user.persisted?
       user.enabled = true
     end
 

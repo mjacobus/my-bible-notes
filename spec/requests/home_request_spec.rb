@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe HomeController, type: :request do
@@ -15,7 +17,13 @@ RSpec.describe HomeController, type: :request do
       it 'redirects to profile edit page' do
         get '/'
 
-        expect(response).to redirect_to(edit_profile_path)
+        expect(response).to redirect_to(profile_path)
+      end
+
+      it 'shows message' do
+        get '/'
+        get response.headers['Location']
+        expect(response.body).to include(I18n.t('app.messages.profile_update_required'))
       end
     end
 
@@ -28,4 +36,3 @@ RSpec.describe HomeController, type: :request do
     end
   end
 end
-

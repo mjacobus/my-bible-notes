@@ -4,7 +4,9 @@ class UrlAcl
   SimplifiedRequest = Struct.new(:params)
 
   PUBLIC_URLS = [
-    '/logout'
+    '/',
+    '/logout',
+    '/profile'
   ].freeze
 
   def initialize(url)

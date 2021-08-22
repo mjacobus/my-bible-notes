@@ -27,8 +27,8 @@ class ApplicationController < ActionController::Base
   end
 
   def check_profile
-    if current_user && current_user.pending_profile_changes?
-      redirect_to(edit_profile_path)
+    if current_user&.pending_profile_changes?
+      redirect_to(profile_path)
     end
   end
 
