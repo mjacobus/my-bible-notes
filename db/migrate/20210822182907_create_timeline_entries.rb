@@ -8,7 +8,7 @@ class CreateTimelineEntries < ActiveRecord::Migration[6.1]
       t.integer :year
       t.string :date_complement
       t.string :precision
-      t.string :confirmed, default: false
+      t.boolean :confirmed, default: false
       t.references :timeline, null: false
 
       t.timestamps
