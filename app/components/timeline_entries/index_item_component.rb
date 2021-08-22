@@ -5,10 +5,6 @@ class TimelineEntries::IndexItemComponent < ApplicationComponent
   has :entry
   menu_type :item_options
 
-  def confirmed_icon
-    
-  end
-
   private
 
   def menu_items(menu)

@@ -7,10 +7,20 @@ class TimelineEntriesController < ApplicationController
 
   key :entry
   permit :title, :year, :date_complement, :explanation, :precision, :confirmed
-  scope { current_user.timelines.by_slug(params[:timeline_id]) }
+  scope { timeline.entries }
   component_class_template 'TimelineEntries::%{type}PageComponent'
 
-  # def record
-  #   @record ||= find_scope.by_slug(params[:id])
-  # end
+  private
+
+  def timeline
+    @timeline ||= current_user.timelines.by_slug(params[:timeline_id])
+  end
+
+  def index_component(records)
+    component_class(:index).new(
+      pluralized_key => records,
+      current_user: current_user,
+      timeline: timeline
+    )
+  end
 end

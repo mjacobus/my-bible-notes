@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class TimelineEntries::IndexPageComponent < PageComponent
+  has :timeline
   has :entries
   paginate :entries
 
@@ -11,6 +12,6 @@ class TimelineEntries::IndexPageComponent < PageComponent
   end
 
   def menu_items(menu)
-    [menu.link(t('app.links.new'), urls.new_timeline_entry_path(entry.timeline))]
+    [menu.link(t('app.links.new'), urls.new_timeline_entry_path(timeline))]
   end
 end
