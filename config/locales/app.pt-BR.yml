@@ -31,12 +31,15 @@ pt-BR:
       slug: "Url"
       description: "Descrição"
       public: "Público"
+      bce: "a.C."
+      ce: "d.C."
     title: "Bible Tools"
     titles:
       meeting_attendance: "Contagem de Assistência"
       week_talks: "Discursos da semana"
       public_talks: "Discursos"
     messages:
+      invalid_year: "Ano inválido"
       profile_update_required: "Por favor atualize o seu perfil"
       saved: "Salvo"
       page_x_of_y: "Página %{x} de %{y}"
