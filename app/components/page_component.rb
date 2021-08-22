@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class PageComponent < ApplicationComponent
+  include MenuAwareComponent
+  menu_type :list_options
+
   def initialize(*args)
     super
 
@@ -12,14 +15,6 @@ class PageComponent < ApplicationComponent
   def breadcrumb
     @breadcrumb ||= BreadcrumbComponent.new.tap do |b|
       b.add(t('app.links.home'), urls.root_path)
-    end
-  end
-
-  def menu
-    @menu ||= DropdownMenuComponent.new(type: :list_options).tap do |menu|
-      menu_items(menu).each do |item|
-        menu.item { item }
-      end
     end
   end
 
