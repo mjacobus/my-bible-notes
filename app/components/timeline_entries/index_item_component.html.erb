@@ -1,1 +1,8 @@
-<div>Add TimelineEntries::IndexItem template here</div>
+<div class="list-item position-relative">
+  <%= render menu %>
+  <%= render attribute(entry.title).with_icon(:alarm).with_label(:title).without_label.wrap_with(:div, class: :h5) %>
+  <%= render attribute(entry.formatted_year).with_icon(:calendar).with_label(:title).without_label %>
+  <!-- confirmed-->
+  <!-- explanation-->
+  <!-- date_complement-->
+</div>

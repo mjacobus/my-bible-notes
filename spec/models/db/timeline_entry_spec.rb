@@ -38,4 +38,10 @@ RSpec.describe Db::TimelineEntry, type: :model do
     entry.year = -1
     expect { entry.year = 1 }.to change(entry, :era).from('a.C.').to('d.C.')
   end
+
+  it 'has a #formatted_year' do
+    entry.year = -51
+
+    expect(entry.formatted_year).to eq('51 a.C.')
+  end
 end

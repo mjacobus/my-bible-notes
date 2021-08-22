@@ -1,1 +1,9 @@
-<div>Add TimelineEntries::IndexPage template here</div>
+<%= render breadcrumb %>
+<%= render flash %>
+<%= render menu %>
+
+<% entries.each do |entry| %>
+  <%= render TimelineEntries::IndexItemComponent.new(entry: entry) %>
+<% end %>
+
+<%= render pagination %>

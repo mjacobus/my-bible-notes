@@ -61,6 +61,7 @@ pt-BR:
         other: "%{count} contatos"
     links:
       timelines: "Linhas do Tempo"
+      timeline_entries: "Eventos"
       update: "Atualizar"
       profile: "Perfil"
       clear_filters: "Limpar filtros"

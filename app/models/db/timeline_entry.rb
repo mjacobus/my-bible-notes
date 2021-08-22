@@ -18,6 +18,10 @@ class Db::TimelineEntry < ApplicationRecord
     I18n.t('app.attributes.bce')
   end
 
+  def formatted_year
+    "#{year.to_i.abs} #{era}"
+  end
+
   private
 
   def year_validation
