@@ -28,6 +28,7 @@ class ApplicationController < ActionController::Base
 
   def check_profile
     if current_user&.pending_profile_changes?
+      flash[:error] = I18n.t('app.messages.profile_update_required')
       redirect_to(profile_path)
     end
   end

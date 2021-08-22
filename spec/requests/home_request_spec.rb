@@ -19,12 +19,6 @@ RSpec.describe HomeController, type: :request do
 
         expect(response).to redirect_to(profile_path)
       end
-
-      it 'shows message' do
-        get '/'
-        get response.headers['Location']
-        expect(response.body).to include(I18n.t('app.messages.profile_update_required'))
-      end
     end
 
     context 'when profile is complete' do
