@@ -5,8 +5,8 @@ class TestFactories
     def attributes(overrides = {})
       {
         user_id: users.valid_random_id_or(overrides[:user_id]),
-        name: "User-#{seq}",
-        slug: "user-#{seq}",
+        name: "Timeline-#{seq}",
+        slug: "timeline-#{seq}",
         description: 'Some Description'
       }.merge(overrides)
     end

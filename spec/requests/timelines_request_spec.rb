@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe TimelinesController, type: :request do
   # general
-  let(:record) { factory.create }
+  let(:record) { factory.create(user_id: current_user.id) }
   let(:factory) { factories.timelines }
   let(:scope) { model_class.all }
   let(:key) { model_class.to_s.underscore.split('/').last.to_sym }
@@ -33,7 +33,7 @@ RSpec.describe TimelinesController, type: :request do
     it 'responds with success' do
       perform_request
 
-      expect(response).to be_successful
+      expect(response).to have_http_status(:ok)
       expect(response.body).to include(record.name)
     end
 
@@ -53,7 +53,7 @@ RSpec.describe TimelinesController, type: :request do
     it 'returns with success' do
       perform_request
 
-      expect(response).to be_successful
+      expect(response).to have_http_status(:ok)
     end
 
     it 'renders the correct component' do
@@ -73,7 +73,7 @@ RSpec.describe TimelinesController, type: :request do
     it 'returns with success' do
       perform_request
 
-      expect(response).to be_successful
+      expect(response).to have_http_status(:ok)
     end
 
     it 'renders the correct component' do
@@ -129,7 +129,7 @@ RSpec.describe TimelinesController, type: :request do
     it 'returns with success' do
       perform_request
 
-      expect(response).to be_successful
+      expect(response).to have_http_status(:ok)
     end
 
     it 'renders the correct component' do

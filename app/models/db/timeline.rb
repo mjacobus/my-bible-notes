@@ -10,5 +10,9 @@ class Db::Timeline < ApplicationRecord
     super(value.to_s.parameterize)
   end
 
+  def self.find(id_or_slug)
+    where(id: id_or_slug).or(where(slug: id_or_slug)).first!
+  end
+
   delegate :username, to: :user
 end
