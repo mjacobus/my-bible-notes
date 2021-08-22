@@ -9,7 +9,6 @@ module CrudController
   end
 
   def show
-    raise record.inspect
     render show_component(record)
   end
 

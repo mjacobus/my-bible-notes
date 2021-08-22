@@ -6,7 +6,7 @@ RSpec.describe TimelinesController, type: :request do
   # general
   let(:record) { factory.create(user_id: current_user.id) }
   let(:factory) { factories.timelines }
-  let(:scope) { model_class.all }
+  let(:scope) { current_user.timelines.all }
   let(:key) { model_class.to_s.underscore.split('/').last.to_sym }
   let(:model_class) { Db::Timeline }
 
@@ -81,7 +81,7 @@ RSpec.describe TimelinesController, type: :request do
 
       perform_request
 
-      expected_component = form_component.new(key => record)
+      expected_component = form_component.new(key => scope.new)
       expect(renderer).to have_rendered_component(expected_component)
     end
   end

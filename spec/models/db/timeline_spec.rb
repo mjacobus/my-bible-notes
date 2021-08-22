@@ -28,23 +28,15 @@ RSpec.describe Db::Timeline, type: :model do
     expect(valid).to be true
   end
 
-  describe '#find' do
+  describe '#find_by_slug' do
     it 'raises error when not found' do
-      expect { described_class.find('noope') }.to raise_error(ActiveRecord::RecordNotFound)
-    end
-
-    it 'finds by id' do
-      timeline.save
-
-      found = described_class.find(timeline.id.to_s)
-
-      expect(found.id).to eq(timeline.id)
+      expect { described_class.find_by_slug('noope') }.to raise_error(ActiveRecord::RecordNotFound)
     end
 
     it 'finds by slug' do
       timeline.save
 
-      found = described_class.find(timeline.slug)
+      found = described_class.find_by_slug(timeline.slug)
 
       expect(found.id).to eq(timeline.id)
     end
