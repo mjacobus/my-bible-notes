@@ -18,6 +18,10 @@ class TimelineEntries::FormPageComponent < PageComponent
     end
   end
 
+  def random_color
+    "##{SecureRandom.hex(3)}"
+  end
+
   private
 
   def setup

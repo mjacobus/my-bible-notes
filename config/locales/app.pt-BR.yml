@@ -18,6 +18,7 @@ pt-BR:
         updated_at: "Atualizado em"
       db/timeline_entry:
         title: "Nome"
+        color: "Cor"
         explanation: "Explicação"
         confirmed: "Confirmado"
         from_precision: "Precisão"
@@ -40,6 +41,7 @@ pt-BR:
         enabled: "Ativo"
   app:
     attributes:
+      color: "Cor"
       number_of_timeline_entries: "Número de Eventos"
       from_date: "Data início"
       to_date: "Data fim"

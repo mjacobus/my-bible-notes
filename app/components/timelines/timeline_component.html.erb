@@ -14,8 +14,19 @@
         />
     </a>
   <% end %>
+
   <% entries.each do |entry| %>
-    <a class="<%= bem('link') %>" href="<%= urls.to(entry) %>" title="<%= popover_title(entry) %>" data-bs-placement="bottom" data-bs-content="<%= popover_content(entry) %>" data-bs-container="body">
+    <a 
+      class="<%= bem('link') %>" 
+      href="<%= urls.to(entry) %>" 
+      title="<%= popover_title(entry) %>" 
+      data-bs-placement="bottom" 
+      <% content =  popover_content(entry) %>
+      <% if content.present? %>
+        data-bs-content="<%= content %>" 
+      <% end %>
+      data-bs-container="body"
+    >
       <line 
         x1="<%= entry_x1(entry) %>" 
         x2="<%= entry_x2(entry) %>" 
