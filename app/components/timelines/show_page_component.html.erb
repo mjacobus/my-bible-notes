@@ -6,3 +6,6 @@
 <%= render attribute(timeline.slug).with_label(:slug) %>
 <%= render attribute(t(timeline.public.to_s)).with_label(:public) %>
 <%= render attribute(timeline.description).with_label(:description) %>
+<%= render attribute(t('app.messages.x_timeline_entries', number: timeline.entries.count)).with_label(:number_of_timeline_entries) %>
+
+<%= render Timelines::TimelineComponent.new(timeline: timeline, entries: timeline.entries) %>
