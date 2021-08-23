@@ -11,7 +11,7 @@ class TestFactories
         from_year: year,
         from_precision: model_class::VALID_PRECISIONS.sample,
         to_year: year + (1..1000).to_a.sample,
-        to_precision: model_class::VALID_PRECISIONS.sample,
+        to_precision: model_class::VALID_PRECISIONS.sample
       }.merge(overrides)
     end
   end

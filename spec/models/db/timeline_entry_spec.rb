@@ -10,11 +10,18 @@ RSpec.describe Db::TimelineEntry, type: :model do
 
   it { is_expected.to validate_presence_of(:from_year) }
   it { is_expected.to validate_presence_of(:from_precision) }
-  it { is_expected.to validate_inclusion_of(:from_precision).in_array(%w[precise about after before]) }
+
+  it {
+    expect(subject).to validate_inclusion_of(:from_precision).in_array(%w[precise about after
+                                                                          before])
+  }
 
   it { is_expected.to validate_presence_of(:to_year) }
   it { is_expected.to validate_presence_of(:to_precision) }
-  it { is_expected.to validate_inclusion_of(:to_precision).in_array(%w[precise about after before]) }
+
+  it {
+    expect(subject).to validate_inclusion_of(:to_precision).in_array(%w[precise about after before])
+  }
 
   it 'does not permit zero as from_year' do
     entry.from_year = 0
