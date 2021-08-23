@@ -1,9 +1,5 @@
-<div class="list-item position-relative">
+<div class="list-item position-relative <%= bem %> <%= bem(entry.confirmed? ? 'confirmed' : '') %>">
   <%= render menu %>
   <%= render attribute(entry.title).with_icon(:alarm).with_label(:title).without_label.wrap_with(:div, class: :h5) %>
-  <%= render attribute(entry.formatted_from_year).with_icon(:calendar).with_label(:title).without_label %>
-  <%= render attribute(entry.formatted_to_year).with_icon(:calendar).with_label(:title).without_label %>
-  <!-- confirmed-->
-  <!-- explanation-->
-  <!-- date_complement-->
+  <%= render TimelineEntries::TimeRangeComponent.new(entry: entry) %>
 </div>

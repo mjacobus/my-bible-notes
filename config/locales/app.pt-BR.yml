@@ -41,6 +41,7 @@ pt-BR:
       slug: "Url"
       description: "Descrição"
       public: "Público"
+      time_range: "Período"
       bce: "a.C."
       ce: "d.C."
       precisions:
