@@ -19,6 +19,10 @@ fieldset {
   border-radius: 10px;
 }
 
+input[type="color"] {
+  height: 2.4em;
+}
+
 .kh-gray {
   color: $soft-gray;
 }

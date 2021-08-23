@@ -89,7 +89,11 @@ class Timelines::TimelineComponent < ApplicationComponent
     index * height + 1 + (stroke_width / 2)
   end
 
-  def entry_color(_entry)
+  def entry_color(entry)
+    if entry.color.present?
+      return entry.color
+    end
+
     @last_color ||= 0
     COLORS[@last_color % COLORS.length].tap do
       @last_color += 1
@@ -101,7 +105,7 @@ class Timelines::TimelineComponent < ApplicationComponent
   end
 
   def start_at
-    @start_at ||= entries.first.from_year
+    @start_at ||= entries.map(&:from_year).min
   end
 
   def starting_at(value)
@@ -111,7 +115,7 @@ class Timelines::TimelineComponent < ApplicationComponent
   end
 
   def end_at
-    @end_at ||= entries.last.to_year
+    @end_at ||= entries.map(&:to_year).max
   end
 
   def ending_at(value)

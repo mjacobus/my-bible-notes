@@ -16,7 +16,8 @@ class TimelineEntriesController < ApplicationController
     :from_precision,
     :to_precision,
     :confirmed,
-    :explanation
+    :explanation,
+    :color
   )
 
   scope { timeline.entries }

@@ -10,6 +10,7 @@ class Db::TimelineEntry < ApplicationRecord
 
   belongs_to :timeline
 
+  default_scope -> { order(:from_year) }
   validates :title, presence: true
   validates :from_year, presence: true
   validates :from_precision, presence: true, inclusion: { in: VALID_PRECISIONS }
