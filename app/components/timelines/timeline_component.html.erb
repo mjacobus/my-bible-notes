@@ -3,23 +3,27 @@
 <!-- <?xml version="1.0" standalone="no"?> -->
 <svg width="<%= width %>" height="<%= height %>" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <% years_to_display.each do |year| %>
-    <line 
-      x1="<%= year_x(year) %>" 
-      x2="<%= year_x(year) %>" 
-      y1="1" 
-      y2="<%= height %>" 
-      stroke="#ddd" 
-      stroke-width="1"
-    />
+    <a href="#<%= year %>" class="<%= bem('year') %>" data-bs-placement="bottom">
+      <line 
+        x1="<%= year_x(year) %>" 
+        x2="<%= year_x(year) %>" 
+        y1="1" 
+        y2="<%= height %>" 
+        stroke="#ddd" 
+        stroke-width="1"
+        />
+    </a>
   <% end %>
   <% entries.each do |entry| %>
-    <line 
-      x1="<%= entry_x1(entry) %>" 
-      x2="<%= entry_x2(entry) %>" 
-      y1="<%= entry_y(entry) %>" 
-      y2="<%= entry_y(entry) %>" 
-      stroke="<%= entry_color(entry) %>" 
-      stroke-width="<%= stroke_width %>"
-    />
+    <a class="<%= bem('link') %>" href="<%= urls.to(entry) %>" title="<%= popover_title(entry) %>" data-bs-placement="bottom" data-bs-content="<%= popover_content(entry) %>" data-bs-container="body">
+      <line 
+        x1="<%= entry_x1(entry) %>" 
+        x2="<%= entry_x2(entry) %>" 
+        y1="<%= entry_y(entry) %>" 
+        y2="<%= entry_y(entry) %>" 
+        stroke="<%= entry_color(entry) %>" 
+        stroke-width="<%= stroke_width %>"
+      />
+    </a>
   <% end %>
 </svg>
