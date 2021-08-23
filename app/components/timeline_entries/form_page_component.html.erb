@@ -5,24 +5,47 @@
   <%= input_wrapper do %>
     <%= f.input :title %>
   <% end %>
-  <%= input_wrapper do %>
-    <%= f.input :from_year %>
-  <% end %>
-  <%= input_wrapper do %>
-    <%= f.input :from_precision, as: :select, collection: precisions, include_blank: true %>
-  <% end %>
-  <%= input_wrapper do %>
-    <%= f.input :from_date_complement %>
-  <% end %>
-  <%= input_wrapper do %>
-    <%= f.input :to_year %>
-  <% end %>
-  <%= input_wrapper do %>
-    <%= f.input :to_precision, as: :select, collection: precisions, include_blank: true %>
-  <% end %>
-  <%= input_wrapper do %>
-    <%= f.input :to_date_complement %>
-  <% end %>
+
+  <fieldset><legend><%= t('app.attributes.from_date') %></legend>
+    <div class="row">
+      <div class="col-sm-4">
+        <%= input_wrapper do %>
+          <%= f.input :from_year, label: t('app.attributes.year') %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <%= input_wrapper do %>
+          <%= f.input :from_precision, as: :select, collection: precisions, include_blank: true %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <%= input_wrapper do %>
+          <%= f.input :from_date_complement %>
+        <% end %>
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset><legend><%= t('app.attributes.to_date') %></legend>
+    <div class="row">
+      <div class="col-sm-4">
+        <%= input_wrapper do %>
+          <%= f.input :to_year, label: t('app.attributes.year') %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <%= input_wrapper do %>
+          <%= f.input :to_precision, as: :select, collection: precisions, include_blank: true %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <%= input_wrapper do %>
+          <%= f.input :to_date_complement %>
+        <% end %>
+      </div>
+    </div>
+  </fieldset>
+
   <%= input_wrapper do %>
     <%= f.input :explanation %>
   <% end %>

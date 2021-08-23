@@ -23,6 +23,13 @@ class TimelineEntries::FormPageComponent < PageComponent
   def setup
     breadcrumb.add(t('app.links.timelines'), urls.timelines_path(current_user))
     breadcrumb.add(entry.timeline.name, urls.timeline_path(entry.timeline))
-    breadcrumb.add(t('app.links.timeline_entries'))
+    breadcrumb.add(t('app.links.timeline_entries'), urls.timeline_entries_path(entry.timeline))
+
+    if entry.id.present?
+      breadcrumb.add(entry.title, urls.to(entry))
+      breadcrumb.add(t('app.links.edit'))
+      return
+    end
+    breadcrumb.add(t('app.links.new'))
   end
 end
