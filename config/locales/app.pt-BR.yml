@@ -61,6 +61,10 @@ pt-BR:
         before: "Antes de"
         after: "Depois de"
         precise: "Exatamente"
+      short_precisions:
+        about: "c."
+        before: "a."
+        after: "d."
     title: "Bible Tools"
     titles:
       meeting_attendance: "Contagem de Assistência"
@@ -68,6 +72,7 @@ pt-BR:
       public_talks: "Discursos"
     messages:
       year_with_era: "%{year} %{era}"
+      year_with_era_and_precision: "%{precision} %{year} %{era}"
       x_timeline_entries: "%{number} eventos"
       invalid_year: "Ano inválido"
       profile_update_required: "Por favor atualize o seu perfil"

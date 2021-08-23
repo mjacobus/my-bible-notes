@@ -2,20 +2,52 @@
 
 module Timeline
   class Year
-    def initialize(year)
-      @year = Integer(year)
+    InvalidYear = Class.new(ArgumentError)
+    InvalidPrecision = Class.new(ArgumentError)
+
+    PRECISIONS = %w[precise about before after].freeze
+
+    # rubocop:disable Metrics/MethodLength
+    def initialize(year, precision: :precise)
+      begin
+        @year = Integer(year)
+      rescue ArgumentError
+        raise InvalidYear
+      end
+
+      if @year.zero?
+        raise InvalidYear
+      end
+
+      @precision = precision.to_s
+
+      unless PRECISIONS.include?(@precision)
+        raise InvalidPrecision
+      end
     end
+    # rubocop:enable Metrics/MethodLength
 
     def to_i
       @year
     end
 
     def to_s
-      I18n.t('app.messages.year_with_era', year: to_i.abs, era: localized_era)
+      key = precise? ? 'year_with_era' : 'year_with_era_and_precision'
+
+      I18n.t(
+        "app.messages.#{key}",
+        year: to_i.abs,
+        era: localized_era,
+        precision: localized_precision
+      )
     end
 
     def common_era?
       to_i.positive?
+    end
+
+    def localized_precision
+      I18n.t("app.attributes.short_precisions.#{@precision}", default: '')
     end
 
     def localized_era
@@ -24,6 +56,10 @@ module Timeline
 
     def era
       common_era? ? 'CE' : 'BCE'
+    end
+
+    def precise?
+      @precision == 'precise'
     end
   end
 end
