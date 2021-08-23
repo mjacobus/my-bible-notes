@@ -67,6 +67,7 @@ pt-BR:
       week_talks: "Discursos da semana"
       public_talks: "Discursos"
     messages:
+      year_with_era: "%{year} %{era}"
       x_timeline_entries: "%{number} eventos"
       invalid_year: "Ano inválido"
       profile_update_required: "Por favor atualize o seu perfil"
