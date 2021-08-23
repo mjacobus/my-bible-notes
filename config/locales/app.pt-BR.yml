@@ -40,6 +40,7 @@ pt-BR:
         enabled: "Ativo"
   app:
     attributes:
+      number_of_timeline_entries: "Número de Eventos"
       from_date: "Data início"
       to_date: "Data fim"
       title: "Título"
@@ -64,6 +65,7 @@ pt-BR:
       week_talks: "Discursos da semana"
       public_talks: "Discursos"
     messages:
+      x_timeline_entries: "%{number} eventos"
       invalid_year: "Ano inválido"
       profile_update_required: "Por favor atualize o seu perfil"
       saved: "Salvo"

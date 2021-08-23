@@ -42,6 +42,10 @@ class Db::TimelineEntry < ApplicationRecord
     "#{to_year.to_i.abs} #{to_era}"
   end
 
+  def single_year?
+    from_year == to_year
+  end
+
   private
 
   def validate_years
