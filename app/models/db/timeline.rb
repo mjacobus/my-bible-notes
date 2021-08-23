@@ -2,6 +2,8 @@
 
 class Db::Timeline < ApplicationRecord
   belongs_to :user
+  has_many :entries, class_name: 'TimelineEntry', dependent: :destroy
+
   default_scope -> { order(:name) }
   scope :by_slug, ->(slug) { find_by!(slug: slug) }
 
@@ -13,4 +15,8 @@ class Db::Timeline < ApplicationRecord
   end
 
   delegate :username, to: :user
+
+  def to_param
+    slug
+  end
 end

@@ -1,0 +1,8 @@
+<%= render breadcrumb %>
+<%= render flash %>
+<%= render menu %>
+
+<%= render attribute(entry.title).with_label(:title) %>
+<%= render TimelineEntries::TimeRangeComponent.new(entry: entry).with_label.without_icon %>
+<%= render attribute(entry.explanation).with_label(:explanation) %>
+<%= render attribute(t(entry.confirmed.to_s)).with_label(:confirmed) %>

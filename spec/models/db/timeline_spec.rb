@@ -6,6 +6,7 @@ RSpec.describe Db::Timeline, type: :model do
   subject(:timeline) { factories.timelines.build }
 
   it { is_expected.to belong_to(:user) }
+  it { is_expected.to have_many(:entries).class_name('Db::TimelineEntry').dependent(:destroy) }
 
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_presence_of(:slug) }
@@ -40,5 +41,11 @@ RSpec.describe Db::Timeline, type: :model do
 
       expect(found.id).to eq(timeline.id)
     end
+  end
+
+  it 'returns slug when calling #to_param' do
+    timeline.slug = 'foobar'
+
+    expect(timeline.to_param).to eq('foobar')
   end
 end

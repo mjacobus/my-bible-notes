@@ -7,36 +7,69 @@ RSpec.describe Routes do
 
   let(:user) { factories.users.create }
   let(:timeline) { factories.timelines.create(user_id: user.id) }
+  let(:entry) { factories.timeline_entries.create(timeline_id: timeline.id) }
 
-  it 'resolves #timelines_path' do
-    path = routes.timelines_path(user)
+  describe 'timeline routes' do
+    it 'resolves #timelines_path' do
+      path = routes.timelines_path(user)
 
-    expect(path).to eq("/#{user.username}/timelines")
-  end
+      expect(path).to eq("/#{user.username}/timelines")
+    end
 
-  it 'resolves #timeline_path' do
-    path = routes.timeline_path(timeline)
+    it 'resolves #timeline_path' do
+      path = routes.timeline_path(timeline)
 
-    expect(path).to eq("/#{user.username}/timelines/#{timeline.slug}")
-  end
+      expect(path).to eq("/#{user.username}/timelines/#{timeline.slug}")
+    end
 
-  it 'resolves #new_timeline_path' do
-    path = routes.new_timeline_path(user)
+    it 'resolves #new_timeline_path' do
+      path = routes.new_timeline_path(user)
 
-    expect(path).to eq("/#{user.username}/timelines/new")
-  end
+      expect(path).to eq("/#{user.username}/timelines/new")
+    end
 
-  it 'resolves #edit_timeline_path' do
-    path = routes.edit_timeline_path(timeline)
+    it 'resolves #edit_timeline_path' do
+      path = routes.edit_timeline_path(timeline)
 
-    expect(path).to eq("/#{user.username}/timelines/#{timeline.slug}/edit")
-  end
+      expect(path).to eq("/#{user.username}/timelines/#{timeline.slug}/edit")
+    end
 
-  describe '#to' do
-    it 'resolves timeline path' do
+    it 'is compatible with #to' do
       path = routes.to(timeline)
 
       expect(path).to eq("/#{user.username}/timelines/#{timeline.slug}")
+    end
+  end
+
+  describe 'timeline entries routes' do
+    it 'resolves #timeline_entries_path' do
+      path = routes.timeline_entries_path(timeline)
+
+      expect(path).to eq("/#{user.username}/timelines/#{timeline.slug}/entries")
+    end
+
+    it 'resolves #timeline_entry_path' do
+      path = routes.timeline_entry_path(entry)
+
+      expect(path).to eq("/#{user.username}/timelines/#{timeline.slug}/entries/#{entry.id}")
+    end
+
+    it 'resolves #new_timeline_entry_path' do
+      path = routes.new_timeline_entry_path(timeline)
+
+      expect(path).to eq("/#{user.username}/timelines/#{timeline.slug}/entries/new")
+    end
+
+    it 'resolves #edit_timeline_entry_path' do
+      path = routes.edit_timeline_entry_path(entry)
+
+      expect(path).to eq("/#{user.username}/timelines/#{timeline.slug}/entries/#{entry.id}/edit")
+    end
+
+    it 'is compatible with #to' do
+      path = routes.to(entry)
+
+      expect(path).to eq("/#{user.username}/timelines/#{timeline.slug}/entries/#{entry.id}")
     end
   end
 end
