@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe Db::TimelineEntry, type: :model do
-  let(:entry) { factories.timeline_entries.build }
+  subject(:entry) { factories.timeline_entries.build }
 
   it { is_expected.to belong_to(:timeline) }
   it { is_expected.to validate_presence_of(:title) }
@@ -12,15 +12,15 @@ RSpec.describe Db::TimelineEntry, type: :model do
   it { is_expected.to validate_presence_of(:from_precision) }
 
   it {
-    expect(subject).to validate_inclusion_of(:from_precision).in_array(%w[precise about after
-                                                                          before])
+    expect(entry).to validate_inclusion_of(:from_precision).in_array(%w[precise about after
+                                                                        before])
   }
 
   it { is_expected.to validate_presence_of(:to_year) }
   it { is_expected.to validate_presence_of(:to_precision) }
 
   it {
-    expect(subject).to validate_inclusion_of(:to_precision).in_array(%w[precise about after before])
+    expect(entry).to validate_inclusion_of(:to_precision).in_array(%w[precise about after before])
   }
 
   it 'does not permit zero as from_year' do
@@ -45,7 +45,7 @@ RSpec.describe Db::TimelineEntry, type: :model do
     expect(entry).to be_valid
   end
 
-  it 'has an era' do
+  it 'has an from_era' do
     entry.from_year = -1
     expect { entry.from_year = 1 }.to change(entry, :from_era).from('a.C.').to('d.C.')
   end
@@ -74,11 +74,7 @@ RSpec.describe Db::TimelineEntry, type: :model do
     expect(entry).not_to be_valid
   end
 
-  it 'has a valid factory' do
-    expect(entry).to be_valid
-  end
-
-  it 'has an era' do
+  it 'has an to_era' do
     entry.to_year = -1
     expect { entry.to_year = 1 }.to change(entry, :to_era).from('a.C.').to('d.C.')
   end
