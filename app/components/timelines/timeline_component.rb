@@ -120,6 +120,20 @@ class Timelines::TimelineComponent < ApplicationComponent
     self
   end
 
+  def popover_title(entry)
+    years = [entry.formatted_from_year]
+
+    unless entry.single_year?
+      years.push(entry.formatted_to_year)
+    end
+
+    [[years].compact.join(' - '), entry.title].compact.join(": \n")
+  end
+
+  def popover_content(entry)
+    entry.explanation
+  end
+
   private
 
   # { year -> position }

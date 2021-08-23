@@ -7,8 +7,7 @@ require("@rails/ujs").start();
 
 import "../src/application.scss";
 import "../components";
-
-require("bootstrap"); // not enough to enable toggle
+import '../src/components/timelines/timeline.js'
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
