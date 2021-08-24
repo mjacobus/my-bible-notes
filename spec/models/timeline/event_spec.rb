@@ -26,6 +26,20 @@ RSpec.describe Timeline::Event do
       expect(event).not_to be_overlap_with(create(1, 4))
     end
 
+    it 'returns true when numbers are at the edge and cover is inclusive' do
+      event = create(5, 10)
+
+      expect(event).to be_overlap_with(create(10, 11), inclusive: true)
+      expect(event).to be_overlap_with(create(2, 5), inclusive: true)
+    end
+
+    it 'returns false when numbers are at the edge and cover is not inclusive' do
+      event = create(5, 10)
+
+      expect(event).not_to be_overlap_with(create(10, 11), inclusive: false)
+      expect(event).not_to be_overlap_with(create(2, 5), inclusive: false)
+    end
+
     it 'returns true when times times are within' do
       event = create(5, 10)
 

@@ -10,7 +10,7 @@ module Timeline
       @explanation = args.fetch(:explanation)
     end
 
-    def overlap_with?(other, inclusive: false)
+    def overlap_with?(other, inclusive: true)
       time.overlap_with?(other.time, inclusive: inclusive)
     end
   end
