@@ -28,7 +28,7 @@ RSpec.describe Timeline::Year do
     end.to raise_error(Timeline::Year::InvalidYear)
   end
 
-  it 'raises when year is zero' do
+  it 'raises when year is not integer' do
     expect do
       described_class.new('f')
     end.to raise_error(Timeline::Year::InvalidYear)
