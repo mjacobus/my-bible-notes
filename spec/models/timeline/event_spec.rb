@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Timeline::Event do
+RSpec.describe Timeline::Event, type: :model do
   subject(:event) { create(10, 20) }
 
   it 'has a title' do
@@ -49,12 +49,10 @@ RSpec.describe Timeline::Event do
   end
 
   def create(from, to)
-    described_class.new(
+    factories.timeline_events.create(
       title: 'the title',
-      time: Timeline::Time.new(
-        from: Timeline::Year.new(from),
-        to: Timeline::Year.new(to)
-      ),
+      from: from,
+      to: to,
       explanation: 'the explanation'
     )
   end

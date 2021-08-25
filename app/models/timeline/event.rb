@@ -4,6 +4,8 @@ module Timeline
   class Event
     attr_reader :title, :time, :explanation
 
+    delegate :single_year?, to: :time
+
     def initialize(args = {})
       @title = args.fetch(:title)
       @time = args.fetch(:time)

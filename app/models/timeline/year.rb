@@ -31,6 +31,14 @@ module Timeline
       @year
     end
 
+    def next
+      self.class.new(to_i.next, precision: @precision)
+    end
+
+    def pred
+      self.class.new(to_i.pred, precision: @precision)
+    end
+
     def to_s
       key = precise? ? 'year_with_era' : 'year_with_era_and_precision'
 

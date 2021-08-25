@@ -2,7 +2,44 @@
 
 module Timeline
   class Lane
+    attr_reader :events
+
+    def initialize
+      @events = []
+    end
+
     def add_event(event)
+      if accept?(event)
+        return @events.push(event)
+      end
+
+      false
+    end
+
+    def accept?(candidate)
+      events.each do |event|
+        if candidate.overlap_with?(event, inclusive: false)
+          return false
+        end
+
+        if reject_by_single_year?(candidate, event)
+          return false
+        end
+      end
+
+      true
+    end
+
+    private
+
+    def reject_by_single_year?(candidate, event)
+      if candidate.single_year? && (candidate.time.to.to_i == event.time.from.to_i)
+        return true
+      end
+
+      if event.single_year? && (event.time.to.to_i == candidate.time.from.to_i)
+        true
+      end
     end
   end
 end

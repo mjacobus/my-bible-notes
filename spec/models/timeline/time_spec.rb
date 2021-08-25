@@ -43,6 +43,13 @@ RSpec.describe Timeline::Time do
     expect(time).not_to be_overlap_with(create(11, 12), inclusive: true)
   end
 
+  it 'always overlaps when values are the same' do
+    expect(time).to be_overlap_with(time, inclusive: true)
+    expect(time).to be_overlap_with(time, inclusive: false)
+    expect(time).to be_overlap_with(create(11, 20), inclusive: false)
+    expect(time).to be_overlap_with(create(10, 19), inclusive: false)
+  end
+
   def create(from, to)
     described_class.new(from: Timeline::Year.new(from), to: Timeline::Year.new(to))
   end

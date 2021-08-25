@@ -14,7 +14,15 @@ module Timeline
     end
 
     def overlap_with?(other, inclusive: false)
-      cover_year?(other.from, inclusive: inclusive) || cover_year?(other.to, inclusive: inclusive)
+      if cover_year?(other.from,
+                     inclusive: inclusive) || cover_year?(other.to, inclusive: inclusive)
+        return true
+      end
+
+      unless other.single_year?
+        cover_year?(other.from.next,
+                    inclusive: inclusive) || cover_year?(other.to.pred, inclusive: inclusive)
+      end
     end
 
     def cover_year?(year, inclusive: true)
