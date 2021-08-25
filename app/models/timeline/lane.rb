@@ -14,8 +14,6 @@ module Timeline
       if accept?(event)
         return @events.push(event.with_lane(self))
       end
-
-      false
     end
 
     def accept?(candidate)
@@ -39,9 +37,7 @@ module Timeline
         return true
       end
 
-      if event.single_year? && (event.time.to.to_i == candidate.time.from.to_i)
-        true
-      end
+      event.single_year? && (event.time.to.to_i == candidate.time.from.to_i)
     end
   end
 end
