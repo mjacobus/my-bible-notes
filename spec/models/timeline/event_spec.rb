@@ -9,6 +9,10 @@ RSpec.describe Timeline::Event, type: :model do
     expect(event.title).to eq('the title')
   end
 
+  it 'has a color' do
+    expect(event.color).to include('color-')
+  end
+
   it 'has a time' do
     expect(event.time.from.to_i).to be 10
     expect(event.time.to.to_i).to be 20

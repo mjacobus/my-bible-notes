@@ -2,7 +2,7 @@
 
 module Timeline
   class Event
-    attr_reader :title, :time, :explanation
+    attr_reader :title, :time, :explanation, :color
 
     delegate :single_year?, to: :time
 
@@ -10,6 +10,7 @@ module Timeline
       @title = args.fetch(:title)
       @time = args.fetch(:time)
       @explanation = args.fetch(:explanation)
+      @color = args[:color].presence
     end
 
     def overlap_with?(other, inclusive: true)
