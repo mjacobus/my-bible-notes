@@ -3,8 +3,10 @@
 module Timeline
   class Lane
     attr_reader :events
+    attr_reader :number
 
-    def initialize
+    def initialize(number)
+      @number = number
       @events = []
     end
 

@@ -3,9 +3,13 @@
 require 'rails_helper'
 
 RSpec.describe Timeline::Lane do
-  subject(:lane) { described_class.new }
+  subject(:lane) { described_class.new(1) }
 
   let(:event) { create(10, 20) }
+
+  it 'has a number' do
+    expect(lane.number).to eq(1)
+  end
 
   describe '#add_event' do
     it 'accepts when there are no overlaps' do
