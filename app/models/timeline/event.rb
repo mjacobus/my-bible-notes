@@ -15,5 +15,14 @@ module Timeline
     def overlap_with?(other, inclusive: true)
       time.overlap_with?(other.time, inclusive: inclusive)
     end
+
+    def with_lane(lane)
+      @lane = lane
+      self
+    end
+
+    def lane_number
+      @lane.number
+    end
   end
 end

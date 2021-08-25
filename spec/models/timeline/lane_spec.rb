@@ -12,6 +12,12 @@ RSpec.describe Timeline::Lane do
   end
 
   describe '#add_event' do
+    it 'adds lane number to the event' do
+      lane.add_event(event)
+
+      expect(event.lane_number).to eq(1)
+    end
+
     it 'accepts when there are no overlaps' do
       expect(lane.add_event(event)).to be_truthy
       expect(lane.add_event(event)).to be_falsy
