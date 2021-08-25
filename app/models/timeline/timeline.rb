@@ -22,6 +22,10 @@ module Timeline
       create_lane(event)
     end
 
+    def events
+      lanes.map(&:events).flatten
+    end
+
     private
 
     def create_lane(event)
