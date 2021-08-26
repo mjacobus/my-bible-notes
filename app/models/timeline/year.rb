@@ -9,6 +9,7 @@ module Timeline
 
     # rubocop:disable Metrics/MethodLength
     def initialize(year, precision: :precise)
+      precision ||= :precise
       begin
         @year = Integer(year)
       rescue ArgumentError
