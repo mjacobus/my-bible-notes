@@ -19,7 +19,7 @@ class TestFactories
             to: ::Timeline::Year.new(to)
           ),
           explanation: overrides[:explanation] || "the explanation #{sequency}",
-          color: "color-#{sequency}",
+          color: "color-#{sequency}"
         }
       end
     end

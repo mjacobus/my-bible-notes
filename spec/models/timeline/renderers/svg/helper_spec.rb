@@ -2,8 +2,7 @@
 
 require 'rails_helper'
 
-# rubocop:disable RSpec/MultipleMemoizedHelpers
-RSpec.describe Timeline::RendererHelper, type: :model do
+RSpec.describe Timeline::Renderers::Svg::Helper do
   subject(:helper) { described_class.new(timeline) }
 
   let(:timeline) do
@@ -114,4 +113,3 @@ RSpec.describe Timeline::RendererHelper, type: :model do
     expect(helper.year_x(1)).to eq(221)
   end
 end
-# rubocop:enable RSpec/MultipleMemoizedHelpers

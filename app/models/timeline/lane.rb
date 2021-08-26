@@ -12,7 +12,7 @@ module Timeline
 
     def add_event(event)
       if accept?(event)
-        return @events.push(event.with_lane(self))
+        @events.push(event.with_lane(self))
       end
     end
 

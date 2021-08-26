@@ -8,7 +8,6 @@ class TestFactories
         name: "Timeline-#{seq}",
         slug: "timeline-#{seq}",
         description: 'Some Description',
-        color: "color-#{}",
       }.merge(overrides)
     end
   end

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Metrics/ClassLength:
 class Timelines::TimelineComponent < ApplicationComponent
   has :timeline
   has :entries
@@ -21,7 +20,7 @@ class Timelines::TimelineComponent < ApplicationComponent
       timeline.add_event(create_event(entry))
     end
 
-    @helper = Timeline::RendererHelper.new(timeline)
+    @helper = Timeline::Renderers::Svg::Helper.new(timeline)
   end
 
   def entries
@@ -203,4 +202,3 @@ class Timelines::TimelineComponent < ApplicationComponent
   #   map
   # end
 end
-# rubocop:enable Metrics/ClassLength:
