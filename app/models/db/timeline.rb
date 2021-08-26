@@ -19,27 +19,4 @@ class Db::Timeline < ApplicationRecord
   def to_param
     slug
   end
-
-  def create_model
-    Timeline::Timeline.new(
-      name: timeline.name,
-      events: entries.map do |entries|
-        create_event_from_db_entry(entries)
-      end
-    )
-  end
-
-  private
-
-  def create_event_from_db(entry)
-    Timeline::Event.new(
-      name: entry.name,
-      time: Timeline::Time.new(
-        from: Timeline::Year.new(from: entry.to, precision: entry.to_precision),
-        to: Timeline::Year.new(to: entry.to, precision: entry.to_precision)
-      ),
-      explanation: entry.explanation,
-      color: entry.color
-    )
-  end
 end

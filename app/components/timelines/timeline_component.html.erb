@@ -18,7 +18,6 @@
   <% entries.each do |entry| %>
     <a 
       class="<%= bem('link') %>" 
-      href="<%= urls.to(entry) %>" 
       title="<%= popover_title(entry) %>" 
       data-bs-placement="bottom" 
       <% content =  popover_content(entry) %>
@@ -28,11 +27,11 @@
       data-bs-container="body"
     >
       <line 
-        x1="<%= entry_x1(entry) %>" 
-        x2="<%= entry_x2(entry) %>" 
-        y1="<%= entry_y(entry) %>" 
-        y2="<%= entry_y(entry) %>" 
-        stroke="<%= entry_color(entry) %>" 
+        x1="<%= event_x1(entry) %>" 
+        x2="<%= event_x2(entry) %>" 
+        y1="<%= event_y(entry) %>" 
+        y2="<%= event_y(entry) %>" 
+        stroke="<%= event_color(entry) %>" 
         stroke-width="<%= stroke_width %>"
       />
     </a>
