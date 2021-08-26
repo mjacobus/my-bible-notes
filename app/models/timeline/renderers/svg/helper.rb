@@ -20,19 +20,18 @@ module Timeline
 
         def decorate_event(event)
           if event.single_year?
-            return RendererableEvent.new(event, self)
+            return Svg::OneTimeEventElement.new(event, self)
           end
 
-          RendererableTimeRangeEvent.new(event, self)
+          Svg::TimeRangeEventElement.new(event, self)
         end
 
         def height
-          event_y(events.last) + stroke_width
+          600
         end
 
         def width
-          # give 1 pixel more to draw the last year
-          years_map.values.last + 1
+          800
         end
 
         def years_interval
@@ -61,12 +60,12 @@ module Timeline
           @years_map ||= resolve_years
         end
 
-        def stroke_width
-          @stroke_width ||= 10
+        def stroke_height
+          @stroke_height ||= 10
         end
 
-        def with_stroke_width(value)
-          @stroke_width = value
+        def with_stroke_height(value)
+          @stroke_height = value
           self
         end
 
@@ -84,19 +83,15 @@ module Timeline
         end
 
         def event_x1(event)
-          # decorate_event(event).attributes[:x1]
-          years_map[event.time.from.to_i]
+          decorate_event(event).attributes[:x1]
         end
 
         def event_x2(event)
-          increment = event.single_year? ? 1 : 0
-          years_map[event.time.to.to_i] + increment
+          decorate_event(event).attributes[:x2]
         end
 
         def event_y(event)
-          height = stroke_width + space_between_lines
-          index = index_of(event)
-          index * height + 1 + (stroke_width / 2)
+          decorate_event(event).attributes[:y1]
         end
 
         def event_color(event)

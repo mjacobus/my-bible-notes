@@ -3,6 +3,7 @@
 class Timelines::TimelineComponent < ApplicationComponent
   has :timeline
   has :entries
+  attr_reader :helper
 
   COLORS = %w[
     red

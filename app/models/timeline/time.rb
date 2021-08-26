@@ -30,5 +30,13 @@ module Timeline
       range = (from.to_i + diff).to_i..(to.to_i - diff).to_i
       range.cover?(year.to_i)
     end
+
+    def length
+      result = ((to.to_i - from.to_i) + 1).abs
+      if cover_year?(0)
+        return result - 1
+      end
+      result
+    end
   end
 end

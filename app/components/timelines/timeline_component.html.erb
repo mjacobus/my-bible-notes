@@ -15,25 +15,13 @@
     </a>
   <% end %>
 
-  <% entries.each do |entry| %>
-    <a 
-      class="<%= bem('link') %>" 
-      title="<%= popover_title(entry) %>" 
-      data-bs-placement="bottom" 
-      <% content =  popover_content(entry) %>
-      <% if content.present? %>
-        data-bs-content="<%= content %>" 
+  <% helper.renderable_events.each do |element| %>
+
+    <<%= element.tag %> 
+      <% element.attributes.each do |name, value| %>
+          <%= name %>="<%= value %>"
       <% end %>
-      data-bs-container="body"
-    >
-      <line 
-        x1="<%= event_x1(entry) %>" 
-        x2="<%= event_x2(entry) %>" 
-        y1="<%= event_y(entry) %>" 
-        y2="<%= event_y(entry) %>" 
-        stroke="<%= event_color(entry) %>" 
-        stroke-width="<%= stroke_width %>"
-      />
-    </a>
+    />
+    <%= content_tag(element.tag, "", element.attributes) %>
   <% end %>
 </svg>

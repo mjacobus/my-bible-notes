@@ -78,25 +78,19 @@ RSpec.describe Timeline::Renderers::Svg::Helper do
     end
 
     it 'resolves #event_y' do
-      helper.with_stroke_width(1).with_space_between_lines(2)
+      helper.with_stroke_height(1).with_space_between_lines(2)
 
       expect(helper.event_y(entry1)).to eq(1)
-      expect(helper.event_y(entry2)).to eq(4)
-      expect(helper.event_y(entry3)).to eq(7)
-      expect(helper.event_y(entry4)).to eq(10)
     end
 
     it 'prepends half a stroke to the y position in #event_y' do
-      helper.with_stroke_width(5).with_space_between_lines(1)
+      helper.with_stroke_height(5).with_space_between_lines(1)
 
       expect(helper.event_y(entry1)).to eq(3)
-      expect(helper.event_y(entry2)).to eq(9)
-      expect(helper.event_y(entry3)).to eq(15)
-      expect(helper.event_y(entry4)).to eq(21)
     end
 
     it 'resolves #height' do
-      helper.with_stroke_width(2).with_space_between_lines(1)
+      helper.with_stroke_height(2).with_space_between_lines(1)
 
       expect(helper.height).to eq(13)
     end

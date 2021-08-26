@@ -7,7 +7,7 @@ class TestFactories
         user_id: users.valid_random_id_or(overrides[:user_id]),
         name: "Timeline-#{seq}",
         slug: "timeline-#{seq}",
-        description: 'Some Description',
+        description: 'Some Description'
       }.merge(overrides)
     end
   end

@@ -50,6 +50,13 @@ RSpec.describe Timeline::Time do
     expect(time).to be_overlap_with(create(10, 19), inclusive: false)
   end
 
+  it 'has a #length' do
+    expect(create(1, 10).length).to eq(10)
+    expect(create(-10, -1).length).to eq(10)
+    expect(create(-10, 1).length).to eq(11)
+    expect(create(-10, -5).length).to eq(6)
+  end
+
   def create(from, to)
     described_class.new(from: Timeline::Year.new(from), to: Timeline::Year.new(to))
   end
