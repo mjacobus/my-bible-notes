@@ -47,6 +47,14 @@ RSpec.describe Timeline::Lane do
       expect(lane.events.map(&:title)).to eq(%w[10_20 20_20])
     end
 
+    describe '#accept?' do
+      it 'rejects when lane occupies event date range' do
+        expect { lane.add_event(create(-455, 36)) }
+          .to change { lane.accept?(create(406, 29)) }
+          .from(true).to(false)
+      end
+    end
+
     it "accepts events that won't colide with existing 1 year events" do
       event = create(10, 10)
       event2 = create(10, 20)

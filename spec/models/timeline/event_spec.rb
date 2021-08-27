@@ -35,6 +35,8 @@ RSpec.describe Timeline::Event, type: :model do
 
       expect(event).to be_overlap_with(create(10, 11), inclusive: true)
       expect(event).to be_overlap_with(create(2, 5), inclusive: true)
+      expect(create(-455, 36)).to be_overlap_with(create(-406, 29), inclusive: true)
+      expect(create(-455, 36)).to be_overlap_with(create(-406, 29), inclusive: false)
     end
 
     it 'returns false when numbers are at the edge and cover is not inclusive' do

@@ -38,5 +38,9 @@ module Timeline
       end
       result
     end
+
+    def to_s
+      [from.to_s, to.to_s].uniq.join(' - ')
+    end
   end
 end

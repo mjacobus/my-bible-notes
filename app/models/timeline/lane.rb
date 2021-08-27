@@ -24,7 +24,7 @@ module Timeline
 
     def reject?(candidate)
       events.any? do |event|
-        if candidate.overlap_with?(event, inclusive: false)
+        if event.overlap_with?(candidate, inclusive: false)
           return true
         end
 

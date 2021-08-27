@@ -41,6 +41,9 @@ RSpec.describe Timeline::Time do
 
     expect(time).not_to be_overlap_with(create(1, 7), inclusive: true)
     expect(time).not_to be_overlap_with(create(11, 12), inclusive: true)
+
+    skip "This is a BUG!!! Fix it"
+    expect(time).to be_overlap_with(create(5, 15))
   end
 
   it 'always overlaps when values are the same' do
@@ -56,6 +59,11 @@ RSpec.describe Timeline::Time do
     expect(create(-10, 1).length).to eq(10)
     expect(create(-10, -5).length).to eq(5)
     expect(create(-455, 36).length).to eq(490)
+  end
+
+  it 'converts to string' do
+    expect(create(-2, 2).to_s).to eq('2 a.C. - 2 d.C.')
+    expect(create(2, 2).to_s).to eq('2 d.C.')
   end
 
   def create(from, to)
