@@ -3,6 +3,7 @@
 module Timeline
   module Renderers
     module Svg
+      # rubocop:disable Metrics/ClassLength
       class Helper
         def initialize(timeline)
           @timeline = timeline
@@ -137,6 +138,7 @@ module Timeline
           end
         end
       end
+      # rubocop:enable Metrics/ClassLength
     end
   end
 end

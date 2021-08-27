@@ -8,6 +8,7 @@ class TestFactories
         ::Timeline::Event.new(attributes(overrides))
       end
 
+      # rubocop:disable Metrics/MethodLength
       def attributes(overrides = {})
         from = overrides[:from] || sequency
         to = overrides[:to] || sequency + 10
@@ -22,6 +23,7 @@ class TestFactories
           color: "color-#{sequency}"
         }
       end
+      # rubocop:enable Metrics/MethodLength
     end
   end
 end

@@ -13,7 +13,7 @@ module Timeline
         end
 
         def to_h
-          @map ||= resolve
+          @to_h ||= resolve.freeze
         end
 
         def position_for(year)
