@@ -17,6 +17,10 @@ class Timelines::TimelineComponent < ApplicationComponent
     @helper = Timeline::Renderers::Svg::Helper.new(timeline)
   end
 
+  def render?
+    entries.any?
+  end
+
   private
 
   def create_event(entry)
