@@ -32,7 +32,7 @@ module Timeline
     end
 
     def length
-      result = ((to.to_i - from.to_i) + 1).abs
+      result = (to.to_i - from.to_i).abs
       if cover_year?(0)
         return result - 1
       end

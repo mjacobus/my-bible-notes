@@ -51,10 +51,11 @@ RSpec.describe Timeline::Time do
   end
 
   it 'has a #length' do
-    expect(create(1, 10).length).to eq(10)
-    expect(create(-10, -1).length).to eq(10)
-    expect(create(-10, 1).length).to eq(11)
-    expect(create(-10, -5).length).to eq(6)
+    expect(create(1, 10).length).to eq(9)
+    expect(create(-10, -1).length).to eq(9)
+    expect(create(-10, 1).length).to eq(10)
+    expect(create(-10, -5).length).to eq(5)
+    expect(create(-455, 36).length).to eq(490)
   end
 
   def create(from, to)

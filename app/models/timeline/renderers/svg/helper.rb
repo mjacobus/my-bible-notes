@@ -145,8 +145,8 @@ module Timeline
           (start_at..end_at).each do |year|
             next if year.zero?
 
-            i += 1
             map[year] = i
+            i += 1
           end
           map
         end
