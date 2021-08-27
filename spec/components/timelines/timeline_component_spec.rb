@@ -2,6 +2,7 @@
 
 require 'rails_helper'
 
+# rubocop:disable RSpec/ExampleLength
 RSpec.describe Timelines::TimelineComponent, type: :component do
   subject(:component) { described_class.new(timeline: timeline, entries: entries) }
 
@@ -16,7 +17,7 @@ RSpec.describe Timelines::TimelineComponent, type: :component do
   end
 
   it 'renders all expected events in 2 lanes' do
-    page = render_inline(component)
+    render_inline(component)
 
     # Lane 1
     expect(rendered_component).to(have_css('rect[fill="70-weeks"]') do |element|
@@ -67,3 +68,4 @@ RSpec.describe Timelines::TimelineComponent, type: :component do
     end.to_h.symbolize_keys.except(:'fill-opacity')
   end
 end
+# rubocop:enable RSpec/ExampleLength
