@@ -42,7 +42,6 @@ RSpec.describe Timeline::Time do
     expect(time).not_to be_overlap_with(create(1, 7), inclusive: true)
     expect(time).not_to be_overlap_with(create(11, 12), inclusive: true)
 
-    skip "This is a BUG!!! Fix it"
     expect(time).to be_overlap_with(create(5, 15))
   end
 

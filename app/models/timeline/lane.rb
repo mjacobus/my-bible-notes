@@ -27,17 +27,7 @@ module Timeline
         if event.overlap_with?(candidate, inclusive: false)
           return true
         end
-
-        reject_by_single_year?(candidate, event)
       end
-    end
-
-    def reject_by_single_year?(candidate, event)
-      if candidate.single_year? && (candidate.time.to.to_i == event.time.from.to_i)
-        return true
-      end
-
-      event.single_year? && (event.time.to.to_i == candidate.time.from.to_i)
     end
   end
 end
