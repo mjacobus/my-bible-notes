@@ -32,6 +32,13 @@ module Timeline
           }
         end
 
+        def label
+          TextElement.new(event.title, {
+            x: x1 + 4,
+            y: y + (height * 0.8).to_i
+          })
+        end
+
         private
 
         attr_reader :event

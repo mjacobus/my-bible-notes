@@ -24,8 +24,8 @@
        data-bs-placement="bottom"
     >
       <%= content_tag(element.tag, "", element.attributes) %>
+      <%= content_tag(element.label.tag, element.label.text, element.label.attributes) %>
     </a>
   <% end %>
-
 
 </svg>
