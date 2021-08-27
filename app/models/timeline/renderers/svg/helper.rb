@@ -27,11 +27,13 @@ module Timeline
         end
 
         def height
-          600
+          # TODO
+          200
         end
 
         def width
-          800
+          # TODO
+          600
         end
 
         def years_interval

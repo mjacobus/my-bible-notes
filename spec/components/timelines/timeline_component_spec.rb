@@ -23,7 +23,7 @@ RSpec.describe Timelines::TimelineComponent, type: :component do
         x: '0',
         y: '0',
         fill: '70-weeks',
-        height: '50',
+        height: '20',
         width: '490',
       )
     end)
@@ -32,9 +32,9 @@ RSpec.describe Timelines::TimelineComponent, type: :component do
     expect(rendered_component).to(have_css('rect[fill="7-weeks"]') do |element|
       expect(attributes_for(element)).to eq(
         x: '0',
-        y: '50',
+        y: '30',
         fill: '7-weeks',
-        height: '50',
+        height: '20',
         width: '49',
       )
     end)
@@ -42,9 +42,9 @@ RSpec.describe Timelines::TimelineComponent, type: :component do
     expect(rendered_component).to(have_css('rect[fill="62-weeks"]') do |element|
       expect(attributes_for(element)).to eq(
         x: '49',
-        y: '50',
+        y: '30',
         fill: '62-weeks',
-        height: '50',
+        height: '20',
         width: '434',
       )
     end)
@@ -52,9 +52,9 @@ RSpec.describe Timelines::TimelineComponent, type: :component do
     expect(rendered_component).to(have_css('rect[fill="1-week"]') do |element|
       expect(attributes_for(element)).to eq(
         x: '483',
-        y: '50',
+        y: '30',
         fill: '1-week',
-        height: '50',
+        height: '20',
         width: '7',
       )
     end)
@@ -66,6 +66,6 @@ RSpec.describe Timelines::TimelineComponent, type: :component do
   def attributes_for(simple)
     simple.native.attributes.map do |key, element|
       [element.name, element.value]
-    end.to_h.symbolize_keys
+    end.to_h.symbolize_keys.except(:'fill-opacity')
   end
 end

@@ -13,6 +13,14 @@ module Timeline
           :rect
         end
 
+        def title
+          event.title
+        end
+
+        def explanation
+          event.explanation
+        end
+
         def attributes
           {
             x: x1,
@@ -20,6 +28,7 @@ module Timeline
             width: width,
             height: height,
             fill: event.color,
+            'fill-opacity': '0.7'
           }
         end
 
@@ -33,9 +42,8 @@ module Timeline
         end
 
         def height
-          50
+          20
         end
-
 
         def x1
           renderer.years_map[event.time.from.to_i]
@@ -46,7 +54,11 @@ module Timeline
         end
 
         def y
-          (event.lane_number * height)
+          space = 0
+          if event.lane_number.positive?
+            space = 10
+          end
+          (event.lane_number * height) + space
         end
       end
     end

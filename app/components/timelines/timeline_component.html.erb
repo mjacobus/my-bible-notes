@@ -1,14 +1,14 @@
 <h3> <%= timeline.name %></h3>
 
 <!-- <?xml version="1.0" standalone="no"?> -->
-<svg width="<%= width %>" height="<%= height %>" version="1.1" xmlns="http://www.w3.org/2000/svg">
-  <% years_to_display.each do |year| %>
+<svg width="<%= helper.width %>" height="<%= helper.height %>" version="1.1" xmlns="http://www.w3.org/2000/svg">
+  <% helper.years_to_display.each do |year| %>
     <a href="#<%= year %>" class="<%= bem('year') %>" data-bs-placement="bottom">
       <line 
-        x1="<%= year_x(year) %>" 
-        x2="<%= year_x(year) %>" 
+        x1="<%= helper.year_x(year) %>" 
+        x2="<%= helper.year_x(year) %>" 
         y1="1" 
-        y2="<%= height %>" 
+        y2="<%= helper.height %>" 
         stroke="#ddd" 
         stroke-width="1"
         />
@@ -16,6 +16,16 @@
   <% end %>
 
   <% helper.renderable_events.each do |element| %>
-    <%= content_tag(element.tag, "", element.attributes) %>
+    <a href="#" 
+       class="<%= bem('link') %>" 
+       data-bs-title="<%= element.title %>"
+       data-bs-content="<%= element.explanation %>"
+       data-bs-container="body"
+       data-bs-placement="bottom"
+    >
+      <%= content_tag(element.tag, "", element.attributes) %>
+    </a>
   <% end %>
+
+
 </svg>
