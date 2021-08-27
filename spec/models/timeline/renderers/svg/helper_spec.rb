@@ -5,29 +5,31 @@ require 'rails_helper'
 RSpec.describe Timeline::Renderers::Svg::Helper do
   subject(:helper) { described_class.new(timeline) }
 
-  let(:timeline) do
-    Timeline::Timeline.new(name: 'Test Timeline').tap do |t|
-      entries.each do |entry|
-        t.add_event(entry)
-      end
+  describe '#width' do
+    it 'defaults to max length' do
+      helper = create_helper([[-10, 5], [5, 10]])
+      
+      expect(helper.width).to eq(20)
     end
   end
 
-  let(:entries) { [entry1, entry2, entry3, entry4] }
-  let(:entry1) { create(-6, -4) }
-  let(:entry2) { create(-3, 2) }
-  let(:entry3) { create(3, 8) }
-  let(:entry4) { create(7, 7) }
-
-  def create(from, to)
-    factories.timeline_events.create(from: from, to: to)
+  describe '#height' do
+    it 'is number of lanes * height + spacing' do
+      helper = create_helper([[10, 20], [10, 20]])
+      helper.with_padding_top(10)
+        .with_padding_bottom(4)
+        .with_lane_height(5)
+        .with_lane_spacing(2)
+      
+      expect(helper.height).to eq(10 + 5 + 2 + 5 + 2 + 4)
+    end
   end
 
   describe '#years_map' do
-    it 'resolve #years_map' do
-      helper.starting_at(-2).ending_at(2)
+    it 'gets resolved automatically' do
+      helper = create_helper([[-1, 2], [-2, 1]])
 
-      expect(helper.years_map).to eq(
+      expect(helper.years_map.to_h).to eq(
         {
           -2 => 0,
           -1 => 1,
@@ -36,74 +38,30 @@ RSpec.describe Timeline::Renderers::Svg::Helper do
         }
       )
     end
+  end
 
-    context 'when automatically defining' do
-      let(:entries) { [entry1, entry2] }
-      let(:entry1) { create(-1, 2) }
-      let(:entry2) { create(-2, 1) }
+  describe '#years_to_display' do
+    it 'resolves years divisions' do
+      helper = create_helper([])
+      helper.with_years_interval(100).starting_at(-220).ending_at(220)
 
-      it 'resolves' do
-        expect(helper.years_map).to eq(
-          {
-            -2 => 1,
-            -1 => 2,
-            1 => 3,
-            2 => 4
-          }
-        )
+      expect(helper.years_to_display).to eq([-200, -100, 1, 100, 200])
+    end
+  end
+
+  def create_event(from, to)
+    factories.timeline_events.create(from: from, to: to)
+  end
+
+  def create_helper(points)
+    described_class.new(create_timeline(points))
+  end
+
+  def create_timeline(points)
+    Timeline::Timeline.new(name: 'Test Timeline').tap do |t|
+      points.each do |point|
+        t.add_event(create_event(point.first, point.last))
       end
     end
-  end
-
-  describe 'Xs and Ys' do
-    before do
-      helper.starting_at(-10).ending_at(10)
-    end
-
-    it 'properly returns #event_x1' do
-      expect(helper.event_x1(entry1)).to eq 5
-      expect(helper.event_x1(entry2)).to eq 8
-      expect(helper.event_x1(entry3)).to eq 13
-      expect(helper.event_x1(entry4)).to eq 17
-    end
-
-    it 'properly returns #event_x2' do
-      expect(helper.event_x2(entry1)).to eq 7
-      expect(helper.event_x2(entry2)).to eq 12
-      expect(helper.event_x2(entry3)).to eq 18
-    end
-
-    it 'returns a 1 measure large x for single year entry' do
-      expect(helper.event_x2(entry4)).to eq 18
-    end
-
-    it 'resolves #event_y' do
-      helper.with_stroke_height(1).with_space_between_lines(2)
-
-      expect(helper.event_y(entry1)).to eq(1)
-    end
-
-    it 'prepends half a stroke to the y position in #event_y' do
-      helper.with_stroke_height(5).with_space_between_lines(1)
-
-      expect(helper.event_y(entry1)).to eq(3)
-    end
-
-    it 'resolves #height' do
-      helper.with_stroke_height(2).with_space_between_lines(1)
-
-      expect(helper.height).to eq(13)
-    end
-
-    it 'resolves #width' do
-      expect(helper.width).to eq(21)
-    end
-  end
-
-  it 'resolves years divisions' do
-    helper.with_years_interval(100).starting_at(-220).ending_at(220)
-
-    expect(helper.years_to_display).to eq([-200, -100, 1, 100, 200])
-    expect(helper.year_x(1)).to eq(221)
   end
 end

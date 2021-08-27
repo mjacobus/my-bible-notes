@@ -10,13 +10,29 @@ RSpec.describe Timeline::Renderers::Svg::TimeRangeEventElement do
     { lane_number: 0 }
   end
   let(:helper_attributes) do
-    { padding_top: 10 }
+    { padding_top: 10, lane_height: 12, lane_spacing: 3 }
   end
 
 
   describe '#y' do
-    it 'is same as padding top when lane is the first' do
-      expect(element.y).to eq(10)
+    context 'when first lane' do
+      before do
+        event_attributes[:lane_number] = 0
+      end
+
+      it 'is same as padding top' do
+        expect(element.y).to eq(10)
+      end
+    end
+
+    context 'when second lane' do
+      before do
+        event_attributes[:lane_number] = 1
+      end
+
+      it 'is padding top + lane height + spacing' do
+        expect(element.y).to eq (10 + 12 + 3)
+      end
     end
   end
 end

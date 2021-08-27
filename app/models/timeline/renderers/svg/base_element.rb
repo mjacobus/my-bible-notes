@@ -41,26 +41,24 @@ module Timeline
           })
         end
 
-
-
         def width
           event.time.length
         end
 
         def height
-          20
+          helper.lane_height
         end
 
         def x1
-          helper.years_map[event.time.from.to_i]
+          helper.years_map.position_for(event.time.from.to_i)
         end
 
         def y
-          space = 0
-          if event.lane_number.positive?
-            space = 10
-          end
-          (event.lane_number * height) + space + helper.padding_top
+          pt = helper.padding_top
+          ls = helper.lane_spacing
+          lane = event.lane_number
+
+          pt + lane * (height + ls)
         end
       end
     end

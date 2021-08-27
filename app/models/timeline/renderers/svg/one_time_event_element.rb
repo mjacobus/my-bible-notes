@@ -7,7 +7,7 @@ module Timeline
 
         # @overrides
         def x2
-          renderer.years_map[event.time.to.to_i] + 1
+          renderer.years_mapposition_for(event.time.to.to_i) + 1
         end
       end
     end

@@ -9,7 +9,7 @@ module Timeline
         end
 
         def events
-          @events ||= @timeline.events.sort_by { |event| event.time.from.to_i }
+          @events ||= timeline.events.sort_by { |event| event.time.from.to_i }
         end
 
         def renderable_events
@@ -18,25 +18,50 @@ module Timeline
           end
         end
 
-        def decorate_event(event)
-          if event.single_year?
-            return Svg::OneTimeEventElement.new(event, self)
-          end
+        def with_lane_spacing(spacing)
+          @lane_spacing = spacing
+          self
+        end
 
-          Svg::TimeRangeEventElement.new(event, self)
+        def lane_spacing
+          @lane_spacing ||= 4
+        end
+
+        def with_lane_height(height)
+          @lane_height = height
+          self
+        end
+
+        def lane_height
+          @lane_height ||= 10
         end
 
         def height
-          200
+          @height ||= begin
+            padding_top + timeline.lanes.length  * (lane_height + lane_spacing) + padding_bottom
+          end
         end
 
         def width
-          # TODO
-          600
+          @width ||= years_map.length
+        end
+
+        def with_padding_top(padding)
+          @padding_top = padding
+          self
         end
 
         def padding_top
-          20
+          @padding_top ||= 10
+        end
+
+        def with_padding_bottom(padding)
+          @padding_bottom = padding
+          self
+        end
+
+        def padding_bottom
+          @padding_bottom ||= 10
         end
 
         def years_interval
@@ -62,49 +87,15 @@ module Timeline
         end
 
         def years_map
-          @years_map ||= resolve_years
-        end
-
-        def stroke_height
-          @stroke_height ||= 10
-        end
-
-        def with_stroke_height(value)
-          @stroke_height = value
-          self
+          @years_map ||= Svg::YearsMap.new(from: start_at, to: end_at)
         end
 
         def space_between_lines
           @space_between_lines ||= 2
         end
 
-        def with_space_between_lines(value)
-          @space_between_lines = value
-          self
-        end
-
         def year_x(year)
-          years_map[year]
-        end
-
-        def event_x1(event)
-          decorate_event(event).attributes[:x1]
-        end
-
-        def event_x2(event)
-          decorate_event(event).attributes[:x2]
-        end
-
-        def event_y(event)
-          decorate_event(event).attributes[:y1]
-        end
-
-        def event_color(event)
-          event.color.presence || next_color
-        end
-
-        def index_of(event)
-          events.find_index(event)
+          years_map.position_for(year)
         end
 
         def start_at
@@ -127,33 +118,16 @@ module Timeline
           self
         end
 
-        def popover_title(event)
-          years = [event.time.from.to_s]
-
-          unless event.single_year?
-            years.push(event.time.to.to_s)
-          end
-
-          [[years].compact.join(' - '), event.title].compact.join(": \n")
-        end
-
-        def popover_content(event)
-          event.explanation
-        end
-
         private
 
-        # { year -> position }
-        def resolve_years
-          map = {}
-          i = 0
-          (start_at..end_at).each do |year|
-            next if year.zero?
+        attr_reader :timeline
 
-            map[year] = i
-            i += 1
+        def decorate_event(event)
+          if event.single_year?
+            return Svg::OneTimeEventElement.new(event, self)
           end
-          map
+
+          Svg::TimeRangeEventElement.new(event, self)
         end
 
         def next_color
