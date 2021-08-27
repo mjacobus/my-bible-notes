@@ -34,8 +34,10 @@ module Timeline
         def label
           TextElement.new(event.title, {
                             x: x1 + 4,
-                            y: y + (height * 0.8).to_i,
-                            'font-size': '8'
+                            # y: y + (height * 0.7).to_i,
+                            y: y - 5,
+                            'font-size': '10',
+                            'font-family': 'Arial narrow',
                           })
         end
 

@@ -25,7 +25,7 @@ module Timeline
         end
 
         def lane_spacing
-          @lane_spacing ||= 4
+          @lane_spacing ||= 20
         end
 
         def with_lane_height(height)
@@ -34,7 +34,7 @@ module Timeline
         end
 
         def lane_height
-          @lane_height ||= 10
+          @lane_height ||= 4
         end
 
         def height
@@ -53,7 +53,7 @@ module Timeline
         end
 
         def padding_top
-          @padding_top ||= 10
+          @padding_top ||= 20
         end
 
         def with_padding_bottom(padding)
@@ -89,10 +89,6 @@ module Timeline
 
         def years_map
           @years_map ||= Svg::YearsMap.new(from: start_at, to: end_at)
-        end
-
-        def space_between_lines
-          @space_between_lines ||= 2
         end
 
         def year_x(year)

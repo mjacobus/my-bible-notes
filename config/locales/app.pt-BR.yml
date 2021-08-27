@@ -41,6 +41,7 @@ pt-BR:
         enabled: "Ativo"
   app:
     attributes:
+      explanation: "Explicação"
       color: "Cor"
       number_of_timeline_entries: "Número de Eventos"
       from_date: "Data início"
