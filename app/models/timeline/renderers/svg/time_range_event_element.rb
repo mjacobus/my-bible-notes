@@ -5,13 +5,7 @@
 module Timeline
   module Renderers
     module Svg
-      class TimeRangeEventElement < OneTimeEventElement
-        private
-
-        # @overrides
-        def x2
-          renderer.years_map[event.time.to.to_i]
-        end
+      class TimeRangeEventElement < BaseElement
       end
     end
   end
