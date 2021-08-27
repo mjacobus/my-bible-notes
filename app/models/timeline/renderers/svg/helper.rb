@@ -38,7 +38,7 @@ module Timeline
 
         def height
           @height ||= begin
-            padding_top + timeline.lanes.length  * (lane_height + lane_spacing) + padding_bottom
+            padding_top + timeline.lanes.length * (lane_height + lane_spacing) + padding_bottom
           end
         end
 

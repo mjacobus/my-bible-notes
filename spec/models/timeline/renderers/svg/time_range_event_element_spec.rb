@@ -4,6 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Timeline::Renderers::Svg::TimeRangeEventElement do
   subject(:element) { described_class.new(event, helper) }
+
   let(:event) { instance_double(Timeline::Event, event_attributes) }
   let(:helper) { instance_double(Timeline::Renderers::Svg::Helper, helper_attributes) }
   let(:event_attributes) do
@@ -12,7 +13,6 @@ RSpec.describe Timeline::Renderers::Svg::TimeRangeEventElement do
   let(:helper_attributes) do
     { padding_top: 10, lane_height: 12, lane_spacing: 3 }
   end
-
 
   describe '#y' do
     context 'when first lane' do
@@ -31,7 +31,7 @@ RSpec.describe Timeline::Renderers::Svg::TimeRangeEventElement do
       end
 
       it 'is padding top + lane height + spacing' do
-        expect(element.y).to eq (10 + 12 + 3)
+        expect(element.y).to eq(10 + 12 + 3)
       end
     end
   end

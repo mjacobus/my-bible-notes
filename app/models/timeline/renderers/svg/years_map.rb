@@ -8,7 +8,8 @@ module Timeline
         attr_reader :to
 
         def initialize(from:, to:)
-          @from, @to = from, to
+          @from = from
+          @to = to
         end
 
         def to_h
@@ -16,12 +17,10 @@ module Timeline
         end
 
         def position_for(year)
-          @map.fetch(year.to_i)
+          to_h.fetch(year.to_i)
         end
 
-        def length
-          to_h.length
-        end
+        delegate :length, to: :to_h
 
         private
 

@@ -8,7 +8,7 @@ RSpec.describe Timeline::Renderers::Svg::Helper do
   describe '#width' do
     it 'defaults to max length' do
       helper = create_helper([[-10, 5], [5, 10]])
-      
+
       expect(helper.width).to eq(20)
     end
   end
@@ -20,7 +20,7 @@ RSpec.describe Timeline::Renderers::Svg::Helper do
         .with_padding_bottom(4)
         .with_lane_height(5)
         .with_lane_spacing(2)
-      
+
       expect(helper.height).to eq(10 + 5 + 2 + 5 + 2 + 4)
     end
   end

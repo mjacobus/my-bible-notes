@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Timeline
   module Renderers
     module Svg
@@ -14,13 +16,9 @@ module Timeline
           :rect
         end
 
-        def title
-          event.title
-        end
+        delegate :title, to: :event
 
-        def explanation
-          event.explanation
-        end
+        delegate :explanation, to: :event
 
         def attributes
           {
@@ -35,10 +33,10 @@ module Timeline
 
         def label
           TextElement.new(event.title, {
-            x: x1 + 4,
-            y: y + (height * 0.8).to_i,
-            'font-size': '8'
-          })
+                            x: x1 + 4,
+                            y: y + (height * 0.8).to_i,
+                            'font-size': '8'
+                          })
         end
 
         def width
