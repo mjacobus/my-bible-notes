@@ -37,7 +37,7 @@ module Timeline
                             # y: y + (height * 0.7).to_i,
                             y: y - 5,
                             'font-size': '10',
-                            'font-family': 'Arial narrow',
+                            'font-family': 'Arial narrow'
                           })
         end
 

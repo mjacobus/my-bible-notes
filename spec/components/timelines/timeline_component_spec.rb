@@ -23,9 +23,9 @@ RSpec.describe Timelines::TimelineComponent, type: :component do
     expect(rendered_component).to(have_css('rect[fill="70-weeks"]') do |element|
       expect(attributes_for(element)).to eq(
         x: '0',
-        y: '10',
+        y: '20',
         fill: '70-weeks',
-        height: '10',
+        height: '4',
         width: '490'
       )
     end)
@@ -34,9 +34,9 @@ RSpec.describe Timelines::TimelineComponent, type: :component do
     expect(rendered_component).to(have_css('rect[fill="7-weeks"]') do |element|
       expect(attributes_for(element)).to eq(
         x: '0',
-        y: '24',
+        y: '44',
         fill: '7-weeks',
-        height: '10',
+        height: '4',
         width: '49'
       )
     end)
@@ -44,9 +44,9 @@ RSpec.describe Timelines::TimelineComponent, type: :component do
     expect(rendered_component).to(have_css('rect[fill="62-weeks"]') do |element|
       expect(attributes_for(element)).to eq(
         x: '49',
-        y: '24',
+        y: '44',
         fill: '62-weeks',
-        height: '10',
+        height: '4',
         width: '434'
       )
     end)
@@ -54,9 +54,9 @@ RSpec.describe Timelines::TimelineComponent, type: :component do
     expect(rendered_component).to(have_css('rect[fill="1-week"]') do |element|
       expect(attributes_for(element)).to eq(
         x: '483',
-        y: '24',
+        y: '44',
         fill: '1-week',
-        height: '10',
+        height: '4',
         width: '7'
       )
     end)
