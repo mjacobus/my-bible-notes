@@ -2,105 +2,70 @@
 
 require 'rails_helper'
 
-# rubocop:disable RSpec/MultipleMemoizedHelpers:
+# rubocop:disable RSpec/ExampleLength
 RSpec.describe Timelines::TimelineComponent, type: :component do
   subject(:component) { described_class.new(timeline: timeline, entries: entries) }
 
-  let(:entries) { [entry1, entry2, entry3, entry4] }
-  let(:timeline) { Db::Timeline.new }
-  let(:entry1) { Db::TimelineEntry.new(from_year: -6, to_year: -4) }
-  let(:entry2) { Db::TimelineEntry.new(from_year: -3, to_year: 2) }
-  let(:entry3) { Db::TimelineEntry.new(from_year: 3, to_year: 8) }
-  let(:entry4) { Db::TimelineEntry.new(from_year: 7, to_year: 7) }
+  let(:timeline) { Db::Timeline.new(name: '70 week prophecy') }
+  let(:entries) do
+    [
+      Db::TimelineEntry.new(title: '70 weeks', from_year: -455, to_year: 36, color: '70-weeks'),
+      Db::TimelineEntry.new(title: '7 weeks', from_year: -455, to_year: -406, color: '7-weeks'),
+      Db::TimelineEntry.new(title: '62 weeks', from_year: -406, to_year: 29, color: '62-weeks'),
+      Db::TimelineEntry.new(title: '1 week', from_year: 29, to_year: 36, color: '1-week')
+    ]
+  end
 
-  describe '#years_map' do
-    it 'resolve #years_map' do
-      component.starting_at(-2).ending_at(2)
+  it 'renders all expected events in 2 lanes' do
+    render_inline(component)
 
-      expect(component.years_map).to eq(
-        {
-          -2 => 1,
-          -1 => 2,
-          1 => 3,
-          2 => 4
-        }
+    # Lane 1
+    expect(rendered_component).to(have_css('rect[fill="70-weeks"]') do |element|
+      expect(attributes_for(element)).to eq(
+        x: '0',
+        y: '20',
+        fill: '70-weeks',
+        height: '4',
+        width: '490'
       )
-    end
+    end)
 
-    context 'when automatically defining' do
-      let(:entries) { [entry1, entry2] }
-      let(:entry1) { Db::TimelineEntry.new(from_year: -1, to_year: 2) }
-      let(:entry2) { Db::TimelineEntry.new(from_year: -2, to_year: 1) }
+    # Lane 2
+    expect(rendered_component).to(have_css('rect[fill="7-weeks"]') do |element|
+      expect(attributes_for(element)).to eq(
+        x: '0',
+        y: '44',
+        fill: '7-weeks',
+        height: '4',
+        width: '49'
+      )
+    end)
 
-      it 'resolves' do
-        expect(component.years_map).to eq(
-          {
-            -2 => 1,
-            -1 => 2,
-            1 => 3,
-            2 => 4
-          }
-        )
-      end
-    end
+    expect(rendered_component).to(have_css('rect[fill="62-weeks"]') do |element|
+      expect(attributes_for(element)).to eq(
+        x: '49',
+        y: '44',
+        fill: '62-weeks',
+        height: '4',
+        width: '434'
+      )
+    end)
+
+    expect(rendered_component).to(have_css('rect[fill="1-week"]') do |element|
+      expect(attributes_for(element)).to eq(
+        x: '483',
+        y: '44',
+        fill: '1-week',
+        height: '4',
+        width: '7'
+      )
+    end)
   end
 
-  describe 'Xs and Ys' do
-    before do
-      component.starting_at(-10).ending_at(10)
-    end
-
-    it 'properly returns #entry_x1' do
-      expect(component.entry_x1(entry1)).to eq 5
-      expect(component.entry_x1(entry2)).to eq 8
-      expect(component.entry_x1(entry3)).to eq 13
-      expect(component.entry_x1(entry4)).to eq 17
-    end
-
-    it 'properly returns #entry_x2' do
-      expect(component.entry_x2(entry1)).to eq 7
-      expect(component.entry_x2(entry2)).to eq 12
-      expect(component.entry_x2(entry3)).to eq 18
-    end
-
-    it 'returns a 1 measure large x for single year entry' do
-      expect(component.entry_x2(entry4)).to eq 18
-    end
-
-    it 'resolves #entry_y' do
-      component.with_stroke_width(1).with_space_between_lines(2)
-
-      expect(component.entry_y(entry1)).to eq(1)
-      expect(component.entry_y(entry2)).to eq(4)
-      expect(component.entry_y(entry3)).to eq(7)
-      expect(component.entry_y(entry4)).to eq(10)
-    end
-
-    it 'prepends half a stroke to the y position in #entry_y' do
-      component.with_stroke_width(5).with_space_between_lines(1)
-
-      expect(component.entry_y(entry1)).to eq(3)
-      expect(component.entry_y(entry2)).to eq(9)
-      expect(component.entry_y(entry3)).to eq(15)
-      expect(component.entry_y(entry4)).to eq(21)
-    end
-
-    it 'resolves #height' do
-      component.with_stroke_width(2).with_space_between_lines(1)
-
-      expect(component.height).to eq(13)
-    end
-
-    it 'resolves #width' do
-      expect(component.width).to eq(21)
-    end
-  end
-
-  it 'resolves years divisions' do
-    component.with_years_interval(100).starting_at(-220).ending_at(220)
-
-    expect(component.years_to_display).to eq([-200, -100, 1, 100, 200])
-    expect(component.year_x(1)).to eq(221)
+  def attributes_for(simple)
+    simple.native.attributes.map do |_key, element|
+      [element.name, element.value]
+    end.to_h.symbolize_keys.except(:'fill-opacity')
   end
 end
-# rubocop:enable RSpec/MultipleMemoizedHelpers:
+# rubocop:enable RSpec/ExampleLength

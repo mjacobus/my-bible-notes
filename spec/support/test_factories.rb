@@ -12,4 +12,8 @@ class TestFactories
   def users
     @users ||= Db::UserFactory.new(self)
   end
+
+  def timeline_events
+    @timeline_events ||= Timeline::EventFactory.new(self)
+  end
 end

@@ -1,12 +1,7 @@
 # frozen_string_literal: true
 
 class Db::TimelineEntry < ApplicationRecord
-  VALID_PRECISIONS = %w[
-    precise
-    about
-    before
-    after
-  ].freeze
+  VALID_PRECISIONS = Timeline::Year::PRECISIONS
 
   belongs_to :timeline
 

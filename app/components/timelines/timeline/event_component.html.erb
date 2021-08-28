@@ -1,0 +1,10 @@
+<a href="#" 
+   class="<%= bem('link') %>" 
+   data-bs-title="<%= element.title %>"
+   data-bs-content="<%= element.explanation %>"
+   data-bs-container="body"
+   data-bs-placement="bottom"
+   >
+   <%= content_tag(element.tag, "", element.attributes) %>
+   <%= content_tag(element.label.tag, element.label.text, element.label.attributes) %>
+</a>
