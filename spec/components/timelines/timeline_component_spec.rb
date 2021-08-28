@@ -62,13 +62,12 @@ RSpec.describe Timelines::TimelineComponent, type: :component do
       )
     end)
 
-    expect(rendered_component).to(have_css('rect[fill="jesus-birth"]') do |element|
+    expect(rendered_component).to(have_css('circle[fill="jesus-birth"]') do |element|
       expect(attributes_for(element)).to eq(
-        x: '453',
-        y: '77',
-        fill: 'jesus-birth',
-        height: '4',
-        width: '1'
+        cx: '453',
+        cy: '20',
+        r: '2',
+        fill: 'jesus-birth'
       )
     end)
   end
