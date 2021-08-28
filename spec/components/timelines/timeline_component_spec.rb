@@ -12,7 +12,8 @@ RSpec.describe Timelines::TimelineComponent, type: :component do
       Db::TimelineEntry.new(title: '70 weeks', from_year: -455, to_year: 36, color: '70-weeks'),
       Db::TimelineEntry.new(title: '7 weeks', from_year: -455, to_year: -406, color: '7-weeks'),
       Db::TimelineEntry.new(title: '62 weeks', from_year: -406, to_year: 29, color: '62-weeks'),
-      Db::TimelineEntry.new(title: '1 week', from_year: 29, to_year: 36, color: '1-week')
+      Db::TimelineEntry.new(title: '1 week', from_year: 29, to_year: 36, color: '1-week'),
+      Db::TimelineEntry.new(title: 'Jesus Birth', from_year: -2, to_year: -2, color: 'jesus-birth')
     ]
   end
 
@@ -58,6 +59,16 @@ RSpec.describe Timelines::TimelineComponent, type: :component do
         fill: '1-week',
         height: '4',
         width: '7'
+      )
+    end)
+
+    expect(rendered_component).to(have_css('rect[fill="jesus-birth"]') do |element|
+      expect(attributes_for(element)).to eq(
+        x: '453',
+        y: '77',
+        fill: 'jesus-birth',
+        height: '4',
+        width: '1'
       )
     end)
   end

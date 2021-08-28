@@ -4,9 +4,8 @@ module Timeline
   module Renderers
     module Svg
       class OneTimeEventElement < BaseElement
-        # @overrides
-        def x2
-          renderer.years_mapposition_for(event.time.to.to_i) + 1
+        def width
+          event.time.length + 1
         end
       end
     end
