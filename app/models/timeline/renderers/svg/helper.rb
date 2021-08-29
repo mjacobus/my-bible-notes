@@ -53,7 +53,7 @@ module Timeline
         end
 
         def padding_top
-          @padding_top ||= 20
+          @padding_top ||= 40
         end
 
         def with_padding_bottom(padding)

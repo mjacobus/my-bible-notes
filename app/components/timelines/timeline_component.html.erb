@@ -1,14 +1,14 @@
 <svg width="<%= helper.width %>" height="<%= helper.height %>" version="1.1" xmlns="http://www.w3.org/2000/svg">
   <% helper.years_to_display.each do |year| %>
-    <a href="#<%= year %>" class="<%= bem('year') %>" data-bs-placement="bottom">
-      <line 
-        x1="<%= helper.year_x(year) %>" 
-        x2="<%= helper.year_x(year) %>" 
-        y1="1" 
-        y2="<%= helper.height %>" 
-        stroke="#ddd" 
-        stroke-width="1"
-        />
+    <% element = Timeline::Renderers::Svg::YearElement.new(Timeline::Year.new(year), helper) %>
+
+    <a href="#<%= element.year %>" 
+       class="<%= bem('year') %>" 
+       data-bs-title="<%= element.title %>"
+       data-bs-placement="left"
+    >
+      <%= content_tag(element.label.tag, element.label.text, element.label.attributes) %>
+      <%= content_tag(element.tag, nil, element.attributes) %>
     </a>
   <% end %>
 
