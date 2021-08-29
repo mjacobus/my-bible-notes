@@ -14,7 +14,7 @@ class Timelines::TimelineComponent < ApplicationComponent
       timeline.add_event(create_event(entry))
     end
 
-    @helper = Timeline::Renderers::Svg::Helper.new(timeline)
+    @helper = Timeline::Renderers::Svg::Helper.new(timeline).with_x_padding(60)
   end
 
   def render?

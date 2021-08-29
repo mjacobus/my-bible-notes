@@ -19,7 +19,7 @@ module Timeline
         delegate :title, to: :event
 
         def explanation
-          [event.time, event.explanation].join(": ")
+          [event.time, event.explanation].join(': ')
         end
 
         def attributes

@@ -9,8 +9,8 @@ RSpec.describe Timeline::Renderers::Svg::BaseElement do
   let(:event) { instance_double(Timeline::Event, event_attributes) }
   let(:helper_attributes) { {} }
   let(:event_attributes) do
-    { 
-      time: double( to_s: 'the-time'),
+    {
+      time: double(to_s: 'the-time'),
       explanation: 'the-explanation'
     }
   end
