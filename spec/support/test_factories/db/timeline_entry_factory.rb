@@ -18,5 +18,6 @@ class TestFactories
         to_precision: model_class::VALID_PRECISIONS.sample
       }.merge(overrides)
     end
+    # rubocop:enable Metrics/MethodLength
   end
 end
