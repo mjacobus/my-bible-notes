@@ -25,21 +25,29 @@ module Timeline
     def reject?(candidate)
       events.any? do |event|
         if candidate.single_year? || event.single_year?
-          return reject_by_single_year?(candidate, event)
+          next reject_by_single_year?(candidate, event)
         end
 
         if candidate.overlap_with?(event, inclusive: false)
-          return true
+          next true
         end
       end
     end
 
     def reject_by_single_year?(candidate, event)
-      if candidate.single_year? && (candidate.time.to.to_i == event.time.from.to_i)
+      if candidate.single_year?
+        return single_year_overlap?(candidate, event)
+      end
+
+      single_year_overlap?(event, candidate)
+    end
+
+    def single_year_overlap?(event, other)
+      if event.time.to.to_i == other.time.from.to_i
         return true
       end
 
-      event.single_year? && (event.time.to.to_i == candidate.time.from.to_i)
+      other.time.cover_year?(event.time.from)
     end
   end
 end

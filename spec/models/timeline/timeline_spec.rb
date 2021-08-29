@@ -17,19 +17,19 @@ RSpec.describe Timeline::Timeline, type: :mocel do
     collected = timeline.lanes.map { |lane| lane.events.map(&:title) }
 
     expect(collected).to eq([
-      %w[10_20 20_20],
-      ['9_12']
+      %w[10_20],
+      %w[9_12 20_20]
     ])
   end
 
-  it 'has evetns' do
+  it 'has events' do
     timeline.add_event(create(10, 20))
     timeline.add_event(create(9, 12))
     timeline.add_event(create(20, 20))
 
     collected = timeline.events.map(&:title)
 
-    expect(collected).to eq(%w[10_20 20_20 9_12])
+    expect(collected).to eq(%w[10_20 9_12 20_20])
   end
 
   def create(from, to)

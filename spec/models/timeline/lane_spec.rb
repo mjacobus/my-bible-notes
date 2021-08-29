@@ -36,35 +36,32 @@ RSpec.describe Timeline::Lane do
       expect(lane.events).to eq([event, event2, event3])
     end
 
-    it 'only accepts 1 year events that won\'t colide' do
-      event2 = create(10, 10)
-      event3 = create(20, 20)
-
-      lane.add_event(event)
-      lane.add_event(event2)
-      lane.add_event(event3)
-
-      expect(lane.events.map(&:title)).to eq(%w[10_20 20_20])
-    end
-
     describe '#accept?' do
       it 'rejects when lane occupies event date range' do
         expect { lane.add_event(create(-455, 36)) }
           .to change { lane.accept?(create(406, 29)) }
           .from(true).to(false)
       end
-    end
 
-    it "accepts events that won't colide with existing 1 year events" do
-      event = create(10, 10)
-      event2 = create(10, 20)
-      event3 = create(5, 10)
+      it 'does not accept an year that is in the middle of the range' do
+        lane.add_event(create(-455, 36))
 
-      lane.add_event(event)
-      lane.add_event(event2)
-      lane.add_event(event3)
+        expect(lane).not_to be_accept(create(-2, -2))
+      end
 
-      expect(lane.events.map(&:title)).to eq(%w[10_10 5_10])
+      it 'does not a range if colides with single year event' do
+        lane.add_event(create(29, 29))
+
+        expect(lane).not_to be_accept(create(-455, 36))
+      end
+
+      it 'fix bug' do
+        lane.add_event(create(-455, -406))
+        lane.add_event(create(-406, 29))
+        lane.add_event(create(-2, -2)) # should be rejected
+
+        expect(lane.events.map(&:title)).to eq(['-455_-406', '-406_29'])
+      end
     end
   end
 
