@@ -54,12 +54,34 @@ RSpec.describe Timeline::Event, type: :model do
     end
   end
 
-  def create(from, to)
+  describe '#text_properties' do
+    it 'returns empty hash when properties are nil' do
+      event = create(10, 10, text_properties: '')
+
+      expect(event.text_properties).to eq({})
+    end
+
+    it 'returns a hash when content is a hash' do
+      event = create(10, 10, text_properties: { 'foo' => 'bar' })
+
+      expect(event.text_properties).to eq({ 'foo' => 'bar' })
+    end
+
+    it 'returns a hash when content is a json string' do
+      event = create(10, 10, text_properties: { 'foo' => 'bar' }.to_json)
+
+      expect(event.text_properties).to eq({ 'foo' => 'bar' })
+    end
+  end
+
+  def create(from, to, other_attributes = {})
     factories.timeline_events.create(
-      title: 'the title',
-      from: from,
-      to: to,
-      explanation: 'the explanation'
+      {
+        title: 'the title',
+        from: from,
+        to: to,
+        explanation: 'the explanation'
+      }.merge(other_attributes)
     )
   end
 end

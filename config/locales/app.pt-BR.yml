@@ -19,6 +19,8 @@ pt-BR:
       db/timeline_entry:
         title: "Nome"
         color: "Cor"
+        text: "Texto"
+        text_properties: "Propriedades do texto (JSON)"
         explanation: "Explicação"
         confirmed: "Confirmado"
         from_precision: "Precisão"

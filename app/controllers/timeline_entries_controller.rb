@@ -17,7 +17,9 @@ class TimelineEntriesController < ApplicationController
     :to_precision,
     :confirmed,
     :explanation,
-    :color
+    :color,
+    :text,
+    :text_properties
   )
 
   scope { timeline.entries }

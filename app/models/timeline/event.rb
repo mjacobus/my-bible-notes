@@ -2,7 +2,7 @@
 
 module Timeline
   class Event
-    attr_reader :title, :time, :explanation, :color
+    attr_reader :title, :time, :explanation, :color, :text
 
     delegate :single_year?, to: :time
 
@@ -11,6 +11,8 @@ module Timeline
       @time = args.fetch(:time)
       @explanation = args.fetch(:explanation)
       @color = args[:color].presence
+      @text = args[:text].presence
+      @text_properties = args[:text_properties]
     end
 
     def overlap_with?(other, inclusive: true)
@@ -24,6 +26,12 @@ module Timeline
 
     def lane_number
       @lane.number
+    end
+
+    def text_properties
+      @text_properties.is_a?(Hash) ? @text_properties : JSON.parse(@text_properties.to_s)
+    rescue JSON::ParserError
+      {}
     end
   end
 end

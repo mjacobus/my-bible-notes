@@ -28,6 +28,8 @@ class Timelines::TimelineComponent < ApplicationComponent
     to = Timeline::Year.new(entry.to_year, precision: entry.to_precision)
 
     Timeline::Event.new(
+      text: entry.text,
+      text_properties: entry.text_properties || {},
       title: entry.title,
       time: Timeline::Time.new(from: from, to: to),
       explanation: entry.explanation,
