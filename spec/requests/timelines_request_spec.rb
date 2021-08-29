@@ -44,7 +44,8 @@ RSpec.describe TimelinesController, type: :request do
 
       expected_component = index_component.new(
         key.to_s.pluralize.to_sym => scope,
-        current_user: current_user
+        current_user: current_user,
+        owner: current_user
       )
       expect(renderer).to have_rendered_component(expected_component)
     end
@@ -66,9 +67,33 @@ RSpec.describe TimelinesController, type: :request do
 
       expected_component = show_component.new(
         key => record,
-        current_user: current_user
+        current_user: current_user,
+        owner: current_user
       )
       expect(renderer).to have_rendered_component(expected_component)
+    end
+
+    context 'when timeline belogongs to another user' do
+      before do
+        login_user(another_user)
+      end
+
+      let(:another_user) { factories.users.create }
+
+      it 'responds with 404 when timeline is not public' do
+        perform_request
+
+        expect(response.status).to eq(404)
+      end
+
+      it 'responds with 200 when timeline is public' do
+        record.public = true
+        record.save!
+
+        perform_request
+
+        expect(response.status).to eq(200)
+      end
     end
   end
 
@@ -89,7 +114,8 @@ RSpec.describe TimelinesController, type: :request do
 
       expected_component = form_component.new(
         key => scope.new,
-        current_user: current_user
+        current_user: current_user,
+        owner: current_user
       )
       expect(renderer).to have_rendered_component(expected_component)
     end
@@ -108,7 +134,7 @@ RSpec.describe TimelinesController, type: :request do
       end
 
       it 'creates record' do
-        expect { perform_request }.to change(model_class, :count).by(1)
+        expect { perform_request }.to change(current_user.timelines, :count).by(1)
       end
     end
 
@@ -128,7 +154,8 @@ RSpec.describe TimelinesController, type: :request do
 
         expected_component = form_component.new(
           key => model_class.new(invalid_attributes),
-          current_user: current_user
+          current_user: current_user,
+          owner: current_user
         )
         expect(renderer).to have_rendered_component(expected_component)
       end
@@ -151,7 +178,8 @@ RSpec.describe TimelinesController, type: :request do
 
       expected_component = form_component.new(
         key => record,
-        current_user: current_user
+        current_user: current_user,
+        owner: current_user
       )
       expect(renderer).to have_rendered_component(expected_component)
     end
@@ -191,7 +219,8 @@ RSpec.describe TimelinesController, type: :request do
         record.attributes = invalid_attributes
         expected_component = form_component.new(
           key => record,
-          current_user: current_user
+          current_user: current_user,
+          owner: current_user
         )
         expect(renderer).to have_rendered_component(expected_component)
       end
@@ -210,7 +239,7 @@ RSpec.describe TimelinesController, type: :request do
     it 'deletes record' do
       record
 
-      expect { perform_request }.to change(model_class, :count).by(-1)
+      expect { perform_request }.to change(current_user.timelines, :count).by(-1)
     end
   end
 end

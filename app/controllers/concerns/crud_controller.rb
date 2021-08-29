@@ -9,6 +9,7 @@ module CrudController
   end
 
   def show
+    before_show
     render show_component(record)
   end
 
@@ -37,16 +38,25 @@ module CrudController
 
   private
 
+  def before_show
+    # nothing
+  end
+
   def index_component(records)
-    component_class(:index).new(pluralized_key => records, current_user: current_user)
+    component_class(:index).new(component_attributes(pluralized_key => records,
+                                                     current_user: current_user))
   end
 
   def show_component(record)
-    component_class(:show).new(key => record, current_user: current_user)
+    component_class(:show).new(component_attributes(key => record, current_user: current_user))
   end
 
   def form_component(record)
-    component_class(:form).new(key => record, current_user: current_user)
+    component_class(:form).new(component_attributes(key => record, current_user: current_user))
+  end
+
+  def component_attributes(attributes)
+    attributes
   end
 
   def record

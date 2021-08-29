@@ -13,6 +13,10 @@ class DropdownMenuComponent < ApplicationComponent
     @type = type
   end
 
+  def render?
+    items.any?
+  end
+
   def classes
     @classes.join(' ')
   end
