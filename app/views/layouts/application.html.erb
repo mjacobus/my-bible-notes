@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title><%= content_for?(:title) ? yield(:title) : t('app.title') %></title>
+    <title>My Bible Notes - <%= content_for?(:title) ? yield(:title) : t('app.title') %></title>
     <%= csrf_meta_tags %>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     <%= javascript_pack_tag "application" %>
@@ -12,21 +12,16 @@
   </head>
   <body>
 
-    <% unless current_user %>
-      <div class="d-grid gap-2">
-        <%= link_to t('app.links.google_login'), '/auth/google_oauth2', class: 'btn btn-light google-login'  %>
-      </div>
-    <% end %>
-
-
     <div class="wrapper" id="sidebar-component">
-      <%= render Sidebar::SidebarComponent.new %>
+      <% if current_user %>
+        <%= render Sidebar::SidebarComponent.new %>
 
-      <div id="sidebar-button-container">
-        <button data-toggle-sidebar class="btn"><i class="bi bi-arrow-right-circle-fill"></i></button>
-      </div>
+        <div id="sidebar-button-container">
+          <button data-toggle-sidebar class="btn"><i class="bi bi-arrow-right-circle-fill"></i></button>
+        </div>
+      <% end %>
 
-      <div id="content" class="container-fluid width-auto position-relative">
+      <div id="content" class="container-fluid width-auto position-relative <%= 'sidebar-hidden' unless current_user %>">
         <%= yield %>
       </div>
     </div>

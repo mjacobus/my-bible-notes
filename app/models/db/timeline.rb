@@ -6,6 +6,7 @@ class Db::Timeline < ApplicationRecord
 
   default_scope -> { order(:name) }
   scope :by_slug, ->(slug) { find_by!(slug: slug) }
+  scope :public_timelines, -> { where(public: true) }
 
   validates :name, presence: true
   validates :slug, presence: true, uniqueness: { case_sensitive: false, scope: :user_id }

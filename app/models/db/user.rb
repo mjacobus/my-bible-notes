@@ -42,6 +42,10 @@ class Db::User < ApplicationRecord
     permissions['controllers']
   end
 
+  def is?(other_user)
+    other_user.is_a?(self.class) && other_user.id == id
+  end
+
   private
 
   def default_permissions_config

@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
   end
 
   def layout
-    current_user ? 'application' : 'public'
+    'application'
   end
 
   def routes

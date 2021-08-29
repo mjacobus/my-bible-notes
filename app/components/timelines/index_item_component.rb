@@ -3,6 +3,7 @@
 class Timelines::IndexItemComponent < ApplicationComponent
   include MenuAwareComponent
   has :timeline
+  has :owner
   menu_type :item_options
 
   def icon_name
@@ -12,6 +13,10 @@ class Timelines::IndexItemComponent < ApplicationComponent
   private
 
   def menu_items(menu)
+    unless visitor.is?(owner)
+      return []
+    end
+
     [
       menu.link(t('app.links.timeline_entries'), urls.timeline_entries_path(timeline)),
       menu.link(t('app.links.edit'), urls.edit_timeline_path(timeline)),

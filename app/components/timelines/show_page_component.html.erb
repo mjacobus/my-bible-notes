@@ -2,10 +2,16 @@
 <%= render flash %>
 <%= render menu %>
 
+<%= content_for(:title) { "#{timeline.username}: #{timeline.name}" } %>
 <%= render attribute(timeline.name).with_label(:name) %>
-<%= render attribute(timeline.slug).with_label(:slug) %>
-<%= render attribute(t(timeline.public.to_s)).with_label(:public) %>
-<%= render attribute(timeline.description).with_label(:description) %>
-<%= render attribute(t('app.messages.x_timeline_entries', number: timeline.entries.count)).with_label(:number_of_timeline_entries) %>
+
+<% if visitor.is?(owner) %>
+  <%= render attribute(t(timeline.public.to_s)).with_label(:public) %>
+<% end %>
+<%= render attribute(timeline.description).with_label(:description).without_label.wrap_with(:small) %>
+
+<% if visitor.is?(owner) %>
+   <%= render attribute(t('app.messages.x_timeline_entries', number: timeline.entries.count)).with_label(:number_of_timeline_entries) %>
+<% end %>
 
 <%= render Timelines::TimelineComponent.new(timeline: timeline, entries: timeline.entries) %>

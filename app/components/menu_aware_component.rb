@@ -5,7 +5,7 @@ module MenuAwareComponent
 
   def menu
     @menu ||= DropdownMenuComponent.new(type: menu_type).tap do |menu|
-      menu_items(menu).each do |item|
+      Array.wrap(menu_items(menu)).each do |item|
         menu.item { item }
       end
     end

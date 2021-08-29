@@ -5,13 +5,21 @@ class ApplicationComponent < ViewComponent::Base
 
   delegate :current_user, to: :helpers
 
-  def self.has(field, public: false)
+  def self.has(field, public: false, optional: false)
     define_method field do
+      if optional
+        return get(field)
+      end
+
       get(field) || raise(MissingArgument, "Missing argument: #{field}")
     end
     unless public
       private field
     end
+  end
+
+  def visitor
+    current_user || GuestUser.new
   end
 
   def attribute(value)
