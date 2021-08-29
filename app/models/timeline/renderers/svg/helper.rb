@@ -97,10 +97,6 @@ module Timeline
           @years_map ||= Svg::YearsMap.new(from: start_at, to: end_at)
         end
 
-        def year_x(year)
-          years_map.position_for(year)
-        end
-
         def start_at
           @start_at ||= min_year
         end
@@ -114,7 +110,6 @@ module Timeline
         def end_at
           @end_at ||= max_year
         end
-
 
         def ending_at(value)
           @end_at = value.to_i
