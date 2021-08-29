@@ -37,6 +37,7 @@ module Timeline
           TextElement.new(event.title, {
                             x: x1 + 4,
                             y: y - 5,
+                            fill: event.color,
                             'font-size': '10',
                             'font-family': 'Arial narrow'
                           })
