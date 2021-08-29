@@ -50,7 +50,7 @@ module Timeline
         end
 
         def x
-          @x ||= helper.year_x(year)
+          @x ||= helper.years_map.position_for(year)
         end
       end
     end
