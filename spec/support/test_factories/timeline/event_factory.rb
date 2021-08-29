@@ -21,7 +21,7 @@ class TestFactories
           ),
           explanation: overrides[:explanation] || "the explanation #{sequency}",
           color: "color-#{sequency}"
-        }
+        }.merge(overrides)
       end
       # rubocop:enable Metrics/MethodLength
     end

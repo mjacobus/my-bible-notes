@@ -19,7 +19,7 @@ module Timeline
         delegate :title, to: :event
 
         def explanation
-          [event.time, event.explanation].join(': ')
+          [event.time, event.explanation].filter_map(&:presence).join(': ')
         end
 
         def attributes
@@ -34,13 +34,14 @@ module Timeline
         end
 
         def label
-          TextElement.new(event.title, {
-                            x: x1 + 4,
-                            y: y - 5,
-                            fill: event.color,
-                            'font-size': '10',
-                            'font-family': 'Arial narrow'
-                          })
+          attributes = {
+            x: x1 + 4,
+            y: y - 5,
+            fill: event.color,
+            'font-size': '10',
+            'font-family': 'Arial narrow'
+          }.merge(event.text_properties)
+          TextElement.new(event.text, attributes)
         end
 
         def width
