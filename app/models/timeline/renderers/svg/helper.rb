@@ -74,6 +74,12 @@ module Timeline
           self
         end
 
+        def with_x_padding(padding)
+          starting_at(min_year - padding)
+          ending_at(max_year + padding)
+          self
+        end
+
         def years_to_display
           (start_at..end_at).to_a.select do |number|
             if number.zero?
@@ -96,7 +102,7 @@ module Timeline
         end
 
         def start_at
-          @start_at ||= events.map { |event| event.time.from.to_i }.min
+          @start_at ||= min_year
         end
 
         def starting_at(value)
@@ -106,8 +112,9 @@ module Timeline
         end
 
         def end_at
-          @end_at ||= events.map { |event| event.time.to.to_i }.max
+          @end_at ||= max_year
         end
+
 
         def ending_at(value)
           @end_at = value.to_i
@@ -118,6 +125,14 @@ module Timeline
         private
 
         attr_reader :timeline
+
+        def min_year
+          events.map { |event| event.time.from.to_i }.min.to_i
+        end
+
+        def max_year
+          events.map { |event| event.time.to.to_i }.max.to_i
+        end
 
         def decorate_event(event)
           if event.single_year?

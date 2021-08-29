@@ -23,7 +23,7 @@ RSpec.describe Timelines::TimelineComponent, type: :component do
     # Lane 1
     expect(rendered_component).to(have_css('rect[fill="70-weeks"]') do |element|
       expect(attributes_for(element)).to eq(
-        x: '0',
+        x: '60',
         y: '40',
         fill: '70-weeks',
         height: '4',
@@ -34,7 +34,7 @@ RSpec.describe Timelines::TimelineComponent, type: :component do
     # Lane 2
     expect(rendered_component).to(have_css('rect[fill="7-weeks"]') do |element|
       expect(attributes_for(element)).to eq(
-        x: '0',
+        x: '60',
         y: '64',
         fill: '7-weeks',
         height: '4',
@@ -44,7 +44,7 @@ RSpec.describe Timelines::TimelineComponent, type: :component do
 
     expect(rendered_component).to(have_css('rect[fill="62-weeks"]') do |element|
       expect(attributes_for(element)).to eq(
-        x: '49',
+        x: '109',
         y: '64',
         fill: '62-weeks',
         height: '4',
@@ -54,7 +54,7 @@ RSpec.describe Timelines::TimelineComponent, type: :component do
 
     expect(rendered_component).to(have_css('rect[fill="1-week"]') do |element|
       expect(attributes_for(element)).to eq(
-        x: '483',
+        x: '543',
         y: '64',
         fill: '1-week',
         height: '4',
@@ -64,7 +64,7 @@ RSpec.describe Timelines::TimelineComponent, type: :component do
 
     expect(rendered_component).to(have_css('circle[fill="jesus-birth"]') do |element|
       expect(attributes_for(element)).to eq(
-        cx: '453',
+        cx: '513',
         cy: '40',
         r: '2',
         fill: 'jesus-birth'

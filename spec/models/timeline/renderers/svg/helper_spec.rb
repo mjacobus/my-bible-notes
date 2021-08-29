@@ -49,6 +49,16 @@ RSpec.describe Timeline::Renderers::Svg::Helper do
     end
   end
 
+  describe '#with_x_padding' do
+    it 'adds padding to time range' do
+      helper = create_helper([[-5, 10]]).with_x_padding(10)
+
+      expect(helper.years_map.position_for(-15)).to eq(0)
+      expect(helper.years_map.position_for(-5)).to eq(10)
+      expect(helper.years_map.position_for(10)).to eq(24)
+    end
+  end
+
   def create_event(from, to)
     factories.timeline_events.create(from: from, to: to)
   end
