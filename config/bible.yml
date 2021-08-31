@@ -1,5 +1,9 @@
-# Some nubmers were taken from books:https://catholic-resources.org/Bible/OT-Statistics-NAB.htm
+# Some numbers were taken from books:https://catholic-resources.org/Bible/OT-Statistics-NAB.htm
+
+books:
   - name: Genesis
+    number: 1
+    slug: genesis
     chapters: 50
     verses:
       1: 31
@@ -53,6 +57,8 @@
       49: 33
       50: 26
   - name: Exodus
+    number: 2
+    slug: exodus
     chapters: 40
     verses:
       1: 22
@@ -96,6 +102,8 @@
       39: 43
       40: 38
   - name: Leviticus
+    number: 3
+    slug: leviticus
     chapters: 27
     verses:
       1: 17
@@ -126,6 +134,8 @@
       26: 46
       27: 34
   - name: Numbers
+    number: 4
+    slug: numbers
     chapters: 36
     verses:
       1: 54
@@ -165,6 +175,8 @@
       35: 34
       36: 13
   - name: Deuteronomy
+    number: 5
+    slug: deuteronomy
     chapters: 34
     verses:
       1: 46
@@ -202,6 +214,8 @@
       33: 29
       34: 12
   - name: Joshua
+    number: 6
+    slug: joshua
     chapters: 24
     verses:
       1: 18
@@ -229,6 +243,8 @@
       23: 16
       24: 33
   - name: Judges
+    number: 7
+    slug: judges
     chapters: 21
     verses:
       1: 36
@@ -253,6 +269,8 @@
       20: 48
       21: 25
   - name: Ruth
+    number: 8
+    slug: ruth
     chapters: 4
     verses:
       1: 22
@@ -260,6 +278,8 @@
       3: 18
       4: 22
   - name: 1 Samuel
+    number: 9
+    slug: 1-samuel
     chapters: 31
     verses:
       1: 28
@@ -294,6 +314,8 @@
       30: 31
       31: 13
   - name: 2 Samuel
+    number: 10
+    slug: 2-samuel
     chapters: 24
     verses:
       1: 27
@@ -321,6 +343,8 @@
       23: 39
       24: 25
   - name: 1 Kings
+    number: 11
+    slug: 1-kings
     chapters: 22
     verses:
       1: 53
@@ -346,6 +370,8 @@
       21: 29
       22: 54
   - name: 2 Kings
+    number: 12
+    slug: 2-kings
     chapters: 25
     verses:
       1: 18
@@ -374,6 +400,8 @@
       24: 20
       25: 30
   - name: 1 Chronicles
+    number: 13
+    slug: 1-chronicles
     chapters: 29
     verses:
       1: 54
@@ -406,6 +434,8 @@
       28: 21
       29: 30
   - name: 2 Chronicles
+    number: 14
+    slug: 2-chronicles
     chapters: 36
     verses:
       1: 18
@@ -445,6 +475,8 @@
       35: 26
       36: 23
   - name: Ezra
+    number: 15
+    slug: ezra
     chapters: 10
     verses:
       1: 11
@@ -458,6 +490,8 @@
       9: 15
       10: 44
   - name: Nehemiah
+    number: 16
+    slug: nehemiah
     chapters: 13
     verses:
       1: 11
@@ -474,6 +508,8 @@
       12: 47
       13: 31
   - name: Esther
+    number: 17
+    slug: esther
     chapters: 16
     verses:
       1: 22
@@ -486,13 +522,9 @@
       8: 17
       9: 32
       10: 3
-      # 11: 17
-      # 12: 8
-      # 13: 30
-      # 14: 16
-      # 15: 24
-      # 16: 10
   - name: Job
+    number: 18
+    slug: job
     chapters: 42
     verses:
       1: 22
@@ -537,14 +569,164 @@
       40: 32
       41: 26
       42: 17
-  # TODO: Get number of verses in psalms
-  # - name: Psalms (1-50)
-  #   chapters: 0
-  #   verses: {}
-  # - name: Psalms (51-100)
-  #   chapters: 0
-  #   verses: {}
+  - name: Psalms
+    number: 19
+    slug: psalms
+    chapters: 150
+    verses:
+      1: 6
+      2: 11
+      3: 9
+      4: 9
+      5: 13
+      6: 11
+      7: 18
+      8: 10
+      9: 21
+      10: 18
+      11: 7
+      12: 9
+      13: 6
+      14: 7
+      15: 5
+      16: 11
+      17: 15
+      18: 51
+      19: 15
+      20: 10
+      21: 14
+      22: 32
+      23: 6
+      24: 10
+      25: 22
+      26: 11
+      27: 14
+      28: 9
+      29: 11
+      30: 13
+      31: 25
+      32: 11
+      33: 22
+      34: 23
+      35: 28
+      36: 13
+      37: 40
+      38: 23
+      39: 14
+      40: 18
+      41: 14
+      42: 12
+      43: 5
+      44: 27
+      45: 18
+      46: 12
+      47: 10
+      48: 15
+      49: 21
+      50: 23
+      51: 21
+      52: 11
+      53: 7
+      54: 9
+      55: 24
+      56: 14
+      57: 12
+      58: 12
+      59: 18
+      60: 14
+      61: 9
+      62: 13
+      63: 12
+      64: 11
+      65: 14
+      66: 20
+      67: 8
+      68: 36
+      69: 37
+      70: 6
+      71: 24
+      72: 20
+      73: 28
+      74: 23
+      75: 11
+      76: 13
+      77: 21
+      78: 72
+      79: 13
+      80: 20
+      81: 17
+      82: 8
+      83: 19
+      84: 13
+      85: 14
+      86: 17
+      87: 7
+      88: 19
+      89: 53
+      90: 17
+      91: 16
+      92: 16
+      93: 5
+      94: 23
+      95: 11
+      96: 13
+      97: 12
+      98: 9
+      99: 9
+      100: 5
+      101: 8
+      102: 29
+      103: 22
+      104: 35
+      105: 45
+      106: 48
+      107: 43
+      108: 14
+      109: 31
+      110: 7
+      111: 10
+      112: 10
+      113: 9
+      114: 8
+      115: 18
+      116: 19
+      117: 2
+      118: 29
+      119: 176
+      120: 7
+      121: 8
+      122: 9
+      123: 4
+      124: 8
+      125: 5
+      126: 6
+      127: 5
+      128: 6
+      129: 8
+      130: 8
+      131: 3
+      132: 18
+      133: 3
+      134: 3
+      135: 21
+      136: 26
+      137: 9
+      138: 8
+      139: 24
+      140: 14
+      141: 10
+      142: 8
+      143: 12
+      144: 15
+      145: 21
+      146: 10
+      147: 20
+      148: 14
+      149: 9
+      150: 6
   - name: Proverbs
+    number: 20
+    slug: proverbs
     chapters: 31
     verses:
       1: 33
@@ -579,6 +761,8 @@
       30: 33
       31: 31
   - name: Ecclesiastes
+    number: 21
+    slug: ecclesiastes
     chapters: 12
     verses:
       1: 18
@@ -594,6 +778,8 @@
       11: 10
       12: 14
   - name: Song of Solomon
+    number: 22
+    slug: song-of-solomon
     chapters: 8
     verses:
       1: 17
@@ -605,6 +791,8 @@
       7: 14
       8: 14
   - name: Isaiah
+    number: 23
+    slug: isaiah
     chapters: 66
     verses:
       1: 31
@@ -674,6 +862,8 @@
       65: 25
       66: 24
   - name: Jeremiah
+    number: 24
+    slug: jeremiah
     chapters: 52
     verses:
       1: 19
@@ -729,6 +919,8 @@
       51: 64
       52: 34
   - name: Lamentations
+    number: 25
+    slug: lamentations
     chapters: 5
     verses:
       1: 22
@@ -737,6 +929,8 @@
       4: 22
       5: 22
   - name: Ezekiel
+    number: 26
+    slug: ezekiel
     chapters: 48
     verses:
       1: 28
@@ -788,6 +982,8 @@
       47: 23
       48: 35
   - name: Daniel
+    number: 27
+    slug: daniel
     chapters: 14
     verses:
       1: 21
@@ -802,9 +998,9 @@
       10: 21
       11: 45
       12: 13
-      # 13: 64
-      # 14: 42
   - name: Hosea
+    number: 28
+    slug: hosea
     chapters: 14
     verses:
       1: 9
@@ -822,6 +1018,8 @@
       13: 15
       14: 10
   - name: Joel
+    number: 29
+    slug: joel
     chapters: 4
     verses:
       1: 20
@@ -829,6 +1027,8 @@
       3: 5
       4: 21
   - name: Amos
+    number: 30
+    slug: amos
     chapters: 9
     verses:
       1: 15
@@ -841,10 +1041,14 @@
       8: 14
       9: 15
   - name: Obadiah
+    number: 31
+    slug: obadiah
     chapters: 1
     verses:
       1: 21
   - name: Jonah
+    number: 32
+    slug: jonah
     chapters: 4
     verses:
       1: 16
@@ -852,6 +1056,8 @@
       3: 10
       4: 11
   - name: Micah
+    number: 33
+    slug: micah
     chapters: 7
     verses:
       1: 16
@@ -862,29 +1068,39 @@
       6: 16
       7: 20
   - name: Nahum
+    number: 34
+    slug: nahum
     chapters: 3
     verses:
       1: 14
       2: 14
       3: 19
   - name: Habakkuk
+    number: 35
+    slug: habakkuk
     chapters: 3
     verses:
       1: 17
       2: 20
       3: 19
   - name: Zephaniah
+    number: 36
+    slug: zephaniah
     chapters: 3
     verses:
       1: 18
       2: 15
       3: 20
   - name: Haggai
+    number: 37
+    slug: haggai
     chapters: 2
     verses:
       1: 15
       2: 23
   - name: Zechariah
+    number: 38
+    slug: zechariah
     chapters: 14
     verses:
       1: 17
@@ -902,8 +1118,405 @@
       13: 9
       14: 21
   - name: Malachi
+    number: 39
+    slug: malachi
     chapters: 3
     verses:
       1: 14
       2: 17
       3: 24
+  - name: Matthew
+    number: 40
+    slug: matthew
+    chapters: 28
+    verses:
+      1: 25
+      2: 23
+      3: 17
+      4: 25
+      5: 48
+      6: 34
+      7: 29
+      8: 34
+      9: 38
+      10: 42
+      11: 30
+      12: 50
+      13: 58
+      14: 36
+      15: 39
+      16: 28
+      17: 27
+      18: 35
+      19: 30
+      20: 34
+      21: 46
+      22: 46
+      23: 39
+      24: 51
+      25: 46
+      26: 75
+      27: 66
+      28: 20
+  - name: Mark
+    number: 41
+    slug: mark
+    chapters: 16
+    verses:
+      1: 45
+      2: 28
+      3: 35
+      4: 41
+      5: 43
+      6: 56
+      7: 37
+      8: 38
+      9: 50
+      10: 52
+      11: 33
+      12: 44
+      13: 37
+      14: 72
+      15: 47
+      16: 20
+  - name: Luke
+    number: 42
+    slug: luke
+    chapters: 24
+    verses:
+      1: 80
+      2: 52
+      3: 38
+      4: 44
+      5: 39
+      6: 49
+      7: 50
+      8: 56
+      9: 62
+      10: 42
+      11: 54
+      12: 59
+      13: 35
+      14: 35
+      15: 32
+      16: 31
+      17: 37
+      18: 43
+      19: 48
+      20: 47
+      21: 38
+      22: 71
+      23: 56
+      24: 53
+  - name: John
+    number: 43
+    slug: john
+    chapters: 21
+    verses:
+      1: 51
+      2: 25
+      3: 36
+      4: 54
+      5: 47
+      6: 71
+      7: 53
+      8: 59
+      9: 41
+      10: 42
+      11: 57
+      12: 50
+      13: 38
+      14: 31
+      15: 27
+      16: 33
+      17: 26
+      18: 40
+      19: 42
+      20: 31
+      21: 25
+  - name: Acts
+    number: 44
+    slug: acts
+    chapters: 28
+    verses:
+      1: 26
+      2: 47
+      3: 26
+      4: 37
+      5: 42
+      6: 15
+      7: 60
+      8: 40
+      9: 43
+      10: 48
+      11: 30
+      12: 25
+      13: 52
+      14: 28
+      15: 41
+      16: 40
+      17: 34
+      18: 28
+      19: 40
+      20: 38
+      21: 40
+      22: 30
+      23: 35
+      24: 27
+      25: 27
+      26: 32
+      27: 44
+      28: 31
+  - name: Rom
+    number: 45
+    slug: rom
+    chapters: 16
+    verses:
+      1: 32
+      2: 29
+      3: 31
+      4: 25
+      5: 21
+      6: 23
+      7: 25
+      8: 39
+      9: 33
+      10: 21
+      11: 36
+      12: 21
+      13: 14
+      14: 23
+      15: 33
+      16: 27
+  - name: 1 Cor
+    number: 46
+    slug: 1-cor
+    chapters: 16
+    verses:
+      1: 31
+      2: 16
+      3: 23
+      4: 21
+      5: 13
+      6: 20
+      7: 40
+      8: 13
+      9: 27
+      10: 33
+      11: 34
+      12: 31
+      13: 13
+      14: 40
+      15: 58
+      16: 24
+  - name: 2 Cor
+    number: 47
+    slug: 2-cor
+    chapters: 13
+    verses:
+      1: 24
+      2: 17
+      3: 18
+      4: 18
+      5: 21
+      6: 18
+      7: 16
+      8: 24
+      9: 15
+      10: 18
+      11: 33
+      12: 21
+      13: 13
+  - name: Gal
+    number: 48
+    slug: gal
+    chapters: 6
+    verses:
+      1: 24
+      2: 21
+      3: 29
+      4: 31
+      5: 26
+      6: 18
+  - name: Eph
+    number: 49
+    slug: eph
+    chapters: 6
+    verses:
+      1: 23
+      2: 22
+      3: 21
+      4: 32
+      5: 33
+      6: 24
+  - name: Phil
+    number: 50
+    slug: phil
+    chapters: 4
+    verses:
+      1: 30
+      2: 30
+      3: 21
+      4: 23
+  - name: Col
+    number: 51
+    slug: col
+    chapters: 4
+    verses:
+      1: 29
+      2: 23
+      3: 25
+      4: 18
+  - name: 1Thess
+    number: 52
+    slug: 1thess
+    chapters: 5
+    verses:
+      1: 10
+      2: 20
+      3: 13
+      4: 18
+      5: 28
+  - name: 2Thess
+    number: 53
+    slug: 2thess
+    chapters: 3
+    verses:
+      1: 12
+      2: 17
+      3: 18
+  - name: 1 Tim
+    number: 54
+    slug: 1-tim
+    chapters: 6
+    verses:
+      1: 20
+      2: 15
+      3: 16
+      4: 16
+      5: 25
+      6: 21
+  - name: 2 Tim
+    number: 55
+    slug: 2-tim
+    chapters: 4
+    verses:
+      1: 18
+      2: 26
+      3: 17
+      4: 22
+  - name: Titus
+    number: 56
+    slug: titus
+    chapters: 3
+    verses:
+      1: 16
+      2: 15
+      3: 15
+  - name: Phlm
+    number: 57
+    slug: phlm
+    chapters: 1
+    verses:
+      1: 25
+  - name: Heb
+    number: 58
+    slug: heb
+    chapters: 13
+    verses:
+      1: 14
+      2: 18
+      3: 19
+      4: 16
+      5: 14
+      6: 20
+      7: 28
+      8: 13
+      9: 28
+      10: 39
+      11: 40
+      12: 29
+      13: 25
+  - name: James
+    number: 59
+    slug: james
+    chapters: 5
+    verses:
+      1: 27
+      2: 26
+      3: 18
+      4: 17
+      5: 20
+  - name: 1 Peter
+    number: 60
+    slug: 1-peter
+    chapters: 5
+    verses:
+      1: 25
+      2: 25
+      3: 22
+      4: 19
+      5: 14
+  - name: 2 Peter
+    number: 61
+    slug: 2-peter
+    chapters: 3
+    verses:
+      1: 21
+      2: 22
+      3: 18
+  - name: 1 John
+    number: 62
+    slug: 1-john
+    chapters: 5
+    verses:
+      1: 10
+      2: 29
+      3: 24
+      4: 21
+      5: 21
+  - name: 2 John
+    number: 63
+    slug: 2-john
+    chapters: 1
+    verses:
+      1: 13
+  - name: 3 John
+    number: 64
+    slug: 3-john
+    chapters: 1
+    verses:
+      1: 15
+  - name: Jude
+    number: 65
+    slug: jude
+    chapters: 1
+    verses:
+      1: 25
+  - name: Revelation
+    number: 66
+    slug: revelation
+    chapters: 22
+    verses:
+      1: 20
+      2: 29
+      3: 22
+      4: 11
+      5: 14
+      6: 17
+      7: 17
+      8: 13
+      9: 21
+      10: 11
+      11: 19
+      12: 17
+      13: 18
+      14: 20
+      15: 8
+      16: 21
+      17: 18
+      18: 24
+      19: 21
+      20: 15
+      21: 27
+      22: 21
