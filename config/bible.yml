@@ -1267,9 +1267,9 @@ books:
       26: 32
       27: 44
       28: 31
-  - name: Rom
+  - name: Romans
     number: 45
-    slug: rom
+    slug: romans
     chapters: 16
     verses:
       1: 32
@@ -1288,9 +1288,9 @@ books:
       14: 23
       15: 33
       16: 27
-  - name: 1 Cor
+  - name: 1 Corinthians
     number: 46
-    slug: 1-cor
+    slug: 1-corinthians
     chapters: 16
     verses:
       1: 31
@@ -1309,9 +1309,9 @@ books:
       14: 40
       15: 58
       16: 24
-  - name: 2 Cor
+  - name: 2 Corinthians
     number: 47
-    slug: 2-cor
+    slug: 2-corinthians
     chapters: 13
     verses:
       1: 24
@@ -1327,9 +1327,9 @@ books:
       11: 33
       12: 21
       13: 13
-  - name: Gal
+  - name: Galatians
     number: 48
-    slug: gal
+    slug: galatians
     chapters: 6
     verses:
       1: 24
@@ -1338,9 +1338,9 @@ books:
       4: 31
       5: 26
       6: 18
-  - name: Eph
+  - name: Ephesians
     number: 49
-    slug: eph
+    slug: ephesians
     chapters: 6
     verses:
       1: 23
@@ -1349,27 +1349,27 @@ books:
       4: 32
       5: 33
       6: 24
-  - name: Phil
+  - name: Philippians
     number: 50
-    slug: phil
+    slug: philippians
     chapters: 4
     verses:
       1: 30
       2: 30
       3: 21
       4: 23
-  - name: Col
+  - name: Colossians
     number: 51
-    slug: col
+    slug: colossians
     chapters: 4
     verses:
       1: 29
       2: 23
       3: 25
       4: 18
-  - name: 1Thess
+  - name: 1 Thessalonians
     number: 52
-    slug: 1thess
+    slug: 1-thessalonians
     chapters: 5
     verses:
       1: 10
@@ -1377,17 +1377,17 @@ books:
       3: 13
       4: 18
       5: 28
-  - name: 2Thess
+  - name: 2 Thessalonians
     number: 53
-    slug: 2thess
+    slug: 2-thessalonians
     chapters: 3
     verses:
       1: 12
       2: 17
       3: 18
-  - name: 1 Tim
+  - name: 1 Timothy
     number: 54
-    slug: 1-tim
+    slug: 1-timothy
     chapters: 6
     verses:
       1: 20
@@ -1396,9 +1396,9 @@ books:
       4: 16
       5: 25
       6: 21
-  - name: 2 Tim
+  - name: 2 Timothy
     number: 55
-    slug: 2-tim
+    slug: 2-timothy
     chapters: 4
     verses:
       1: 18
@@ -1413,15 +1413,15 @@ books:
       1: 16
       2: 15
       3: 15
-  - name: Phlm
+  - name: Philemon
     number: 57
-    slug: phlm
+    slug: philemon
     chapters: 1
     verses:
       1: 25
-  - name: Heb
+  - name: Hebrews
     number: 58
-    slug: heb
+    slug: hebrews
     chapters: 13
     verses:
       1: 14
