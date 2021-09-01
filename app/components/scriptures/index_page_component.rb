@@ -3,17 +3,16 @@
 class Scriptures::IndexPageComponent < PageComponent
   include MenuAwareComponent
   has :scriptures
-  paginate :scriptures
   has :owner
-  menu_type :item_options
+  paginate :scriptures
 
   private
 
   def menu_items(menu)
-    []
-  end
+    unless visitor.is?(owner)
+      return []
+    end
 
-  def delete_warning
-    t('app.messages.confirm_delete')
+    [menu.link(t('app.links.new'), urls.new_scripture_path(current_user))]
   end
 end

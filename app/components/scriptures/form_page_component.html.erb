@@ -1,12 +1,12 @@
 <%= render breadcrumb  %>
 <%= render flash  %>
 
-<%= simple_form_for(timeline, url: url, as: :timeline) do |f| %>
+<%= simple_form_for(scripture, url: url, as: :scripture) do |f| %>
   <%= input_wrapper do %>
     <%= f.input :title %>
   <% end %>
   <%= input_wrapper do %>
-    <%= f.input :slug %>
+    <%= f.input :book %>
   <% end %>
   <%= input_wrapper do %>
     <%= f.input :verses %>
