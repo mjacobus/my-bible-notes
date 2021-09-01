@@ -7,6 +7,7 @@ RSpec.describe Db::User, type: :model do
   let(:user) { factory.build }
 
   it { is_expected.to have_many(:timelines).dependent(:destroy) }
+  it { is_expected.to have_many(:scriptures).dependent(:destroy) }
 
   it { is_expected.to validate_presence_of(:username) }
   it { is_expected.to validate_uniqueness_of(:username).case_insensitive }
