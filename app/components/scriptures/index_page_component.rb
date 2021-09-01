@@ -1,23 +1,24 @@
 # frozen_string_literal: true
 
-class Scriptures::IndexPageComponent < PageComponent
-  include MenuAwareComponent
-  has :scriptures
-  has :owner
-  paginate :scriptures
+module Scriptures
+  class IndexPageComponent < PageComponent
+    include MenuAwareComponent
+    has :scriptures
+    has :owner
+    paginate :scriptures
 
-  private
+    private
 
-  def setup
-    with_owner_breadcrumb
-    breadcrumb.add(t('app.links.my_scriptures'))
-  end
-
-  def menu_items(menu)
-    unless visitor.is?(owner)
-      return []
+    def breadcrumb
+      @breadcrumb ||= BreadcrumbComponent.new.under_profile(owner).index
     end
 
-    [menu.link(t('app.links.new'), urls.new_scripture_path(current_user))]
+    def menu_items(menu)
+      unless visitor.is?(owner)
+        return []
+      end
+
+      [menu.link(t('app.links.new'), urls.new_scripture_path(current_user))]
+    end
   end
 end
