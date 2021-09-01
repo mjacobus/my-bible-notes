@@ -10,7 +10,7 @@ class Scriptures::IndexPageComponent < PageComponent
 
   def setup
     with_owner_breadcrumb
-    breadcrumb.add(t("app.links.my_scriptures"))
+    breadcrumb.add(t('app.links.my_scriptures'))
   end
 
   def menu_items(menu)

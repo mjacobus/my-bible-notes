@@ -24,7 +24,7 @@ class Db::Scripture < ApplicationRecord
   end
 
   def scripture_and_title
-    "#{to_s} - #{title}"
+    "#{self} - #{title}"
   end
 
   def book=(book)

@@ -44,7 +44,7 @@ class BaseFormPageComponent < PageComponent
   end
 
   def index_link_name
-    t("app.links.#{form_key.pluralize.to_s}")
+    t("app.links.#{form_key.pluralize}")
   end
 
   def index_path

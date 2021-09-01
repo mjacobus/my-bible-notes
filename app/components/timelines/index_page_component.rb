@@ -16,7 +16,6 @@ class Timelines::IndexPageComponent < PageComponent
     breadcrumb.add(t('app.links.timelines'))
   end
 
-
   def menu_items(menu)
     unless visitor.is?(owner)
       return []
