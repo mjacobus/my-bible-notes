@@ -22,6 +22,10 @@ class Db::Scripture < ApplicationRecord
     "#{book_instance.localized_name} #{verses}"
   end
 
+  def scripture_and_title
+    "#{to_s} - #{title}"
+  end
+
   def book=(book)
     @book_instance = nil
     super(book)

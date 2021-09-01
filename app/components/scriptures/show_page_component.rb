@@ -11,7 +11,7 @@ class Scriptures::ShowPageComponent < PageComponent
 
   def setup
     breadcrumb.add(t('app.links.my_scriptures'), urls.scriptures_path(owner))
-    breadcrumb.add(scripture.title)
+    breadcrumb.add(scripture.to_s)
   end
 
   def menu_items(menu)

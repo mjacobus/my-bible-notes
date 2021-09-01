@@ -7,7 +7,7 @@ class ScripturesController < ApplicationController
 
   key :scripture
 
-  permit :title, :book, :verses, :decription
+  permit :title, :book, :verses, :description
 
   scope do
     owner.scriptures

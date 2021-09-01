@@ -31,6 +31,7 @@ class BaseFormPageComponent < PageComponent
   end
 
   def setup
+    with_owner_breadcrumb
     breadcrumb.add(index_link_name, index_path)
 
     if record.id?

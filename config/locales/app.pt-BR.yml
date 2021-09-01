@@ -51,6 +51,7 @@ pt-BR:
         enabled: "Ativo"
   app:
     attributes:
+      scripture: "Texto"
       explanation: "Explicação"
       color: "Cor"
       number_of_timeline_entries: "Número de Eventos"
