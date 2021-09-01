@@ -9,7 +9,8 @@ RSpec.describe Bible::VersesParser, type: :model do
     {
       1 => 10,
       2 => 20,
-      3 => 30
+      3 => 30,
+      4 => 5
     }
   end
 
@@ -51,9 +52,6 @@ RSpec.describe Bible::VersesParser, type: :model do
       expect(parsed).to eq(expected)
     end
 
-    it 'parses multiple verses I.E. (2-4)'
-    it 'parses chapter-verse ranges I.E. (2:40-4:23)'
-
     context 'when book has one chapter' do
       let(:verses) { { 1 => 10 } }
 
@@ -71,6 +69,43 @@ RSpec.describe Bible::VersesParser, type: :model do
         expected = { 1 => [2, 4, 5, 6, 8] }
 
         expect(parsed).to eq(expected)
+      end
+    end
+
+    it 'parses multiple verses I.E. (2-4)' do
+      parsed = parser.parse('2-4')
+
+      expected = {
+        2 => (1..20).to_a,
+        3 => (1..30).to_a,
+        4 => (1..5).to_a
+      }
+
+      expect(parsed).to eq(expected)
+    end
+
+    it 'parses chapter-verse ranges I.E. (2:18-3:10)' do
+      parsed = parser.parse('2:18-3:10')
+
+      expected = {
+        2 => (18..20).to_a,
+        3 => (1..10).to_a
+      }
+
+      expect(parsed).to eq(expected)
+    end
+  end
+
+  describe '#split' do
+    it 'splits verses' do
+      expectations = {
+        '1:8; 2:3-5;' => ['1:8', '2:3-5'],
+        '2:18 - 3:10;' => ['2:18-3:10'],
+        '2-3;4:5' => ['2-3', '4:5']
+      }
+
+      expectations.each do |input, output|
+        expect(parser.split(input)).to eq(output)
       end
     end
   end
