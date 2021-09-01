@@ -1,1 +1,9 @@
-<div>Add Scriptures::IndexPage template here</div>
+<%= render breadcrumb %>
+<%= render flash %>
+<%= render menu %>
+
+<% scriptures.each do |scripture| %>
+  <%= scripture.title %>
+<% end %>
+
+<%= render pagination %>
