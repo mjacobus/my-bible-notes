@@ -12,8 +12,8 @@ RSpec.describe Bible::Books, type: :model do
   end
 
   it 'finds by slug' do
-    book = bible.find('matthew')
+    book = bible.find('2-peter')
 
-    expect(book.name).to eq('Matthew')
+    expect(book.name).to eq('2 Peter')
   end
 end

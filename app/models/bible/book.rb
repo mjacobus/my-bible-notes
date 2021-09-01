@@ -19,5 +19,9 @@ module Bible
     def localized_name
       I18n.t("app.bible_books.#{slug}")
     end
+
+    def parse(string)
+      VersesParser.new(verses).parse(string)
+    end
   end
 end
