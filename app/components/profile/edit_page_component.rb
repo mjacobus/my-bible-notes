@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Profile
-  class EditPageComponent < PageComponent
+  class EditPageComponent < BaseFormPageComponent
     has :user
 
     def url

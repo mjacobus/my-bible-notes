@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   scope '/:username' do
+    resources :scriptures
     resources :timelines do
       resources :entries, controller: 'timeline_entries'
     end

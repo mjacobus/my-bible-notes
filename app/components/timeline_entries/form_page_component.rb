@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class TimelineEntries::FormPageComponent < PageComponent
-  has :entry
+class TimelineEntries::FormPageComponent < BaseFormPageComponent
+  record :entry
   has :current_user
 
   def url

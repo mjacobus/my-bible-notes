@@ -2,6 +2,7 @@
 
 class Db::User < ApplicationRecord
   has_many :timelines, dependent: :destroy
+  has_many :scriptures, dependent: :destroy
 
   validates :username, presence: true, uniqueness: { case_sensitive: false }
 

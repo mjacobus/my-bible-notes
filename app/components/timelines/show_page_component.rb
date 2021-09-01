@@ -10,6 +10,7 @@ class Timelines::ShowPageComponent < PageComponent
   private
 
   def setup
+    with_owner_breadcrumb
     breadcrumb.add(t('app.links.timelines'), urls.timelines_path(owner))
     breadcrumb.add(timeline.name)
   end

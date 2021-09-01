@@ -1,0 +1,9 @@
+<%= render breadcrumb %>
+<%= render flash %>
+<%= render menu %>
+
+<% scriptures.each do |scripture| %>
+  <%= render Scriptures::IndexItemComponent.new(owner: owner, scripture: scripture) %>
+<% end %>
+
+<%= render pagination %>

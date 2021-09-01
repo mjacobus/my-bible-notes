@@ -1,0 +1,7 @@
+<%= render breadcrumb %>
+<%= render flash %>
+<%= render menu %>
+
+<%= content_for(:title) { "#{scripture.username}: #{scripture.scripture_and_title}" } %>
+<%= render attribute(scripture.to_s).with_label(:scripture) %>
+<%= render attribute(scripture.description).with_label(:description) %>

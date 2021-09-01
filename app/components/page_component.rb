@@ -12,14 +12,14 @@ class PageComponent < ApplicationComponent
     end
   end
 
+  def with_owner_breadcrumb
+    breadcrumb.add(owner.username)
+  end
+
   def breadcrumb
     @breadcrumb ||= BreadcrumbComponent.new.tap do |b|
       b.add(t('app.links.home'), urls.root_path)
     end
-  end
-
-  def input_wrapper(&block)
-    tag.div(class: 'form-wrapper my-3', &block)
   end
 
   def flash

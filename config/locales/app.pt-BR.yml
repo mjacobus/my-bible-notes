@@ -5,10 +5,18 @@ pt-BR:
 
   activerecord:
     models:
-      db/user: "Usuário"
+      db/scripture: "Texto Bíblico"
       db/timeline: "Linha do Tempo"
       db/timeline_entry: "Evento"
+      db/user: "Usuário"
     attributes:
+      db/scripture:
+        title: "Título"
+        book: "Livro"
+        verses: "Versículos"
+        description: "Descrição"
+        parent_id: "Relacionado a"
+        parent: "Relacionado a"
       db/timeline:
         name: "Nome"
         slug: "Url"
@@ -43,6 +51,7 @@ pt-BR:
         enabled: "Ativo"
   app:
     attributes:
+      scripture: "Texto"
       explanation: "Explicação"
       color: "Cor"
       number_of_timeline_entries: "Número de Eventos"
@@ -98,6 +107,8 @@ pt-BR:
         one: "%{count} contato"
         other: "%{count} contatos"
     links:
+      bible: "Bíblia"
+      my_scriptures: "Meus textos bíblicos"
       timelines: "Linhas do Tempo"
       timeline_entries: "Eventos"
       update: "Atualizar"

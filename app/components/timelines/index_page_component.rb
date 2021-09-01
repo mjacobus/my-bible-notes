@@ -5,16 +5,16 @@ class Timelines::IndexPageComponent < PageComponent
   has :owner
   paginate :timelines
 
+  private
+
   def new_link
     link_to('foo')
   end
 
   def setup
-    breadcrumb.add(owner.username)
+    with_owner_breadcrumb
     breadcrumb.add(t('app.links.timelines'))
   end
-
-  private
 
   def menu_items(menu)
     unless visitor.is?(owner)
