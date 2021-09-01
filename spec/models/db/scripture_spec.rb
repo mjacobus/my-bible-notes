@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Db::Scripture, type: :model do
   subject(:scripture) { described_class.new }
 
-  it { is_expected.to belong_to(:parent_scripture).class_name('Db::Scripture') }
+  it { is_expected.to belong_to(:parent_scripture).class_name('Db::Scripture').optional }
 
   it 'has many related_scriptures' do
     expect(scripture).to have_many(:related_scriptures)
