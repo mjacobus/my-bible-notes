@@ -18,8 +18,8 @@ module Bible
 
     def find(number_slug_or_name)
       value = number_slug_or_name
-      book = @books.find { |book| book.slug == value }
-      book ||= @books.find { |book| book.number == value.to_i }
+      @books.find { |book| book.slug == value } ||
+        @books.find { |book| book.number == value.to_i }
     end
   end
 end
