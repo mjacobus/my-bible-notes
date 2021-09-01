@@ -5,7 +5,8 @@ class Db::Scripture < ApplicationRecord
   belongs_to :parent_scripture,
              class_name: 'Scripture',
              foreign_key: :parent_id,
-             inverse_of: :related_scriptures
+             inverse_of: :related_scriptures,
+             optional: true
   has_many :related_scriptures,
            class_name: 'Scripture',
            foreign_key: 'parent_id',
