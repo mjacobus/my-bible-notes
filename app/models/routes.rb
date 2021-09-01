@@ -60,7 +60,7 @@ class Routes
 
   def edit_path(record, args = {})
     type = record.class.to_s.underscore.tr('db/', '')
-    send('#edit_{type}_path', record, args)
+    send("edit_#{type}_path", record, args)
   end
 
   def to(record, args = {})

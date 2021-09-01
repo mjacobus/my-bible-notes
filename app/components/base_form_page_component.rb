@@ -24,6 +24,14 @@ class BaseFormPageComponent < PageComponent
     @form_key ||= record.class.to_s.underscore.tr('db/', '')
   end
 
+  def self.record(name)
+    has name
+
+    define_method :record do
+      send(name)
+    end
+  end
+
   private
 
   def select_input(form, name, collection)
@@ -49,13 +57,5 @@ class BaseFormPageComponent < PageComponent
 
   def index_path
     urls.send("#{form_key.pluralize}_path", current_user)
-  end
-
-  def self.record(name)
-    has name
-
-    define_method :record do
-      send(name)
-    end
   end
 end
