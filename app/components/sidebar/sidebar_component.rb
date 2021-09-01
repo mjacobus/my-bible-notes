@@ -38,7 +38,7 @@ class Sidebar::SidebarComponent < ApplicationComponent
 
   def bible_section
     unless current_user.pending_profile_changes?
-      entry(t('app.links.bible'), '#', icon: 'clock-history').tap do |section|
+      entry(t('app.links.bible'), '#', icon: 'book').tap do |section|
         section.append_child(scriptures_path)
       end
     end
@@ -58,7 +58,7 @@ class Sidebar::SidebarComponent < ApplicationComponent
   end
 
   def scriptures_path
-    entry(Db::Scripture.model_name.human, urls.scriptures_path(current_user), icon: 'clock-history')
+    entry(t('app.links.my_scriptures'), urls.scriptures_path(current_user), icon: 'book')
   end
 
   def users
