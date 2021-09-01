@@ -16,4 +16,8 @@ class Db::Timeline < ApplicationRecord
   end
 
   delegate :username, to: :user
+
+  def to_param
+    slug
+  end
 end
