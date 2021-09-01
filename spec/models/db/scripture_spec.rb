@@ -13,6 +13,7 @@ RSpec.describe Db::Scripture, type: :model do
       .dependent(:restrict_with_exception)
   end
 
+  it { is_expected.to validate_presence_of(:title) }
   it { is_expected.to validate_presence_of(:book) }
   it { is_expected.to validate_presence_of(:verses) }
 

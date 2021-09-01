@@ -6,7 +6,7 @@ RSpec.describe ScripturesController, type: :request do
   let(:factory) { factories.scriptures }
   let(:scope) { current_user.scriptures.all }
   let(:key) { model_class.to_s.underscore.split('/').last.to_sym }
-  let(:model_class) { Db::Timeline }
+  let(:model_class) { Db::Scripture }
 
   # components
   let(:index_component) { Scriptures::IndexPageComponent }
@@ -14,9 +14,9 @@ RSpec.describe ScripturesController, type: :request do
   let(:form_component) { Scriptures::FormPageComponent }
 
   # paths
-  let(:index_path) { routes.timelines_path(current_user) }
-  let(:new_path) { routes.new_timeline_path(current_user) }
-  let(:edit_path) { routes.edit_timeline_path(record) }
+  let(:index_path) { routes.scriptures_path(current_user) }
+  let(:new_path) { routes.new_scripture_path(current_user) }
+  let(:edit_path) { routes.edit_scripture_path(record) }
   let(:show_path) { routes.to(record) }
 
   # attributes
@@ -69,29 +69,6 @@ RSpec.describe ScripturesController, type: :request do
         owner: current_user
       )
       expect(renderer).to have_rendered_component(expected_component)
-    end
-
-    context 'when timeline belogongs to another user' do
-      before do
-        login_user(another_user)
-      end
-
-      let(:another_user) { factories.users.create }
-
-      it 'responds with 404 when timeline is not public' do
-        perform_request
-
-        expect(response.status).to eq(404)
-      end
-
-      it 'responds with 200 when timeline is public' do
-        record.public = true
-        record.save!
-
-        perform_request
-
-        expect(response.status).to eq(200)
-      end
     end
   end
 
