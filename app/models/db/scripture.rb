@@ -22,8 +22,13 @@ class Db::Scripture < ApplicationRecord
     "#{book_instance.localized_name} #{verses}"
   end
 
+  def book=(book)
+    @book_instance = nil
+    super(book)
+  end
+
   def book_instance
-    self.class.bible.find(book)
+    @book_instance ||= self.class.bible.find(book)
   end
 
   def self.bible

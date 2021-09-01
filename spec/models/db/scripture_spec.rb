@@ -23,5 +23,13 @@ RSpec.describe Db::Scripture, type: :model do
 
       expect(scripture.to_s).to eq('Gênesis 2:1-3')
     end
+
+    it 'can be chagned' do
+      scripture.book = 'genesis'
+      scripture.verses = '2:1-3'
+
+      expect { scripture.book = '1-peter' }.to change { scripture.to_s }
+        .from('Gênesis 2:1-3').to('1 Pedro 2:1-3')
+    end
   end
 end

@@ -1,12 +1,12 @@
 <%= render breadcrumb  %>
 <%= render flash  %>
 
-<%= simple_form_for(scripture, url: url, as: :scripture) do |f| %>
+<%= simple_form_for(record, url: url, as: form_key) do |f| %>
   <%= input_wrapper do %>
     <%= f.input :title %>
   <% end %>
   <%= input_wrapper do %>
-    <%= f.input :book %>
+    <%= book_input(f) %>
   <% end %>
   <%= input_wrapper do %>
     <%= f.input :verses %>
@@ -15,7 +15,7 @@
     <%= f.input :description, as: :text %>
   <% end %>
   <%= input_wrapper do %>
-    <%= f.submit(class: 'btn btn-primary mt-3 float-right') %>
+    <%= submit_button(f) %>
   <% end %>
 <% end %>
 

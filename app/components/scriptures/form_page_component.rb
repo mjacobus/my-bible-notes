@@ -1,29 +1,21 @@
 # frozen_string_literal: true
 
-class Scriptures::FormPageComponent < PageComponent
-  has :scripture
-  has :current_user
-  has :owner
+class Scriptures::FormPageComponent < BaseFormPageComponent
+  record :scripture
 
-  def url
-    if scripture.id
-      return urls.to(scripture)
-    end
-
-    urls.scriptures_path(current_user)
+  def book_input(form)
+    select_input(form, :book, books)
   end
 
   private
 
-  def setup
-    breadcrumb.add(t('app.links.my_scriptures'), urls.scriptures_path(current_user))
-
-    if scripture.id?
-      breadcrumb.add(scripture.to_s, urls.to(scripture))
-      breadcrumb.add(t('app.links.edit'))
-      return
+  def books
+    Bible::Factory.new.from_config.map do |book|
+      [book.localized_name, book.slug]
     end
+  end
 
-    breadcrumb.add(t('app.links.new'))
+  def index_link_name
+    t('app.links.my_scriptures')
   end
 end

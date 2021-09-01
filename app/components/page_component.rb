@@ -18,10 +18,6 @@ class PageComponent < ApplicationComponent
     end
   end
 
-  def input_wrapper(&block)
-    tag.div(class: 'form-wrapper my-3', &block)
-  end
-
   def flash
     FlashComponent.new
   end
