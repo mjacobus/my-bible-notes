@@ -16,4 +16,12 @@ class TestFactories
   def timeline_events
     @timeline_events ||= Timeline::EventFactory.new(self)
   end
+
+  def bible
+    @bible ||= Bible::Factory.new.from_config
+  end
+
+  def scriptures
+    @scriptures ||= Db::ScriptureFactory.new(self)
+  end
 end

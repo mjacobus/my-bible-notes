@@ -37,6 +37,9 @@ class TestFactories
     def create(overrides = {})
       next_sequency
       model_class.create!(attributes(overrides))
+    rescue ActiveRecord::RecordInvalid => e
+      p e.record.errors.to_h
+      raise
     end
 
     def build(overrides = {})
