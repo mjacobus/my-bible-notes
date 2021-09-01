@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 module Bible
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/MethodLength
   class VersesParser
     def initialize(available_verses)
       @available_verses = available_verses
@@ -43,4 +45,6 @@ module Bible
       { chapter: chapter, verses: collected_verses.flatten }
     end
   end
+  # rubocop:enable Metrics/AbcSize
+  # rubocop:enable Metrics/MethodLength
 end
