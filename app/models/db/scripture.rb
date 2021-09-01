@@ -15,4 +15,6 @@ class Db::Scripture < ApplicationRecord
 
   validates :book, presence: true
   validates :verses, presence: true
+
+  delegate :username, to: :user
 end

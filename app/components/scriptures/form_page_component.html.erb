@@ -1,1 +1,21 @@
-<div>Add Scriptures::FormPage template here</div>
+<%= render breadcrumb  %>
+<%= render flash  %>
+
+<%= simple_form_for(timeline, url: url, as: :timeline) do |f| %>
+  <%= input_wrapper do %>
+    <%= f.input :title %>
+  <% end %>
+  <%= input_wrapper do %>
+    <%= f.input :slug %>
+  <% end %>
+  <%= input_wrapper do %>
+    <%= f.input :verses %>
+  <% end %>
+  <%= input_wrapper do %>
+    <%= f.input :description, as: :text %>
+  <% end %>
+  <%= input_wrapper do %>
+    <%= f.submit(class: 'btn btn-primary mt-3 float-right') %>
+  <% end %>
+<% end %>
+

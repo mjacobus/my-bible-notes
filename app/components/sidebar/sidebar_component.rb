@@ -11,6 +11,7 @@ class Sidebar::SidebarComponent < ApplicationComponent
     [
       home_link,
       timeline_section,
+      bible_section,
       admin_section,
       profile,
       logout
@@ -35,6 +36,14 @@ class Sidebar::SidebarComponent < ApplicationComponent
     end
   end
 
+  def bible_section
+    unless current_user.pending_profile_changes?
+      entry(t('app.links.bible'), '#', icon: 'clock-history').tap do |section|
+        section.append_child(scriptures_path)
+      end
+    end
+  end
+
   def admin_section
     if current_user.master?
       entry('Admin', '#', icon: 'pencil').tap do |section|
@@ -46,6 +55,10 @@ class Sidebar::SidebarComponent < ApplicationComponent
 
   def timelines_path
     entry(Db::Timeline.model_name.human, urls.timelines_path(current_user), icon: 'clock-history')
+  end
+
+  def scriptures_path
+    entry(Db::Scripture.model_name.human, urls.scriptures_path(current_user), icon: 'clock-history')
   end
 
   def users

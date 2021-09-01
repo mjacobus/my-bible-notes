@@ -10,6 +10,22 @@ class Routes
     @helpers.send(*args)
   end
 
+  def scriptures_path(user, args = {})
+    @helpers.scriptures_path(user.username, args)
+  end
+
+  def scripture_path(scripture, args = {})
+    @helpers.scripture_path(scripture.username, scripture, args)
+  end
+
+  def new_scripture_path(user, args = {})
+    @helpers.new_scripture_path(user.username, args)
+  end
+
+  def edit_scripture_path(scripture, args = {})
+    @helpers.edit_scripture_path(scripture.username, scripture, args)
+  end
+
   def timelines_path(user, args = {})
     @helpers.timelines_path(user.username, args)
   end
@@ -40,6 +56,11 @@ class Routes
 
   def edit_timeline_entry_path(entry, args = {})
     @helpers.edit_timeline_entry_path(entry.timeline.username, entry.timeline, entry, args)
+  end
+
+  def edit_path(record, args = {})
+    type = record.class.to_s.underscore.tr('db/', '')
+    send("#edit_{type}_path", record, args)
   end
 
   def to(record, args = {})
