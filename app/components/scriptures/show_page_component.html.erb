@@ -1,3 +1,7 @@
-<div>Add Scriptures::ShowPage template here</div>
+<%= render breadcrumb %>
+<%= render flash %>
+<%= render menu %>
 
-<%= scripture.title %>
+<%= content_for(:title) { "#{scripture.username}: #{scripture.title}" } %>
+<%= render attribute(scripture.title).with_label(:title) %>
+<%= render attribute(scripture.description).with_label(:description).without_label.wrap_with(:small) %>

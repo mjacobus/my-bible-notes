@@ -17,12 +17,12 @@ class ScripturesController < ApplicationController
 
   private
 
-  def record
-    @record ||= find_scope.by_slug(params[:id])
-  end
+  # def record
+  #   @record ||= find_scope.by_slug(params[:id])
+  # end
 
   def before_show
-    unless user.is?(current_user)
+    unless current_user.is?(owner)
       raise ActiveRecord::RecordNotFound
     end
   end
