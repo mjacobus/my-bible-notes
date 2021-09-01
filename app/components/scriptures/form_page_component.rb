@@ -16,7 +16,7 @@ class Scriptures::FormPageComponent < PageComponent
   private
 
   def setup
-    breadcrumb.add(t('app.links.scriptures'), urls.scriptures_path(current_user))
+    breadcrumb.add(t('app.links.my_scriptures'), urls.scriptures_path(current_user))
 
     if scripture.id?
       breadcrumb.add(scripture.to_s, urls.to(scripture))

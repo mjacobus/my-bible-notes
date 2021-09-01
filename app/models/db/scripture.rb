@@ -17,4 +17,16 @@ class Db::Scripture < ApplicationRecord
   validates :verses, presence: true
 
   delegate :username, to: :user
+
+  def to_s
+    "#{book_instance.localized_name} #{verses}"
+  end
+
+  def book_instance
+    self.class.bible.find(book)
+  end
+
+  def self.bible
+    @bible = Bible::Factory.new.from_config
+  end
 end

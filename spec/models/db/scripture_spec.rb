@@ -15,4 +15,13 @@ RSpec.describe Db::Scripture, type: :model do
 
   it { is_expected.to validate_presence_of(:book) }
   it { is_expected.to validate_presence_of(:verses) }
+
+  describe '#to_s' do
+    it 'converts the bible scripture to string' do
+      scripture.book = 'genesis'
+      scripture.verses = '2:1-3'
+
+      expect(scripture.to_s).to eq('Gênesis 2:1-3')
+    end
+  end
 end
