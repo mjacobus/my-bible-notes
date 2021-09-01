@@ -3,6 +3,7 @@
 module Bible
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/ClassLength
   class VersesParser
     def initialize(available_verses)
       @chapters = available_verses
@@ -16,6 +17,8 @@ module Bible
           result[p[:chapter]] = p[:verses]
         end
       end
+
+      inspect_result(result)
       result
     end
 
@@ -24,6 +27,25 @@ module Bible
     end
 
     private
+
+    def inspect_result(result)
+      result.each do |chapter, _verses|
+        assert_chapter(chapter)
+      end
+    end
+
+    def assert_chapter(chapter)
+      if @chapters[chapter].blank?
+        raise Errors::InvalidChapterError, chapter
+      end
+    end
+
+    def assert_verse(verse, chapter:)
+      assert_chapter(chapter)
+      if verse > last_chapter_verse(chapter)
+        raise Errors::InvalidVerseError.new(verse, chapter: chapter)
+      end
+    end
 
     def parse_scripture(excerpt)
       if @chapters.keys.length == 1 && !excerpt.match(':')
@@ -44,10 +66,15 @@ module Bible
       verses = []
       csv.each do |values|
         range = values.split('-')
+        first = range[0].to_i
+        assert_verse(first, chapter: chapter)
+
         verses << if range.length == 2
-                    (range[0].to_i..range[1].to_i).to_a
+                    last = range[1].to_i
+                    assert_verse(last, chapter: chapter)
+                    (first..last).to_a
                   else
-                    range.first.to_i
+                    first
                   end
       end
 
@@ -77,6 +104,7 @@ module Bible
       chapters = excerpt.split('-').map(&:to_i)
       chapters = (chapters.first..chapters.last).to_a
       chapters.map do |chapter|
+        assert_chapter(chapter)
         "#{chapter}:1-#{chapter_verses(chapter).last}"
       end.join(';')
     end
@@ -110,4 +138,5 @@ module Bible
   end
   # rubocop:enable Metrics/AbcSize
   # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/ClassLength
 end

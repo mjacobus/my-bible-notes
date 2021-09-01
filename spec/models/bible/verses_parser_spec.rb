@@ -34,10 +34,10 @@ RSpec.describe Bible::VersesParser, type: :model do
     end
 
     it 'parses multiple chapters and verses' do
-      parsed = parser.parse('1:2-4, 12; 2:17,19')
+      parsed = parser.parse('1:2-4, 9; 2:17,19')
 
       expected = {
-        1 => [2, 3, 4, 12],
+        1 => [2, 3, 4, 9],
         2 => [17, 19]
       }
 
@@ -93,6 +93,22 @@ RSpec.describe Bible::VersesParser, type: :model do
       }
 
       expect(parsed).to eq(expected)
+    end
+
+    it 'raise argument error when trying to parse an excerpt that contains invalid chapter' do
+      expect { parser.parse('5:1') }.to raise_error(Bible::Errors::InvalidChapterError)
+    end
+
+    it 'raises when chapter range is invalid' do
+      expect { parser.parse('3-5') }.to raise_error(Bible::Errors::InvalidChapterError)
+    end
+
+    it 'raises when verse does not exist' do
+      expect { parser.parse('3:55') }.to raise_error(Bible::Errors::InvalidVerseError)
+    end
+
+    it 'raises when verse in range does not exist' do
+      expect { parser.parse('3:1-55') }.to raise_error(Bible::Errors::InvalidVerseError)
     end
   end
 
