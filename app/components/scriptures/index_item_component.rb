@@ -3,7 +3,6 @@
 class Scriptures::IndexItemComponent < ApplicationComponent
   include MenuAwareComponent
   has :scripture
-  has :profile_owner
   menu_type :item_options
 
   private

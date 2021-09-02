@@ -5,7 +5,6 @@ module Base
     extend ActiveSupport::Concern
 
     included do
-      has :profile_owner
       has :current_user
     end
 

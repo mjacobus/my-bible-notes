@@ -5,7 +5,6 @@ module TimelineEntries
     has :timeline
     has :entries
     has :current_user
-    has :profile_owner
     paginate :entries
 
     private
