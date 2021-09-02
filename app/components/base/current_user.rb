@@ -7,7 +7,7 @@ module Base
     private
 
     def current_user
-      @options[:current_user] || helpers.current_user
+      get(:current_user) || helpers.current_user
     end
 
     def visitor
