@@ -192,6 +192,7 @@ RSpec.describe ScripturesController, type: :request do
         expect(response).to have_http_status(:unprocessable_entity)
       end
 
+      # rubocop:disable RSpec/ExampleLength
       it 're-renders form' do
         mock_renderer
 
@@ -208,6 +209,7 @@ RSpec.describe ScripturesController, type: :request do
         )
         expect(renderer).to have_rendered_component(expected_component)
       end
+      # rubocop:enable RSpec/ExampleLength
     end
   end
 
