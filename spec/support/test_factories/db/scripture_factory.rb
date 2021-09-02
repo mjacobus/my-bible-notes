@@ -9,7 +9,7 @@ class TestFactories
         verses: "1:#{sequency}",
         description: "Description #{sequency}",
         user_id: users.valid_random_id_or(overrides[:user_id])
-      }
+      }.merge(overrides)
     end
   end
 end

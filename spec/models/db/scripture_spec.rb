@@ -5,6 +5,8 @@ require 'rails_helper'
 RSpec.describe Db::Scripture, type: :model do
   subject(:scripture) { described_class.new }
 
+  let(:factory) { factories.scriptures }
+
   it { is_expected.to belong_to(:parent_scripture).class_name('Db::Scripture').optional }
 
   it 'has many related_scriptures' do
@@ -31,6 +33,25 @@ RSpec.describe Db::Scripture, type: :model do
 
       expect { scripture.book = '1-peter' }.to change { scripture.to_s }
         .from('Gênesis 2:1-3').to('1 Pedro 2:1-3')
+    end
+  end
+
+  it 'assigns a number to the book' do
+    scripture.book = 'matthew'
+
+    expect(scripture.book_number).to eq(40)
+  end
+
+  describe '.ordered' do
+    it 'orders by book' do
+      factory.create(book: 'matthew')
+      factory.create(book: 'psalms')
+      factory.create(book: 'genesis')
+      factory.create(book: 'exodus')
+
+      ordered = described_class.ordered
+
+      expect(ordered.pluck(:book)).to eq(%w[genesis exodus psalms matthew])
     end
   end
 end

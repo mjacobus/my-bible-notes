@@ -13,6 +13,8 @@ class Db::Scripture < ApplicationRecord
            dependent: :restrict_with_exception,
            inverse_of: :parent_scripture
 
+  scope :ordered, -> { order(:book_number) }
+
   validates :book, presence: true
   validates :verses, presence: true
   validates :title, presence: true
@@ -30,6 +32,7 @@ class Db::Scripture < ApplicationRecord
   def book=(book)
     @book_instance = nil
     super(book)
+    set_book_number
   end
 
   def book_instance
@@ -38,5 +41,13 @@ class Db::Scripture < ApplicationRecord
 
   def self.bible
     @bible = Bible::Factory.new.from_config
+  end
+
+  private
+
+  def set_book_number
+    if book_instance
+      self.book_number = book_instance.number
+    end
   end
 end
