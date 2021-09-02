@@ -105,10 +105,6 @@ module CrudController
     raise 'Define key :key_name'
   end
 
-  def pluralized_key
-    raise 'Define key :key_name [:pluralized_key]'
-  end
-
   def permitted_keys
     raise 'Define permit :attr1, :attr2...'
   end
@@ -133,16 +129,11 @@ module CrudController
       private :model_class
     end
 
-    def key(key, pluralized = nil)
+    def key(key)
       define_method :key do
         key
       end
       private :key
-
-      define_method :pluralized_key do
-        pluralized || key.to_s.pluralize.to_sym
-      end
-      private :pluralized_key
     end
 
     def form_class(klass)
@@ -165,12 +156,7 @@ module CrudController
       private :scope
     end
 
-    def component_class_template(value, use_key: true)
-      define_method :use_key? do
-        use_key
-      end
-      private :use_key?
-
+    def component_class_template(value)
       define_method :component_class do |type|
         value.sub('%{type}', type.to_s.classify).constantize
       end
