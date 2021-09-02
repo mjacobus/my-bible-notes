@@ -4,6 +4,7 @@ module Base
   class Form
     include ActiveModel::Model
     delegate :id, :persisted?, :to_param, to: :@record
+    delegate :model_name, to: :record
 
     attr_reader :record
 
@@ -21,8 +22,6 @@ module Base
         record.save!
       end
     end
-
-    delegate :model_name, to: :record
 
     def attributes=(params)
       params.each do |key, value|
