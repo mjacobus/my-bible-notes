@@ -10,16 +10,12 @@ class ScripturesController < ApplicationController
   permit :title, :book, :verses, :description
 
   scope do
-    profile_owner.scriptures
+    profile_owner.scriptures.ordered
   end
 
   component_class_template 'Scriptures::%{type}PageComponent'
 
   private
-
-  # def record
-  #   @record ||= find_scope.by_slug(params[:id])
-  # end
 
   def before_show
     unless current_user.is?(profile_owner)
