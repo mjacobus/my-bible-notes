@@ -187,7 +187,7 @@ RSpec.describe TimelineEntriesController, type: :request do
         expect(response).to redirect_to(index_path)
       end
 
-      it 'creates record' do
+      it 'updates record' do
         expect { perform_request }.to change { record.reload.title }.to('new title')
       end
     end
