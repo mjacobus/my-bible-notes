@@ -8,16 +8,15 @@ module Scriptures
 
     private
 
-    def breadcrumb
-      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_owner).index
+    def menu
+      @menu ||= IndexMenuComponent.new(
+        current_user: current_user,
+        profile_owner: profile_owner
+      )
     end
 
-    def menu_items(menu)
-      unless visitor.is?(profile_owner)
-        return []
-      end
-
-      [menu.link(t('app.links.new'), urls.new_scripture_path(current_user))]
+    def breadcrumb
+      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_owner).index
     end
   end
 end
