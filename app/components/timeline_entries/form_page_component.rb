@@ -29,9 +29,5 @@ module TimelineEntries
     def breadcrumb
       @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_user).form_for(entry)
     end
-
-    def setup
-      # TODO: Remove later
-    end
   end
 end
