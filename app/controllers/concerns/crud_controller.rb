@@ -43,8 +43,12 @@ module CrudController
   end
 
   def index_component(records)
-    component_class(:index).new(component_attributes(pluralized_key => records,
-                                                     current_user: current_user))
+    component_class(:index).new(
+      component_attributes(
+        collection: records,
+        current_user: current_user
+      )
+    )
   end
 
   def show_component(record)

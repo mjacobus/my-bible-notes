@@ -45,7 +45,7 @@ RSpec.describe TimelinesController, type: :request do
       perform_request
 
       expected_component = index_component.new(
-        key.to_s.pluralize.to_sym => scope,
+        collection: scope,
         current_user: current_user,
         profile_owner: current_user
       )

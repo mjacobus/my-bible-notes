@@ -2,9 +2,9 @@
 <%= render flash %>
 <%= render menu %>
 
-<% entries.each do |entry| %>
+<% collection.each do |record| %>
   <%= render TimelineEntries::IndexItemComponent.new(
-    entry: entry,
+    entry: record,
     current_user: current_user,
     profile_owner: profile_owner
   ) %>

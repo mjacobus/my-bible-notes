@@ -2,8 +2,7 @@
 
 module Timelines
   class IndexPageComponent < PageComponent
-    has :timelines
-    paginate :timelines
+    has :collection
 
     def menu
       @menu ||= IndexMenuComponent.new(
