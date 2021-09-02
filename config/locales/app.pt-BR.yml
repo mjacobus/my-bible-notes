@@ -86,6 +86,7 @@ pt-BR:
       errors:
         invalid_chapter: "Capítulo não existe: %{chapter}"
         invalid_verse: "Versículo não existe: %{verse}"
+        invalid_parent: "Texto relacionado inválido"
       year_with_era: "%{year} %{era}"
       year_with_era_and_precision: "%{precision} %{year} %{era}"
       x_timeline_entries: "%{number} eventos"

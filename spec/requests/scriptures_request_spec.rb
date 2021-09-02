@@ -23,8 +23,8 @@ RSpec.describe ScripturesController, type: :request do
   let(:show_path) { routes.to(record) }
 
   # attributes
-  let(:valid_attributes) { factory.attributes.merge(title: 'new title') }
-  let(:invalid_attributes) { factory.attributes.merge(title: '') }
+  let(:valid_attributes) { factory.attributes.merge(title: 'new title', user_id: current_user.id) }
+  let(:invalid_attributes) { factory.attributes.merge(title: '', user_id: current_user.id) }
 
   describe 'GET #index' do
     before { record }
@@ -140,6 +140,18 @@ RSpec.describe ScripturesController, type: :request do
         )
         expect(renderer).to have_rendered_component(expected_component)
       end
+    end
+  end
+
+  describe 'POST #create with parent' do
+    let(:parent_scripture) { factory.create(user_id: current_user.id) }
+    let(:perform_request) { post(index_path, params: params) }
+    let(:params) { { key => valid_attributes.merge(parent_id: parent_scripture.id) } }
+
+    it 'creates record' do
+      perform_request
+
+      expect(Db::Scripture.all.pluck(:parent_id).compact).to eq([parent_scripture.id])
     end
   end
 

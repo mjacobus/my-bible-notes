@@ -7,7 +7,7 @@ class ScripturesController < ApplicationController
 
   key :scripture
 
-  permit :title, :book, :verses, :description
+  permit :title, :book, :verses, :description, :parent_id
 
   form_class Scriptures::Form
 
@@ -23,20 +23,5 @@ class ScripturesController < ApplicationController
     unless current_user.is?(profile_owner)
       raise ActiveRecord::RecordNotFound
     end
-  end
-
-  def permitted_attributes
-    if action_name == 'create'
-      other = {}
-
-      # NOT tested yet
-      if params[:parent_id]
-        other[:parent_id] = profile_owner.scriptures.find(parent_id).id
-      end
-
-      return super.merge(user_id: current_user.id).merge(other)
-    end
-
-    super
   end
 end

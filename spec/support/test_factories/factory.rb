@@ -18,6 +18,8 @@ class TestFactories
       @sequency ||= 0
     end
 
+    delegate :find, to: :model_class
+
     def random
       model_class.order('RANDOM()').first
     end
