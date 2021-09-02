@@ -29,6 +29,7 @@ class ScripturesController < ApplicationController
     if action_name == 'create'
       other = {}
 
+      # NOT tested yet
       if params[:parent_id]
         other[:parent_id] = profile_owner.scriptures.find(parent_id).id
       end
