@@ -9,6 +9,8 @@ class ScripturesController < ApplicationController
 
   permit :title, :book, :verses, :description
 
+  form_class Scriptures::Form
+
   scope do
     profile_owner.scriptures.ordered
   end
@@ -17,22 +19,10 @@ class ScripturesController < ApplicationController
 
   private
 
-  def form
-    @form ||= Scriptures::Form.new(record).under_profile(profile_owner)
-  end
-
   def before_show
     unless current_user.is?(profile_owner)
       raise ActiveRecord::RecordNotFound
     end
-  end
-
-  def component_attributes(attributes)
-    attributes.merge(profile_owner: profile_owner)
-  end
-
-  def form_component(_record)
-    component_class(:form).new(component_attributes(form: form, current_user: current_user))
   end
 
   def permitted_attributes

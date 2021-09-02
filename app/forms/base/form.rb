@@ -44,7 +44,7 @@ module Base
         return urls.to(record)
       end
 
-      urls.send("#{as.pluralize}_path", @profile_owner)
+      urls.send("#{param_key.pluralize}_path", @profile_owner)
     end
 
     def param_key

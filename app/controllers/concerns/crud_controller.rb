@@ -86,7 +86,7 @@ module CrudController
   end
 
   def form
-    @form ||= NullForm.new(record).under_profile(profile_owner)
+    @form ||= form_class.new(record).under_profile(profile_owner)
   end
 
   def redirect
@@ -117,6 +117,10 @@ module CrudController
     raise "Define component_class_template 'SomeNamespace::%{type}PageComponent'"
   end
 
+  def form_class
+    NullForm
+  end
+
   module ClassMethods
     def model_class(model_class)
       define_method :model_class do
@@ -135,6 +139,12 @@ module CrudController
         pluralized || key.to_s.pluralize.to_sym
       end
       private :pluralized_key
+    end
+
+    def form_class(klass)
+      define_method :form_class do
+        klass
+      end
     end
 
     def permit(*args)
