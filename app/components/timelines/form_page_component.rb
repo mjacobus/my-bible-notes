@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 module Timelines
-  class FormPageComponent < BaseFormPageComponent
+  class FormPageComponent < PageComponent
+    include Base::FormComponent
+
     record :timeline
     has :current_user
 
