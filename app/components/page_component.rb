@@ -3,7 +3,6 @@
 class PageComponent < ApplicationComponent
   include MenuAwareComponent
   menu_type :list_options
-  has :profile_owner
 
   def breadcrumb
     @breadcrumb ||= BreadcrumbComponent.new.tap do |b|

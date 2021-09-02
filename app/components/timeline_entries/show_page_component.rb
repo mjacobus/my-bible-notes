@@ -5,7 +5,6 @@ module TimelineEntries
     include MenuAwareComponent
     menu_type :list_options
     has :entry
-    has :profile_owner
     has :current_user
 
     private

@@ -3,7 +3,6 @@
 class Timelines::IndexItemComponent < ApplicationComponent
   include MenuAwareComponent
   has :timeline
-  has :profile_owner
   menu_type :item_options
 
   def icon_name
