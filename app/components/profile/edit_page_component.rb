@@ -4,14 +4,14 @@ module Profile
   class EditPageComponent < BaseFormPageComponent
     has :user
 
-    def url
-      urls.profile_path
+    def initialize(*args)
+      super
+
+      breadcrumb.add(t('app.links.profile'))
     end
 
-    private
-
-    def setup
-      breadcrumb.add(t('app.links.profile'))
+    def url
+      urls.profile_path
     end
   end
 end

@@ -4,14 +4,6 @@ class PageComponent < ApplicationComponent
   include MenuAwareComponent
   menu_type :list_options
 
-  def initialize(*args)
-    super
-
-    if respond_to?(:setup, true)
-      send(:setup)
-    end
-  end
-
   def with_owner_breadcrumb
     breadcrumb.add(owner.username)
   end
