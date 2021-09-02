@@ -22,6 +22,14 @@ class TimelinesController < ApplicationController
     @record ||= find_scope.by_slug(params[:id])
   end
 
+  def form
+    @form ||= NullForm.new(record).under_profile(profile_owner)
+  end
+
+  def form_component(record)
+    component_class(:form).new(component_attributes(form: form, current_user: current_user))
+  end
+
   def before_show
     if record.public?
       return

@@ -1,7 +1,7 @@
 <%= render breadcrumb  %>
 <%= render flash  %>
 
-<%= simple_form_for(timeline, url: url, as: :timeline) do |f| %>
+<%= simple_form_for(form, url: form.target_url, as: form.as) do |f| %>
   <%= input_wrapper do %>
     <%= f.input :name %>
   <% end %>
