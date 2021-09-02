@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PageComponent < ApplicationComponent
+  # TODO: Remove
   include MenuAwareComponent
   menu_type :list_options
 
