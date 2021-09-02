@@ -5,15 +5,12 @@ class ApplicationComponent < ViewComponent::Base
   include Base::CurrentUser
   include Base::Bem
   include Base::Icons
+  include Base::AttributeBuilder
 
   has :profile_owner
 
   def initialize(options = {})
     @options = options
-  end
-
-  def attribute(value)
-    AttributeWrapperComponent.new(value)
   end
 
   private
