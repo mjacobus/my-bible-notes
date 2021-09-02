@@ -5,6 +5,13 @@ module Timelines
     has :timelines
     paginate :timelines
 
+    def menu
+      @menu ||= IndexMenuComponent.new(
+        current_user: current_user,
+        profile_owner: profile_owner
+      )
+    end
+
     private
 
     def new_link
