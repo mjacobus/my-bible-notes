@@ -53,6 +53,12 @@ class ApplicationController < ActionController::Base
     @routes ||= Routes.new
   end
 
+  def current_profile_user
+    if params[:username]
+      @current_profile_user ||= Db::User.find_by(username: params[:username])
+    end
+  end
+
   def export_pdf(file_name, options = {})
     default_options = {
       pdf: file_name,

@@ -1,20 +1,21 @@
 # frozen_string_literal: true
 
-class TimelineEntries::IndexPageComponent < PageComponent
-  has :timeline
-  has :entries
-  has :current_user
-  paginate :entries
+module TimelineEntries
+  class IndexPageComponent < PageComponent
+    has :timeline
+    has :entries
+    has :current_user
+    has :profile_user
+    paginate :entries
 
-  private
+    private
 
-  def setup
-    breadcrumb.add(t('app.links.timelines'), urls.timelines_path(current_user))
-    breadcrumb.add(timeline.name, urls.timeline_path(timeline))
-    breadcrumb.add(t('app.links.timeline_entries'))
-  end
+    def breadcrumb
+      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_user).index(timeline)
+    end
 
-  def menu_items(menu)
-    [menu.link(t('app.links.new'), urls.new_timeline_entry_path(timeline))]
+    def menu_items(menu)
+      [menu.link(t('app.links.new'), urls.new_timeline_entry_path(timeline))]
+    end
   end
 end

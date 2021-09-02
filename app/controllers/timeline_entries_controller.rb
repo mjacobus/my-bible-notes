@@ -31,10 +31,9 @@ class TimelineEntriesController < ApplicationController
     @timeline ||= current_user.timelines.by_slug(params[:timeline_id])
   end
 
-  def index_component(records)
-    component_class(:index).new(
-      pluralized_key => records,
-      current_user: current_user,
+  def component_attributes(attributes)
+    attributes.merge(
+      profile_user: current_profile_user,
       timeline: timeline
     )
   end
