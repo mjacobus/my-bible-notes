@@ -32,10 +32,6 @@ class TimelinesController < ApplicationController
     end
   end
 
-  def component_attributes(attributes)
-    attributes.merge(profile_owner: profile_owner)
-  end
-
   def permitted_attributes
     if action_name == 'create'
       return super.merge(user_id: current_user.id)

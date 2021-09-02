@@ -4,12 +4,12 @@ module Timelines
   class FormPageComponent < PageComponent
     include Base::FormComponent
 
-    record :timeline
+    has :form
 
     private
 
     def breadcrumb
-      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_owner).form_for(timeline)
+      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_owner).form_for(form.record)
     end
   end
 end

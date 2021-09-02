@@ -1,7 +1,7 @@
 <%= render breadcrumb  %>
 <%= render flash  %>
 
-<%= simple_form_for(timeline, url: url, as: :timeline) do |f| %>
+<%= simple_form_for(form, url: form.target_url, as: form.param_key, method: form.method) do |f| %>
   <%= input_wrapper do %>
     <%= f.input :name %>
   <% end %>
@@ -12,7 +12,7 @@
     <%= f.input :description, as: :text %>
   <% end %>
   <%= input_wrapper do %>
-    <%= f.input :public %>
+    <%= f.input :public, as: :boolean %>
   <% end %>
   <%= input_wrapper do %>
     <%= f.submit(class: 'btn btn-primary mt-3 float-right') %>

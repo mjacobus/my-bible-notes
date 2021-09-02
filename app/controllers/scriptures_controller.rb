@@ -9,6 +9,8 @@ class ScripturesController < ApplicationController
 
   permit :title, :book, :verses, :description
 
+  form_class Scriptures::Form
+
   scope do
     profile_owner.scriptures.ordered
   end
@@ -23,14 +25,11 @@ class ScripturesController < ApplicationController
     end
   end
 
-  def component_attributes(attributes)
-    attributes.merge(profile_owner: profile_owner)
-  end
-
   def permitted_attributes
     if action_name == 'create'
       other = {}
 
+      # NOT tested yet
       if params[:parent_id]
         other[:parent_id] = profile_owner.scriptures.find(parent_id).id
       end

@@ -1,7 +1,7 @@
 <%= render breadcrumb  %>
 <%= render flash  %>
 
-<%= simple_form_for(entry, url: url, as: :entry) do |f| %>
+<%= simple_form_for(form, url: target_url, as: :entry) do |f| %>
   <div class="row">
     <div class="col-sm-10">
       <%= input_wrapper do %>
@@ -10,7 +10,7 @@
     </div>
     <div class="col-sm-2">
       <%= input_wrapper do %>
-        <%= f.input :color, as: :color, input_html: { value: entry.color.presence || random_color } %>
+        <%= f.input :color, as: :color, input_html: { value: form.record.color.presence || random_color } %>
       <% end %>
     </div>
   </div>
@@ -69,10 +69,10 @@
   </fieldset>
 
   <%= input_wrapper do %>
-    <%= f.input :explanation %>
+    <%= f.input :explanation, as: :text %>
   <% end %>
   <%= input_wrapper do %>
-    <%= f.input :confirmed %>
+    <%= f.input :confirmed, as: :boolean %>
   <% end %>
   <%= input_wrapper do %>
     <%= f.submit(class: 'btn btn-primary mt-3 float-right') %>

@@ -32,9 +32,6 @@ class TimelineEntriesController < ApplicationController
   end
 
   def component_attributes(attributes)
-    attributes.merge(
-      profile_owner: profile_owner,
-      timeline: timeline
-    )
+    super(attributes).merge(timeline: timeline)
   end
 end

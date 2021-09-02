@@ -51,11 +51,15 @@ module CrudController
     component_class(:show).new(component_attributes(key => record, current_user: current_user))
   end
 
-  def form_component(record)
-    component_class(:form).new(component_attributes(key => record, current_user: current_user))
+  def form_component(_record)
+    component_class(:form).new(component_attributes(form: form, current_user: current_user))
   end
 
   def component_attributes(attributes)
+    if profile_owner
+      return attributes.merge(profile_owner: profile_owner)
+    end
+
     attributes
   end
 
@@ -72,13 +76,17 @@ module CrudController
   end
 
   def save_record
-    record.attributes = permitted_attributes
+    form.attributes = permitted_attributes
 
-    if record.save
+    if form.save
       return redirect
     end
 
-    render form_component(record), status: :unprocessable_entity
+    render form_component(form), status: :unprocessable_entity
+  end
+
+  def form
+    @form ||= form_class.new(record).under_profile(profile_owner)
   end
 
   def redirect
@@ -109,6 +117,10 @@ module CrudController
     raise "Define component_class_template 'SomeNamespace::%{type}PageComponent'"
   end
 
+  def form_class
+    NullForm
+  end
+
   module ClassMethods
     def model_class(model_class)
       define_method :model_class do
@@ -127,6 +139,12 @@ module CrudController
         pluralized || key.to_s.pluralize.to_sym
       end
       private :pluralized_key
+    end
+
+    def form_class(klass)
+      define_method :form_class do
+        klass
+      end
     end
 
     def permit(*args)

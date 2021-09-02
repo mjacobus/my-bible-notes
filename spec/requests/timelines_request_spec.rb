@@ -5,10 +5,12 @@ require 'rails_helper'
 RSpec.describe TimelinesController, type: :request do
   # general
   let(:record) { factory.create(user_id: current_user.id) }
+  let(:new_record) { model_class.new(user_id: current_user.id) }
   let(:factory) { factories.timelines }
   let(:scope) { current_user.timelines.all }
   let(:key) { model_class.to_s.underscore.split('/').last.to_sym }
   let(:model_class) { Db::Timeline }
+  let(:form) { NullForm.new(record).under_profile(current_user) }
 
   # components
   let(:index_component) { Timelines::IndexPageComponent }
@@ -99,7 +101,7 @@ RSpec.describe TimelinesController, type: :request do
 
   describe 'GET #new' do
     let(:perform_request) { get(new_path) }
-    let(:record) { model_class.new }
+    let(:record) { new_record }
 
     it 'returns with success' do
       perform_request
@@ -113,7 +115,7 @@ RSpec.describe TimelinesController, type: :request do
       perform_request
 
       expected_component = form_component.new(
-        key => scope.new,
+        form: form,
         current_user: current_user,
         profile_owner: current_user
       )
@@ -140,6 +142,7 @@ RSpec.describe TimelinesController, type: :request do
 
     context 'when payload is invalid' do
       let(:params) { { key => invalid_attributes } }
+      let(:record) { new_record }
 
       it 'responds with 422' do
         perform_request
@@ -152,8 +155,10 @@ RSpec.describe TimelinesController, type: :request do
 
         perform_request
 
+        form.attributes = invalid_attributes
+
         expected_component = form_component.new(
-          key => model_class.new(invalid_attributes),
+          form: form,
           current_user: current_user,
           profile_owner: current_user
         )
@@ -177,7 +182,7 @@ RSpec.describe TimelinesController, type: :request do
       perform_request
 
       expected_component = form_component.new(
-        key => record,
+        form: form,
         current_user: current_user,
         profile_owner: current_user
       )
@@ -197,7 +202,7 @@ RSpec.describe TimelinesController, type: :request do
         expect(response).to redirect_to(index_path)
       end
 
-      it 'creates record' do
+      it 'updates record' do
         expect { perform_request }.to change { record.reload.name }.to('new name')
       end
     end
@@ -216,9 +221,10 @@ RSpec.describe TimelinesController, type: :request do
 
         perform_request
 
-        record.attributes = invalid_attributes
+        form.attributes = invalid_attributes
+
         expected_component = form_component.new(
-          key => record,
+          form: form,
           current_user: current_user,
           profile_owner: current_user
         )

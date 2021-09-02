@@ -15,26 +15,6 @@ RSpec.describe Db::Scripture, type: :model do
       .dependent(:restrict_with_exception)
   end
 
-  it { is_expected.to validate_presence_of(:title) }
-  it { is_expected.to validate_presence_of(:book) }
-  it { is_expected.to validate_presence_of(:verses) }
-
-  it 'validates chapters' do
-    scripture.book = 'genesis'
-    scripture.verses = '70:1'
-
-    expect(scripture).not_to be_valid
-    expect(scripture.errors[:verses]).to include('Capítulo não existe: 70')
-  end
-
-  it 'validates verses' do
-    scripture.book = 'genesis'
-    scripture.verses = '1:1; 2:87'
-
-    expect(scripture).not_to be_valid
-    expect(scripture.errors[:verses]).to include('Versículo não existe: 2:87')
-  end
-
   describe '#to_s' do
     it 'converts the bible scripture to string' do
       scripture.book = 'genesis'
