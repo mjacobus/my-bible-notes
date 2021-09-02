@@ -8,7 +8,7 @@ class TestFactories
         title: "Title #{sequency}",
         verses: "1:#{sequency}",
         description: "Description #{sequency}",
-        user_id: users.valid_random_id_or(overrides[:user_id])
+        user_id: overrides[:user_id] || users.create.id
       }.merge(overrides)
     end
   end
