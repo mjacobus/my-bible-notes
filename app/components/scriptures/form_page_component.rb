@@ -4,7 +4,7 @@ module Scriptures
   class FormPageComponent < PageComponent
     include Base::FormComponent
 
-    record :form
+    has :form
 
     def book_input(form)
       select_input(form, :book, books)

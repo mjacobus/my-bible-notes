@@ -4,7 +4,7 @@ module Timelines
   class FormPageComponent < PageComponent
     include Base::FormComponent
 
-    record :form
+    has :form
 
     private
 
