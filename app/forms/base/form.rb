@@ -11,6 +11,11 @@ module Base
       @record = record
     end
 
+    def under_profile(profile)
+      @profile_owner = profile
+      self
+    end
+
     def save
       if valid?
         @record.save!
@@ -48,7 +53,7 @@ module Base
         return urls.to(record)
       end
 
-      urls.send("#{form_key.pluralize}_path", current_user)
+      urls.send("#{as.pluralize}_path", @profile_owner)
     end
 
     def as

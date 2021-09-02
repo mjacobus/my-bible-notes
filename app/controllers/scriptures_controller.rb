@@ -18,7 +18,7 @@ class ScripturesController < ApplicationController
   private
 
   def form
-    @form ||= Scriptures::Form.new(record)
+    @form ||= Scriptures::Form.new(record).under_profile(profile_owner)
   end
 
   def before_show
