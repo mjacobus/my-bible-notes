@@ -113,6 +113,7 @@ pt-BR:
     links:
       bible: "Bíblia"
       my_scriptures: "Meus textos bíblicos"
+      add_related_scripture: "Adicionar texto relacionado"
       timelines: "Linhas do Tempo"
       timeline_entries: "Eventos"
       update: "Atualizar"

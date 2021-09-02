@@ -1,5 +1,9 @@
-<div class="list-item position-relative">
+<div class="<%= bem %> list-item position-relative level-<%= level %>">
   <%= render menu %>
   <%= render attribute(scripture.scripture_and_title).with_label(:title).without_label.wrap_with(:div, class: :h5).with_link(urls.to(scripture)) %>
   <%= render attribute(scripture.description).with_label(:description).without_label.wrap_with(:small) %>
 </div>
+
+<% scripture.related_scriptures.each do |scripture| %>
+  <%= render Scriptures::IndexItemComponent.new(profile_owner: profile_owner, scripture: scripture, level: level) %>
+<% end %>
