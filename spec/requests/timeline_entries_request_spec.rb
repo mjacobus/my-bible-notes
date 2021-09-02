@@ -48,8 +48,8 @@ RSpec.describe TimelineEntriesController, type: :request do
       expected_component = index_component.new(
         key.to_s.pluralize.to_sym => scope,
         current_user: current_user,
-        timeline: timeline,
-        current_pofile_user: current_user
+        profile_owner: current_user,
+        timeline: timeline
       )
       expect(renderer).to have_rendered_component(expected_component)
     end
