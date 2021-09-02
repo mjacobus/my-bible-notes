@@ -52,10 +52,14 @@ module CrudController
   end
 
   def form_component(record)
-    component_class(:form).new(component_attributes(key => record, current_user: current_user))
+    component_class(:form).new(component_attributes(form: form, current_user: current_user))
   end
 
   def component_attributes(attributes)
+    if profile_owner
+      return attributes.merge(profile_owner: profile_owner)
+    end
+
     attributes
   end
 
@@ -82,7 +86,7 @@ module CrudController
   end
 
   def form
-    record
+    @form ||= NullForm.new(record).under_profile(profile_owner)
   end
 
   def redirect

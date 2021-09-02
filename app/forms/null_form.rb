@@ -2,6 +2,8 @@
 
 # rubocop:disable Style/MissingRespondToMissing
 class NullForm
+  include ActiveModel::Model
+
   attr_reader :record
 
   def initialize(record)
@@ -25,8 +27,24 @@ class NullForm
     urls.send("#{as.pluralize}_path", @profile_owner)
   end
 
-  def as
-    param_key
+  def param_key
+    record.class.to_s.split('::').last.underscore
+  end
+
+  def method
+    record.id ? :patch : :post
+  end
+
+  def attributes=(params)
+    record.attributes = params
+  end
+
+  def errors
+    record.errors
+  end
+
+  def class
+    record.class
   end
 
   private
@@ -34,29 +52,5 @@ class NullForm
   def urls
     @urls ||= Routes.new
   end
-
-  def singular_route_key
-    @record.class.to_s.sub('Db::', '')
-  end
-
-  def param_key
-    @record.class.to_s.split('::').last.underscore
-  end
-
-  def model_class
-    @record.class
-  end
-
-  def i18n_key
-    @record.model_name.i18n_key
-  end
-
-  def t(key, **args)
-    I18n.t(key, **args)
-  end
-
-  # def error_message(key, **args)
-  #   t("app.messages.errors.#{key}", **args)
-  # end
 end
 # rubocop:enable Style/MissingRespondToMissing

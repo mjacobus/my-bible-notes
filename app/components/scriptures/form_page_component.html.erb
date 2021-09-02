@@ -1,7 +1,7 @@
 <%= render breadcrumb  %>
 <%= render flash  %>
 
-<%= simple_form_for(form, url: form.target_url, as: form.as) do |f| %>
+<%= simple_form_for(form, url: form.target_url, as: form.param_key) do |f| %>
   <%= input_wrapper do %>
     <%= f.input :title %>
   <% end %>

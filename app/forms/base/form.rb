@@ -18,19 +18,12 @@ module Base
 
     def save
       if valid?
-        @record.save!
+        record.save!
       end
     end
 
-    # TODO: Fix the following issue
-    #
-    # This hack is not working very well with simple_form i18n file.
-    # AR attributes i18n is also not working well.
     def model_name
-      @model_name ||= ActiveModel::Name.new(model_class, nil, singular_route_key).tap do |name|
-        name.param_key = param_key
-        name.i18n_key = i18n_key
-      end
+      record.model_name
     end
 
     def attributes=(params)
@@ -56,30 +49,14 @@ module Base
       urls.send("#{as.pluralize}_path", @profile_owner)
     end
 
-    def as
-      param_key
+    def param_key
+      @record.class.to_s.split('::').last.underscore
     end
 
     private
 
     def urls
       @urls ||= Routes.new
-    end
-
-    def singular_route_key
-      @record.class.to_s.sub('Db::', '')
-    end
-
-    def param_key
-      @record.class.to_s.split('::').last.underscore
-    end
-
-    def model_class
-      @record.class
-    end
-
-    def i18n_key
-      @record.model_name.i18n_key
     end
 
     def t(key, **args)
