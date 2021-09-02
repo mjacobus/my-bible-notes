@@ -33,7 +33,7 @@ class TimelineEntriesController < ApplicationController
 
   def component_attributes(attributes)
     attributes.merge(
-      profile_user: current_profile_user,
+      profile_owner: profile_owner,
       timeline: timeline
     )
   end

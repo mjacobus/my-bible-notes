@@ -3,7 +3,7 @@
 class Timelines::IndexItemComponent < ApplicationComponent
   include MenuAwareComponent
   has :timeline
-  has :owner
+  has :profile_owner
   menu_type :item_options
 
   def icon_name
@@ -13,7 +13,7 @@ class Timelines::IndexItemComponent < ApplicationComponent
   private
 
   def menu_items(menu)
-    unless visitor.is?(owner)
+    unless visitor.is?(profile_owner)
       return []
     end
 

@@ -4,17 +4,16 @@ module Scriptures
   class IndexPageComponent < PageComponent
     include MenuAwareComponent
     has :scriptures
-    has :owner
     paginate :scriptures
 
     private
 
     def breadcrumb
-      @breadcrumb ||= BreadcrumbComponent.new.under_profile(owner).index
+      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_owner).index
     end
 
     def menu_items(menu)
-      unless visitor.is?(owner)
+      unless visitor.is?(profile_owner)
         return []
       end
 

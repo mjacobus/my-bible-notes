@@ -27,7 +27,7 @@ module TimelineEntries
     private
 
     def breadcrumb
-      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_user).form_for(entry)
+      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_owner).form_for(entry)
     end
   end
 end

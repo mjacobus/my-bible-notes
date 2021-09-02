@@ -5,12 +5,12 @@
 <%= content_for(:title) { "#{timeline.username}: #{timeline.name}" } %>
 <%= render attribute(timeline.name).with_label(:name) %>
 
-<% if visitor.is?(owner) %>
+<% if visitor.is?(profile_owner) %>
   <%= render attribute(t(timeline.public.to_s)).with_label(:public) %>
 <% end %>
 <%= render attribute(timeline.description).with_label(:description).without_label.wrap_with(:small) %>
 
-<% if visitor.is?(owner) %>
+<% if visitor.is?(profile_owner) %>
    <%= render attribute(t('app.messages.x_timeline_entries', number: timeline.entries.count)).with_label(:number_of_timeline_entries) %>
 <% end %>
 

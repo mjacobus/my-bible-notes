@@ -3,7 +3,7 @@
 <%= render menu %>
 
 <% timelines.each do |timeline| %>
-  <%= render Timelines::IndexItemComponent.new(timeline: timeline, owner: owner) %>
+  <%= render Timelines::IndexItemComponent.new(timeline: timeline, profile_owner: profile_owner) %>
 <% end %>
 
 <%= render pagination %>
