@@ -5,8 +5,6 @@ module TimelineEntries
     include Base::FormComponent
 
     record :entry
-    has :current_user
-    has :profile_user
 
     def url
       if entry.id

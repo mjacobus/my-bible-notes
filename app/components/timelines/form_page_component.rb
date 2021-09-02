@@ -5,7 +5,6 @@ module Timelines
     include Base::FormComponent
 
     record :timeline
-    has :current_user
 
     private
 
