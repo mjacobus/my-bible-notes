@@ -2,8 +2,7 @@
 
 module Scriptures
   class IndexPageComponent < PageComponent
-    has :scriptures
-    paginate :scriptures
+    has :collection
 
     private
 

@@ -44,7 +44,7 @@ RSpec.describe ScripturesController, type: :request do
       perform_request
 
       expected_component = index_component.new(
-        key.to_s.pluralize.to_sym => scope,
+        collection: scope,
         current_user: current_user,
         profile_owner: current_user
       )
@@ -67,7 +67,7 @@ RSpec.describe ScripturesController, type: :request do
       perform_request
 
       expected_component = show_component.new(
-        key => record,
+        record: record,
         current_user: current_user,
         profile_owner: current_user
       )

@@ -2,13 +2,13 @@
 
 module Scriptures
   class ShowPageComponent < PageComponent
-    has :scripture
+    has :record
 
     def menu
       @menu ||= IndexMenuComponent.new(
         current_user: current_user,
         profile_owner: profile_owner,
-        scripture: scripture,
+        scripture: record,
         context: :show_page
       )
     end
@@ -16,7 +16,7 @@ module Scriptures
     private
 
     def breadcrumb
-      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_owner).show(scripture)
+      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_owner).show(record)
     end
   end
 end

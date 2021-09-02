@@ -2,7 +2,7 @@
 
 module Timelines
   class ShowPageComponent < PageComponent
-    has :timeline
+    has :record
 
     private
 
@@ -10,21 +10,21 @@ module Timelines
       @menu ||= ContextMenuComponent.new(
         current_user: current_user,
         profile_owner: profile_owner,
-        timeline: timeline,
+        timeline: record,
         context: :show_page
       )
     end
 
     def breadcrumb
-      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_owner).show(timeline)
+      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_owner).show(record)
     end
 
     def menu_items(menu)
       if visitor.is?(current_user)
         [
-          menu.link(t('app.links.timeline_entries'), urls.timeline_entries_path(timeline)),
-          menu.link(t('app.links.edit'), urls.edit_timeline_path(timeline)),
-          menu.link(t('app.links.delete'), urls.to(timeline), data: { method: :delete, confirm: delete_warning })
+          menu.link(t('app.links.timeline_entries'), urls.timeline_entries_path(record)),
+          menu.link(t('app.links.edit'), urls.edit_timeline_path(record)),
+          menu.link(t('app.links.delete'), urls.to(record), data: { method: :delete, confirm: delete_warning })
         ]
       end
     end

@@ -3,8 +3,7 @@
 module TimelineEntries
   class IndexPageComponent < PageComponent
     has :timeline
-    has :entries
-    paginate :entries
+    has :collection
 
     private
 

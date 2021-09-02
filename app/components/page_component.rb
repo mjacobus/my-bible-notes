@@ -12,12 +12,6 @@ class PageComponent < ApplicationComponent
   end
 
   def pagination
-    PaginationComponent.new(items)
-  end
-
-  def self.paginate(method)
-    define_method :items do
-      send(method)
-    end
+    PaginationComponent.new(collection)
   end
 end

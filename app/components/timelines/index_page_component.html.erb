@@ -2,8 +2,8 @@
 <%= render flash %>
 <%= render menu %>
 
-<% timelines.each do |timeline| %>
-  <%= render Timelines::IndexItemComponent.new(timeline: timeline, profile_owner: profile_owner) %>
+<% collection.each do |record| %>
+  <%= render Timelines::IndexItemComponent.new(timeline: record, profile_owner: profile_owner) %>
 <% end %>
 
 <%= render pagination %>
