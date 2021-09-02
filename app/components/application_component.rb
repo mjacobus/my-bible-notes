@@ -3,15 +3,16 @@
 class ApplicationComponent < ViewComponent::Base
   include Base::HasAttribute
   include Base::CurrentUser
+  include Base::Bem
 
   has :profile_owner
 
-  def attribute(value)
-    AttributeWrapperComponent.new(value)
-  end
-
   def initialize(options = {})
     @options = options
+  end
+
+  def attribute(value)
+    AttributeWrapperComponent.new(value)
   end
 
   def icon(name, options = {}, &block)
@@ -23,23 +24,6 @@ class ApplicationComponent < ViewComponent::Base
     end
 
     icon + '&nbsp;'.html_safe + yield
-  end
-
-  def bem(element = nil, modifier = nil, block: nil)
-    block ||= self.class.to_s
-    block = block.gsub('::', '_')
-
-    parts = [block]
-
-    if element
-      parts << "__#{element}"
-    end
-
-    if modifier
-      parts << "--#{modifier}"
-    end
-
-    parts.join
   end
 
   private
