@@ -53,9 +53,9 @@ class ApplicationController < ActionController::Base
     @routes ||= Routes.new
   end
 
-  def current_profile_user
+  def profile_owner
     if params[:username]
-      @current_profile_user ||= Db::User.find_by(username: params[:username])
+      @profile_owner ||= Db::User.find_by(username: params[:username])
     end
   end
 

@@ -8,10 +8,10 @@ class TimelinesController < ApplicationController
   key :timeline
   permit :name, :slug, :description, :public
   scope do
-    if owner.is?(current_user)
-      owner.timelines
+    if profile_owner.is?(current_user)
+      profile_owner.timelines
     else
-      owner.timelines.public_timelines
+      profile_owner.timelines.public_timelines
     end
   end
   component_class_template 'Timelines::%{type}PageComponent'
@@ -27,17 +27,13 @@ class TimelinesController < ApplicationController
       return
     end
 
-    if current_user.id != owner.id
+    if current_user.id != profile_owner.id
       raise ActiveRecord::RecordNotFound
     end
   end
 
   def component_attributes(attributes)
-    attributes.merge(owner: owner)
-  end
-
-  def owner
-    @owner ||= Db::User.find_by(username: params[:username])
+    attributes.merge(profile_owner: profile_owner)
   end
 
   def permitted_attributes

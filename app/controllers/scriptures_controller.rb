@@ -10,7 +10,7 @@ class ScripturesController < ApplicationController
   permit :title, :book, :verses, :description
 
   scope do
-    owner.scriptures
+    profile_owner.scriptures
   end
 
   component_class_template 'Scriptures::%{type}PageComponent'
@@ -22,17 +22,13 @@ class ScripturesController < ApplicationController
   # end
 
   def before_show
-    unless current_user.is?(owner)
+    unless current_user.is?(profile_owner)
       raise ActiveRecord::RecordNotFound
     end
   end
 
   def component_attributes(attributes)
-    attributes.merge(owner: owner)
-  end
-
-  def owner
-    @owner ||= Db::User.find_by(username: params[:username])
+    attributes.merge(profile_owner: profile_owner)
   end
 
   def permitted_attributes
@@ -40,7 +36,7 @@ class ScripturesController < ApplicationController
       other = {}
 
       if params[:parent_id]
-        other[:parent_id] = owner.scriptures.find(parent_id).id
+        other[:parent_id] = profile_owner.scriptures.find(parent_id).id
       end
 
       return super.merge(user_id: current_user.id).merge(other)

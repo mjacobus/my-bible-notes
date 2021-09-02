@@ -9,7 +9,7 @@ module Timelines
     private
 
     def breadcrumb
-      @breadcrumb ||= BreadcrumbComponent.new.under_profile(owner).form_for(timeline)
+      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_owner).form_for(timeline)
     end
   end
 end

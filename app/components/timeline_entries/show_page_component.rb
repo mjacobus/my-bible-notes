@@ -5,13 +5,13 @@ module TimelineEntries
     include MenuAwareComponent
     menu_type :list_options
     has :entry
-    has :profile_user
+    has :profile_owner
     has :current_user
 
     private
 
     def breadcrumb
-      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_user).show(entry)
+      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_owner).show(entry)
     end
 
     def menu_items(menu)

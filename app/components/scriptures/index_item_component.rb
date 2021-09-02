@@ -3,13 +3,13 @@
 class Scriptures::IndexItemComponent < ApplicationComponent
   include MenuAwareComponent
   has :scripture
-  has :owner
+  has :profile_owner
   menu_type :item_options
 
   private
 
   def menu_items(menu)
-    unless visitor.is?(owner)
+    unless visitor.is?(profile_owner)
       return []
     end
 

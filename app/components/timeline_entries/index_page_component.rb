@@ -5,13 +5,13 @@ module TimelineEntries
     has :timeline
     has :entries
     has :current_user
-    has :profile_user
+    has :profile_owner
     paginate :entries
 
     private
 
     def breadcrumb
-      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_user).index(timeline)
+      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_owner).index(timeline)
     end
 
     def menu_items(menu)

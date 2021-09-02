@@ -13,7 +13,7 @@ module Scriptures
     private
 
     def breadcrumb
-      @breadcrumb ||= BreadcrumbComponent.new.under_profile(owner).form_for(scripture)
+      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_owner).form_for(scripture)
     end
 
     def books

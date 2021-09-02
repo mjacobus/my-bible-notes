@@ -3,7 +3,7 @@
 <%= render menu %>
 
 <% scriptures.each do |scripture| %>
-  <%= render Scriptures::IndexItemComponent.new(owner: owner, scripture: scripture) %>
+  <%= render Scriptures::IndexItemComponent.new(profile_owner: profile_owner, scripture: scripture) %>
 <% end %>
 
 <%= render pagination %>

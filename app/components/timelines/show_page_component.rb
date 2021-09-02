@@ -6,12 +6,11 @@ module Timelines
     menu_type :list_options
     has :timeline
     has :current_user, optional: true
-    has :owner
 
     private
 
     def breadcrumb
-      @breadcrumb ||= BreadcrumbComponent.new.under_profile(owner).show(timeline)
+      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_owner).show(timeline)
     end
 
     def menu_items(menu)

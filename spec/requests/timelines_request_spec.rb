@@ -45,7 +45,7 @@ RSpec.describe TimelinesController, type: :request do
       expected_component = index_component.new(
         key.to_s.pluralize.to_sym => scope,
         current_user: current_user,
-        owner: current_user
+        profile_owner: current_user
       )
       expect(renderer).to have_rendered_component(expected_component)
     end
@@ -68,7 +68,7 @@ RSpec.describe TimelinesController, type: :request do
       expected_component = show_component.new(
         key => record,
         current_user: current_user,
-        owner: current_user
+        profile_owner: current_user
       )
       expect(renderer).to have_rendered_component(expected_component)
     end
@@ -115,7 +115,7 @@ RSpec.describe TimelinesController, type: :request do
       expected_component = form_component.new(
         key => scope.new,
         current_user: current_user,
-        owner: current_user
+        profile_owner: current_user
       )
       expect(renderer).to have_rendered_component(expected_component)
     end
@@ -155,7 +155,7 @@ RSpec.describe TimelinesController, type: :request do
         expected_component = form_component.new(
           key => model_class.new(invalid_attributes),
           current_user: current_user,
-          owner: current_user
+          profile_owner: current_user
         )
         expect(renderer).to have_rendered_component(expected_component)
       end
@@ -179,7 +179,7 @@ RSpec.describe TimelinesController, type: :request do
       expected_component = form_component.new(
         key => record,
         current_user: current_user,
-        owner: current_user
+        profile_owner: current_user
       )
       expect(renderer).to have_rendered_component(expected_component)
     end
@@ -220,7 +220,7 @@ RSpec.describe TimelinesController, type: :request do
         expected_component = form_component.new(
           key => record,
           current_user: current_user,
-          owner: current_user
+          profile_owner: current_user
         )
         expect(renderer).to have_rendered_component(expected_component)
       end
