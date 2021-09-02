@@ -60,7 +60,7 @@ bundle exec rubocop -a
 
 ## Heroku
 
-- [TODO: DB Backups](https://data.heroku.com/datastores/TODO-CHANGE#durability)
+- [DB Backups](https://data.heroku.com/datastores/6532561c-a42c-4970-83a8-4be84c0caf9d#durability)
 
 ### Restoring a backup
 
