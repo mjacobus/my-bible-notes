@@ -52,7 +52,7 @@ module CrudController
   end
 
   def show_component(record)
-    component_class(:show).new(component_attributes(key => record, current_user: current_user))
+    component_class(:show).new(component_attributes(record: record, current_user: current_user))
   end
 
   def form_component(_record)

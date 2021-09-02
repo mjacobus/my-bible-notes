@@ -2,7 +2,7 @@
 
 module TimelineEntries
   class ShowPageComponent < PageComponent
-    has :entry
+    has :record
 
     private
 
@@ -10,13 +10,13 @@ module TimelineEntries
       @menu ||= ContextMenuComponent.new(
         current_user: current_user,
         profile_owner: profile_owner,
-        entry: entry,
+        entry: record,
         context: :show_page
       )
     end
 
     def breadcrumb
-      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_owner).show(entry)
+      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_owner).show(record)
     end
   end
 end

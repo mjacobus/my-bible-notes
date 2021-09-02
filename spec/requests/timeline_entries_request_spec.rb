@@ -72,7 +72,7 @@ RSpec.describe TimelineEntriesController, type: :request do
       perform_request
 
       expected_component = show_component.new(
-        key => record,
+        record: record,
         current_user: current_user,
         profile_owner: current_user,
         timeline: timeline
