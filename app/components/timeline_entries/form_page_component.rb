@@ -6,6 +6,14 @@ module TimelineEntries
 
     has :form
 
+    def target_url
+      if form.id
+        return urls.to(form.record)
+      end
+
+      urls.timeline_entries_path(form.record.timeline)
+    end
+
     def precisions
       Db::TimelineEntry::VALID_PRECISIONS.map do |precision|
         [t("app.attributes.precisions.#{precision}"), precision]
