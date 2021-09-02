@@ -2,8 +2,7 @@
 <%= render flash %>
 <%= render menu %>
 
-<% collection.each do |record| %>
-  <%= render Scriptures::IndexItemComponent.new(profile_owner: profile_owner, scripture: record) %>
-<% end %>
+<% collection.parents.each do |record| %>
+  <%= render Scriptures::IndexItemComponent.new(profile_owner: profile_owner, scripture: record) %> <% end %>
 
 <%= render pagination %>

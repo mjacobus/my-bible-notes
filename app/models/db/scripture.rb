@@ -14,6 +14,7 @@ class Db::Scripture < ApplicationRecord
            inverse_of: :parent_scripture
 
   scope :ordered, -> { order(:book_number) }
+  scope :parents, -> { where(parent_id: nil) }
 
   delegate :username, to: :user
 

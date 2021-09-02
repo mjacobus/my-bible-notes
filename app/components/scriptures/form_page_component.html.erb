@@ -15,6 +15,9 @@
     <%= f.input :description, as: :text %>
   <% end %>
   <%= input_wrapper do %>
+    <%= f.input :parent_id, as: :hidden, input_html: { value: form.parent_id || params[:parent_id] } %>
+  <% end %>
+  <%= input_wrapper do %>
     <%= submit_button(f) %>
   <% end %>
 <% end %>

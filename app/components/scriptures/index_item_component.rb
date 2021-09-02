@@ -4,6 +4,10 @@ module Scriptures
   class IndexItemComponent < ApplicationComponent
     has :scripture
 
+    def level
+      get(:level).to_i + 1
+    end
+
     private
 
     def menu
