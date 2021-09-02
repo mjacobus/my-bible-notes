@@ -24,7 +24,7 @@ class NullForm
       return urls.to(record)
     end
 
-    urls.send("#{as.pluralize}_path", @profile_owner)
+    urls.send("#{param_key.pluralize}_path", @profile_owner)
   end
 
   def param_key
@@ -35,17 +35,11 @@ class NullForm
     record.id ? :patch : :post
   end
 
-  def attributes=(params)
-    record.attributes = params
-  end
+  delegate :attributes=, to: :record
 
-  def errors
-    record.errors
-  end
+  delegate :errors, to: :record
 
-  def class
-    record.class
-  end
+  delegate :class, to: :record
 
   private
 

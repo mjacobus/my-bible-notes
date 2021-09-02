@@ -22,9 +22,7 @@ module Base
       end
     end
 
-    def model_name
-      record.model_name
-    end
+    delegate :model_name, to: :record
 
     def attributes=(params)
       params.each do |key, value|

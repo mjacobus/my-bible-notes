@@ -31,7 +31,7 @@ class ScripturesController < ApplicationController
     attributes.merge(profile_owner: profile_owner)
   end
 
-  def form_component(record)
+  def form_component(_record)
     component_class(:form).new(component_attributes(form: form, current_user: current_user))
   end
 

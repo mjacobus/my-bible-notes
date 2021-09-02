@@ -4,15 +4,7 @@ module TimelineEntries
   class FormPageComponent < PageComponent
     include Base::FormComponent
 
-    record :entry
-
-    def url
-      if entry.id
-        return urls.to(entry)
-      end
-
-      urls.timeline_entries_path(entry.timeline)
-    end
+    has :form
 
     def precisions
       Db::TimelineEntry::VALID_PRECISIONS.map do |precision|
@@ -27,7 +19,7 @@ module TimelineEntries
     private
 
     def breadcrumb
-      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_owner).form_for(entry)
+      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_owner).form_for(form.record)
     end
   end
 end
