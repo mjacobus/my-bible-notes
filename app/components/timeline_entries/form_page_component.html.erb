@@ -1,7 +1,7 @@
 <%= render breadcrumb  %>
 <%= render flash  %>
 
-<%= simple_form_for(form, url: form.target_url, as: form.param_key) do |f| %>
+<%= simple_form_for(form, url: form.target_url, as: :entry) do |f| %>
   <div class="row">
     <div class="col-sm-10">
       <%= input_wrapper do %>
@@ -69,10 +69,10 @@
   </fieldset>
 
   <%= input_wrapper do %>
-    <%= f.input :explanation %>
+    <%= f.input :explanation, as: :text %>
   <% end %>
   <%= input_wrapper do %>
-    <%= f.input :confirmed %>
+    <%= f.input :confirmed, as: :boolean %>
   <% end %>
   <%= input_wrapper do %>
     <%= f.submit(class: 'btn btn-primary mt-3 float-right') %>

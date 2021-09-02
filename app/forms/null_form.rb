@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# rubocop:disable Style/MissingRespondToMissing
 class NullForm
   include ActiveModel::Model
 
@@ -11,8 +10,14 @@ class NullForm
   end
 
   def method_missing(*args)
-    @record.send(*args)
+    record.send(*args)
   end
+
+  def respond_to_missing?(*args)
+    record.send(:respond_to_missing?, *args)
+  end
+
+  delegate :persisted?, to: :record
 
   def under_profile(profile)
     @profile_owner = profile
@@ -47,4 +52,3 @@ class NullForm
     @urls ||= Routes.new
   end
 end
-# rubocop:enable Style/MissingRespondToMissing
