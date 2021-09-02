@@ -19,6 +19,8 @@ class Db::Scripture < ApplicationRecord
   validates :verses, presence: true
   validates :title, presence: true
 
+  validate :verses_validation
+
   delegate :username, to: :user
 
   def to_s
@@ -49,5 +51,14 @@ class Db::Scripture < ApplicationRecord
     if book_instance
       self.book_number = book_instance.number
     end
+  end
+
+  def verses_validation
+    book_instance&.parse(verses)
+  rescue Bible::Errors::InvalidChapterError => exception
+    errors.add(:verses, error_message(:invalid_chapter, chapter: exception.chapter))
+  rescue Bible::Errors::InvalidVerseError => exception
+    errors.add(:verses,
+               error_message(:invalid_verse, verse: "#{exception.chapter}:#{exception.verse}"))
   end
 end
