@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 class PageComponent < ApplicationComponent
-  # TODO: Remove
-  include MenuAwareComponent
-  menu_type :list_options
-
   def breadcrumb
     @breadcrumb ||= BreadcrumbComponent.new.tap do |b|
       b.add(t('app.links.home'), urls.root_path)

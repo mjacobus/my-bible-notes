@@ -2,7 +2,6 @@
 
 module Scriptures
   class IndexPageComponent < PageComponent
-    include MenuAwareComponent
     has :scriptures
     paginate :scriptures
 
