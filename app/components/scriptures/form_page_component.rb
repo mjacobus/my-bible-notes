@@ -4,7 +4,7 @@ module Scriptures
   class FormPageComponent < PageComponent
     include Base::FormComponent
 
-    record :scripture
+    record :form
 
     def book_input(form)
       select_input(form, :book, books)
@@ -13,7 +13,8 @@ module Scriptures
     private
 
     def breadcrumb
-      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_owner).form_for(scripture)
+      @breadcrumb ||= BreadcrumbComponent.new
+        .under_profile(profile_owner).form_for(form.record)
     end
 
     def books

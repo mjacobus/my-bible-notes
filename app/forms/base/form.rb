@@ -17,10 +17,6 @@ module Base
       end
     end
 
-    def destroy
-      @record.destroy
-    end
-
     # TODO: Fix the following issue
     #
     # This hack is not working very well with simple_form i18n file.
@@ -47,7 +43,23 @@ module Base
       end
     end
 
+    def target_url
+      if record.id
+        return urls.to(record)
+      end
+
+      urls.send("#{form_key.pluralize}_path", current_user)
+    end
+
+    def as
+      param_key
+    end
+
     private
+
+    def urls
+      @urls ||= Routes.new
+    end
 
     def singular_route_key
       @record.class.to_s.sub('Db::', '')

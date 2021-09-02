@@ -17,6 +17,10 @@ class ScripturesController < ApplicationController
 
   private
 
+  def form
+    @form ||= Scriptures::Form.new(record)
+  end
+
   def before_show
     unless current_user.is?(profile_owner)
       raise ActiveRecord::RecordNotFound
@@ -25,6 +29,10 @@ class ScripturesController < ApplicationController
 
   def component_attributes(attributes)
     attributes.merge(profile_owner: profile_owner)
+  end
+
+  def form_component(record)
+    component_class(:form).new(component_attributes(form: form, current_user: current_user))
   end
 
   def permitted_attributes

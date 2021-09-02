@@ -72,13 +72,17 @@ module CrudController
   end
 
   def save_record
-    record.attributes = permitted_attributes
+    form.attributes = permitted_attributes
 
-    if record.save
+    if form.save
       return redirect
     end
 
-    render form_component(record), status: :unprocessable_entity
+    render form_component(form), status: :unprocessable_entity
+  end
+
+  def form
+    record
   end
 
   def redirect
