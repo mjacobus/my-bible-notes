@@ -4,10 +4,6 @@ module Base
   module FormComponent
     extend ActiveSupport::Concern
 
-    included do
-      has :current_user
-    end
-
     def submit_button(form)
       form.submit(class: 'btn btn-primary mt-3 float-right')
     end

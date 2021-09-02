@@ -3,7 +3,6 @@
 module Scriptures
   class ShowPageComponent < PageComponent
     has :scripture
-    has :current_user, optional: true
 
     def menu
       @menu ||= IndexMenuComponent.new(
