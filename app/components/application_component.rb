@@ -4,6 +4,7 @@ class ApplicationComponent < ViewComponent::Base
   include Base::HasAttribute
   include Base::CurrentUser
   include Base::Bem
+  include Base::Icons
 
   has :profile_owner
 
@@ -13,17 +14,6 @@ class ApplicationComponent < ViewComponent::Base
 
   def attribute(value)
     AttributeWrapperComponent.new(value)
-  end
-
-  def icon(name, options = {}, &block)
-    options[:class] = [options[:class], "bi bi-#{name}"].compact.join(' ')
-    icon = tag.i('', **options)
-
-    unless block
-      return icon
-    end
-
-    icon + '&nbsp;'.html_safe + yield
   end
 
   private
