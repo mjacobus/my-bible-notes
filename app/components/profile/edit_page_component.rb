@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 module Profile
-  class EditPageComponent < BaseFormPageComponent
-    has :user
+  class EditPageComponent < PageComponent
+    include Base::FormComponent
+
+    record :user
 
     def breadcrumb
       @breadcrumb ||= BreadcrumbComponent.new.tap do |b|

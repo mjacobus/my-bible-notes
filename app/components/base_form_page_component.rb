@@ -1,16 +1,7 @@
 # frozen_string_literal: true
 
 class BaseFormPageComponent < PageComponent
-  has :owner
-  has :current_user
-
-  def submit_button(form)
-    form.submit(class: 'btn btn-primary mt-3 float-right')
-  end
-
-  def input_wrapper(&block)
-    tag.div(class: 'form-wrapper my-3', &block)
-  end
+  include Base::FormComponent
 
   def url
     if record.id
@@ -22,14 +13,6 @@ class BaseFormPageComponent < PageComponent
 
   def form_key
     @form_key ||= record.class.to_s.underscore.tr('db/', '')
-  end
-
-  def self.record(name)
-    has name
-
-    define_method :record do
-      send(name)
-    end
   end
 
   private
