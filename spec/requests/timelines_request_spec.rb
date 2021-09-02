@@ -156,7 +156,6 @@ RSpec.describe TimelinesController, type: :request do
         perform_request
 
         form.attributes = invalid_attributes
-        form.valid?
 
         expected_component = form_component.new(
           form: form,
@@ -223,7 +222,6 @@ RSpec.describe TimelinesController, type: :request do
         perform_request
 
         form.attributes = invalid_attributes
-        form.valid?
 
         expected_component = form_component.new(
           form: form,
