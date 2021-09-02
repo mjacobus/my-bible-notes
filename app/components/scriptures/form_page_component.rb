@@ -14,10 +14,6 @@ module Scriptures
       @breadcrumb ||= BreadcrumbComponent.new.under_profile(owner).form_for(scripture)
     end
 
-    def setup
-      # TODO: Remove this later
-    end
-
     def books
       Bible::Factory.new.from_config.map do |book|
         [book.localized_name, book.slug]
