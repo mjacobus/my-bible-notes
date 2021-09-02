@@ -46,7 +46,6 @@ RSpec.describe ScripturesController, type: :request do
       expected_component = index_component.new(
         key.to_s.pluralize.to_sym => scope,
         current_user: current_user,
-        current_user: current_user,
         profile_owner: current_user
       )
       expect(renderer).to have_rendered_component(expected_component)
