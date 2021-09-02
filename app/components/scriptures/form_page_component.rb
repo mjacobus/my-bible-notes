@@ -1,7 +1,9 @@
 # frozen_string_literal: true
 
 module Scriptures
-  class FormPageComponent < BaseFormPageComponent
+  class FormPageComponent < PageComponent
+    include Base::FormComponent
+
     record :scripture
 
     def book_input(form)
