@@ -18,11 +18,6 @@ module Scriptures
                  error_message(:invalid_verse, verse: "#{exception.chapter}:#{exception.verse}"))
     end
 
-    # def attributes=(params)
-    #   raise params.inspect
-    # end
-
-
     private
 
     def book_instance
