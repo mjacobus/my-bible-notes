@@ -2,15 +2,9 @@
 
 class ApplicationComponent < ViewComponent::Base
   include Base::HasAttribute
+  include Base::CurrentUser
 
   has :profile_owner
-  has :current_user
-
-  delegate :current_user, to: :helpers
-
-  def visitor
-    current_user || GuestUser.new
-  end
 
   def attribute(value)
     AttributeWrapperComponent.new(value)
