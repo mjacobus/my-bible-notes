@@ -38,19 +38,6 @@ class BaseFormPageComponent < PageComponent
     form.input name, collection: collection, include_blank: true
   end
 
-  def setup
-    # with_owner_breadcrumb
-    breadcrumb.add(index_link_name, index_path)
-
-    if record.id?
-      breadcrumb.add(record.to_s, urls.to(record))
-      breadcrumb.add(t('app.links.edit'))
-      return
-    end
-
-    breadcrumb.add(t('app.links.new'))
-  end
-
   def index_link_name
     t("app.links.#{form_key.pluralize}")
   end
