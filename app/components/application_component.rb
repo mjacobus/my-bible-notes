@@ -1,22 +1,12 @@
 # frozen_string_literal: true
 
 class ApplicationComponent < ViewComponent::Base
-  MissingArgument = Class.new(StandardError)
+  include Base::HasAttribute
+
+  has :profile_owner
 
   delegate :current_user, to: :helpers
 
-  def self.has(field, public: false, optional: false)
-    define_method field do
-      if optional
-        return get(field)
-      end
-
-      get(field) || raise(MissingArgument, "Missing argument: #{field}")
-    end
-    unless public
-      private field
-    end
-  end
 
   def visitor
     current_user || GuestUser.new
