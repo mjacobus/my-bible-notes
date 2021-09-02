@@ -39,15 +39,4 @@ class ApplicationComponent < ViewComponent::Base
   def t(key, **options)
     I18n.t(key, **options)
   end
-
-  def model_name(model_or_model_class)
-    model_or_model_class.model_name.human
-  end
-
-  def attribute_name(klass, attribute)
-    if klass.is_a?(ApplicationRecord)
-      klass = klass.class
-    end
-    klass.human_attribute_name(attribute)
-  end
 end
