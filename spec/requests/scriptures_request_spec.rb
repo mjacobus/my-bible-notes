@@ -225,6 +225,15 @@ RSpec.describe ScripturesController, type: :request do
     end
   end
 
+  describe 'PATCH #update with tags' do
+    let(:perform_request) { patch(show_path, params: params) }
+    let(:params) { { key => { tags_string: 'foo, bar' } } }
+
+    it 'creates tags' do
+      expect { perform_request }.to change(Db::ScriptureTag, :count).by(2)
+    end
+  end
+
   describe 'DELETE #destroy' do
     let(:perform_request) { delete(show_path) }
 
