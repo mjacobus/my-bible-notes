@@ -50,4 +50,13 @@ RSpec.describe Db::Scripture, type: :model do
       expect(ordered.pluck(:book)).to eq(%w[genesis exodus psalms matthew])
     end
   end
+
+  it 'has many tags' do
+    scripture.save!
+    tag = factories.scripture_tags.create
+
+    scripture.tag_ids = [tag.id]
+
+    expect(scripture.reload.tags.map(&:name)).to include(tag.name)
+  end
 end

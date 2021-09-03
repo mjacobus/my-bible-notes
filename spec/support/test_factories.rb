@@ -24,4 +24,8 @@ class TestFactories
   def scriptures
     @scriptures ||= Db::ScriptureFactory.new(self)
   end
+
+  def scripture_tags
+    @scripture_tags ||= Db::ScriptureTagFactory.new(self)
+  end
 end
