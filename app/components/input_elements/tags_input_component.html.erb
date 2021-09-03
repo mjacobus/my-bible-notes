@@ -1,0 +1,27 @@
+<div class="<%= bem %>">
+  <fieldset><legend><%= t('app.attributes.tags') %></legend>
+    <input type="text" class="form-control <%= bem('tag_input') %>" placeholder="<%= placeholder %>">
+
+    <%= form_builder.input name, label: false, input_html: { placeholder: placeholder, hidden: true, class: class_names(bem('hidden_input'), 'js-input') } %>
+
+    <template>
+      <span class="js-tag-container <%= bem('tag') %>" data-tag="{{tag}}">
+        <span>
+          {{tag}}
+          <a class="js-close <%= bem('close_button') %>" href="#close">x</a>
+        </span>
+      </span>
+    </template>
+
+    <div class="<%= bem('tag_list') %>">
+      <% tags.each do |tag| %>
+        <span class="js-tag-container <%= bem('tag') %>" data-tag="<%= tag %>">
+          <span>
+            <%= tag %>
+            <a class="js-close <%= bem('close_button') %>" href="#close">x</a>
+          </span>
+        </span>
+      <% end %>
+    </div>
+  </fieldset>
+</div>

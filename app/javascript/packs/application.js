@@ -8,6 +8,7 @@ require("@rails/ujs").start();
 import "../src/application.scss";
 import "../components";
 import '../src/components/timelines/timeline.js'
+import '../src/components/input_elements/tags_input_component.js'
 
 // Uncomment to copy all static images under ../images to the output folder and reference
 // them with the image_pack_tag helper in views (e.g <%= image_pack_tag 'rails.png' %>)
