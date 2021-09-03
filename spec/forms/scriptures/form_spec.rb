@@ -65,4 +65,17 @@ RSpec.describe Scriptures::Form, type: :model do
       end
     end
   end
+
+  describe '#tags_string=' do
+    it 'creates or update tags by names' do
+      factories.scripture_tags.create(
+        name: 'imortal soul',
+        user_id: scripture.user.id
+      )
+
+      form.tags_string = 'Trinity, Imortal Soul'
+
+      expect { form.save }.to change { scripture.user.tags.count }.by(1)
+    end
+  end
 end

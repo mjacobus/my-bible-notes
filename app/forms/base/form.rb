@@ -19,7 +19,9 @@ module Base
 
     def save
       if valid?
-        record.save!
+        record.transaction do
+          persist_data
+        end
       end
     end
 
@@ -51,6 +53,10 @@ module Base
     end
 
     private
+
+    def persist_data
+      record.save!
+    end
 
     def urls
       @urls ||= Routes.new

@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe Db::Tag, type: :model do
   subject(:tag) { factories.scripture_tags.build }
 
-  it { is_expected.to belong_to(:user).dependent(:destroy) }
+  it { is_expected.to belong_to(:user) }
   it { is_expected.to validate_presence_of(:name) }
   it { is_expected.to validate_uniqueness_of(:name).case_insensitive.scoped_to([:type]) }
 
