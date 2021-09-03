@@ -3,9 +3,11 @@
 require 'rails_helper'
 
 RSpec.describe Db::User, type: :model do
-  let(:factory) { factories.users }
-  let(:user) { factory.build }
+  subject(:user) { factory.build }
 
+  let(:factory) { factories.users }
+
+  it { is_expected.to have_many(:tags) }
   it { is_expected.to have_many(:timelines).dependent(:destroy) }
   it { is_expected.to have_many(:scriptures).dependent(:destroy) }
 
