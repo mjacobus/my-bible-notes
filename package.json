@@ -2,6 +2,7 @@
   "name": "my-bible-notes",
   "private": true,
   "dependencies": {
+    "@github/template-parts": "^0.3.2",
     "@popperjs/core": "^2.9.2",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
@@ -12,6 +13,7 @@
     "jquery": "^3.6.0",
     "minimist": "^1.2.5",
     "prettier": "^2.3.1",
+    "selector-observer": "^2.1.6",
     "turbolinks": "^5.2.0"
   },
   "version": "0.1.0",

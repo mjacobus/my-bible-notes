@@ -51,6 +51,7 @@ pt-BR:
         enabled: "Ativo"
   app:
     attributes:
+      tags: "Tags"
       scripture: "Texto"
       explanation: "Explicação"
       color: "Cor"
@@ -83,6 +84,7 @@ pt-BR:
       week_talks: "Discursos da semana"
       public_talks: "Discursos"
     messages:
+      tags_placeholder: "Digite e pressione <enter>"
       errors:
         invalid_chapter: "Capítulo não existe: %{chapter}"
         invalid_verse: "Versículo não existe: %{verse}"

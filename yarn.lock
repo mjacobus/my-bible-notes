@@ -885,6 +885,11 @@
   resolved "https://registry.yarnpkg.com/@csstools/convert-colors/-/convert-colors-1.4.0.tgz#ad495dc41b12e75d588c6db8b9834f08fa131eb7"
   integrity sha512-5a6wqoJV/xEdbRNKVo6I4hO3VjyDq//8q2f9I6PBAvMesJHFauXDorcNCsr9RzvsZnaWi5NYCcfyqP1QeFHFbw==
 
+"@github/template-parts@^0.3.2":
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/@github/template-parts/-/template-parts-0.3.2.tgz#2b286983e7e8fe677de93d27078ea615d655e7bd"
+  integrity sha512-ErF88+S6rV0DRnXgs7cv2K/FGiYyipWKUZtGewfWz/8Dbddw0B5wXvZa0Ebph8ptcvYcAzDqSxy7AHCREX4xbw==
+
 "@popperjs/core@^2.9.2":
   version "2.9.2"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.9.2.tgz#adea7b6953cbb34651766b0548468e743c6a2353"
@@ -6392,7 +6397,14 @@ select-hose@^2.0.0:
   resolved "https://registry.yarnpkg.com/select-hose/-/select-hose-2.0.0.tgz#625d8658f865af43ec962bfc376a37359a4994ca"
   integrity sha1-Yl2GWPhlr0Psliv8N2o3NZpJlMo=
 
-selector-set@^1.1.5:
+selector-observer@^2.1.6:
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/selector-observer/-/selector-observer-2.1.6.tgz#8d54e897f543315b2e7eff296ebb5142c693a130"
+  integrity sha512-/I0XLOlDbzk9tnZUqNos/2cshOxTNk1QhoXtJRR8OZ4JjVfXq6JUjqo4icPDQ8fzNr2uQ32mfOzJ6sXPao/6MA==
+  dependencies:
+    selector-set "^1.1"
+
+selector-set@^1.1, selector-set@^1.1.5:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/selector-set/-/selector-set-1.1.5.tgz#60c135aea482b6f46a2d95ad72058927690a8634"
   integrity sha512-6SQw6yMew5iOZ8/cDHDEnJWRM4ot2mxP6szZyF5ptrBogw4AcS4EXRj/8BUfgAMwVfdL84qpModlBMOl2NVrsQ==
