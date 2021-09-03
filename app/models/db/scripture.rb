@@ -12,6 +12,7 @@ class Db::Scripture < ApplicationRecord
            foreign_key: 'parent_id',
            dependent: :restrict_with_exception,
            inverse_of: :parent_scripture
+  has_and_belongs_to_many :tags
 
   scope :ordered, -> { order(:book_number) }
   scope :parents, -> { where(parent_id: nil) }

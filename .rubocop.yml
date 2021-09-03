@@ -67,6 +67,11 @@ Naming/PredicateName:
 Style/FormatStringToken:
   EnforcedStyle: template
 
+Rails/HasAndBelongsToMany:
+  Exclude:
+    - 'app/models/db/tag.rb'
+    - 'app/models/db/scripture.rb'
+
 Rails/SkipsModelValidations:
   Exclude:
     - 'spec/**/*'
