@@ -12,12 +12,16 @@ class ScripturesController < ApplicationController
   form_class Scriptures::Form
 
   scope do
-    profile_owner.scriptures.ordered
+    profile_owner.scriptures.ordered.with_dependencies
   end
 
   component_class_template 'Scriptures::%{type}PageComponent'
 
   private
+
+  def record
+    profile_owner.scriptures.find(params[:id])
+  end
 
   def before_show
     unless current_user.is?(profile_owner)

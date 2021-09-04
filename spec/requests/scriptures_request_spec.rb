@@ -6,7 +6,7 @@ RSpec.describe ScripturesController, type: :request do
   # general
   let(:record) { factory.create(user_id: current_user.id) }
   let(:factory) { factories.scriptures }
-  let(:scope) { current_user.scriptures.all }
+  let(:scope) { current_user.scriptures.ordered.with_dependencies }
   let(:key) { model_class.to_s.underscore.split('/').last.to_sym }
   let(:model_class) { Db::Scripture }
   let(:form) { Scriptures::Form.new(record).under_profile(current_user) }
