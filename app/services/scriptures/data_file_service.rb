@@ -15,17 +15,14 @@ module Scriptures
     def import
       data[:scriptures].each do |scripture|
         import_scripture(scripture)
-        # Array.wrap(scripture[:tags]).each do |tag|
-        #   Db::ScriptureTag.find_or_create_by_name(tag, user_id: user_id)
-        # end
       end
     end
 
     def book_and_verse(title)
-      parts = title.split(' ')
+      parts = title.split
       book = parts.shift
 
-      unless parts.first[0].match(/\d/)
+      unless /\d/.match?(parts.first[0])
         book += " #{parts.shift}"
       end
 
@@ -48,14 +45,14 @@ module Scriptures
 
       partial_match = partial_match.parameterize
       found = bible.to_a.find do |book|
-        normalized = book.localized_name.parameterize.gsub(/-/, '').downcase
+        normalized = book.localized_name.parameterize.delete('-').downcase
         normalized.match(partial_match)
       end
 
       if found
         return found
       end
-  
+
       raise("Cannot find by #{name} partial match: #{partial_match}")
     end
 
@@ -69,10 +66,15 @@ module Scriptures
         title: scripture[:description],
         book: book.slug,
         verses: verses,
-        tags_string: Array.wrap(scripture[:tags]).join(',')
+        tags_string: Array.wrap(scripture[:tags]).join(','),
+        parent_id: parent_id
       }
-      unless form.save
-        p "Cannot import #{form.record.to_s}"
+      if form.save
+        Array.wrap(scripture[:related]).each do |related|
+          import_scripture(related, parent_id: form.record.id)
+        end
+      else
+        p "Cannot import #{form.record}"
       end
     end
 

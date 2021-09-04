@@ -21,13 +21,20 @@ RSpec.describe Scriptures::DataFileService, type: :model do
 
       expect(Db::Scripture.count).to be_positive
 
-      found = Db::Scripture.where(
-        title: 'Plural magestático - Façamos',
-        user_id: user.id
-      ).first
+      found = Db::Scripture.where(title: 'Plural magestático - Façamos', user_id: user.id).first!
 
       expect(found.book).to eq('genesis')
       expect(found.verses).to eq('1:26')
+    end
+
+    it 'imports related scriptures' do
+      import
+
+      parent = Db::Scripture.where(title: 'Plural magestático - Façamos', user_id: user.id).first!
+      child = Db::Scripture.where(title: 'Anjos gritavam de alegria, davam gritos de louvor',
+                                  user_id: user.id).first!
+
+      expect(child.parent_id).to eq(parent.id)
     end
   end
 
