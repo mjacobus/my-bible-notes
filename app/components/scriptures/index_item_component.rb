@@ -8,6 +8,10 @@ module Scriptures
       get(:level).to_i + 1
     end
 
+    def children
+      scripture.related_scriptures
+    end
+
     private
 
     def menu

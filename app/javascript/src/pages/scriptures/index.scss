@@ -1,0 +1,14 @@
+.Scriptures_IndexPageComponent {
+  .AttributeComponent {
+    display: inline-block;
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+
+    li:hover {
+      background: #eee;
+    }
+  }
+}
