@@ -35,6 +35,12 @@ rescue ActiveRecord::PendingMigrationError => exception
   exit 1
 end
 
+FIXTURES_PATH = Rails.root.join('spec/fixtures')
+
+def fixtures_path(file)
+  FIXTURES_PATH.join(file)
+end
+
 require 'view_component/test_helpers'
 require 'capybara/rspec'
 
