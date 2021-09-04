@@ -17,5 +17,11 @@ module Scriptures
         link(t('app.links.delete'), urls.to(scripture), data: { method: :delete, confirm: delete_confirmation })
       end
     end
+
+    private
+
+    def title
+      scripture.to_s
+    end
   end
 end

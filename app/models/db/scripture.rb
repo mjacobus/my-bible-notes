@@ -18,6 +18,7 @@ class Db::Scripture < ApplicationRecord
   scope :parents, -> { where(parent_id: nil) }
 
   delegate :username, to: :user
+  max_paginates_per 200
 
   def to_s
     "#{book_instance.localized_name} #{verses}"

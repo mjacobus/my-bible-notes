@@ -1,0 +1,57 @@
+.Scriptures_IndexPageComponent {
+  .AttributeComponent {
+    display: inline-block;
+    margin: 0;
+  }
+
+  .Scriptures_IndexItemComponent {
+    .DropdownMenuComponent {
+      display: inline-block;
+      position: unset;
+      top: -2px;
+
+      .btn {
+        color: $jw-blue;
+        padding: 0;
+      }
+
+      i { display: none; }
+    }
+
+    &__title {
+      display: unset;
+
+      &:before {
+        content: " - ";
+        color: "#eee";
+      }
+    }
+
+      .AttributeComponent__text {
+        color: $soft-gray;
+        font-size: 1em;
+      }
+
+    &.level-1 {
+      margin-top: 0.8em;
+
+      .AttributeComponent__text {
+        color: $dark;
+        font-size: 1em;
+      }
+
+      .DropdownMenuComponent {
+        .btn {
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+
+  ul {
+    list-style: none;
+    margin-bottom: 1em; 
+  }
+
+}

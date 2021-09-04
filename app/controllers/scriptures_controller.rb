@@ -19,6 +19,10 @@ class ScripturesController < ApplicationController
 
   private
 
+  def per_page
+    params[:per].presence || 200
+  end
+
   def before_show
     unless current_user.is?(profile_owner)
       raise ActiveRecord::RecordNotFound
