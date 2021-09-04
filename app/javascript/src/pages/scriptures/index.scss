@@ -27,15 +27,23 @@
       }
     }
 
+      .AttributeComponent__text {
+        color: $soft-gray;
+        font-size: 1em;
+      }
+
     &.level-1 {
+      margin-top: 0.8em;
+
+      .AttributeComponent__text {
+        color: $dark;
+        font-size: 1em;
+      }
+
       .DropdownMenuComponent {
-        // min-width: 10em;
         .btn {
           font-weight: bold;
         }
-        // background: #eee;
-        // margin-right: 1em;
-        // padding: 0em 0.3em;
       }
     }
   }
