@@ -4,22 +4,26 @@
     margin: 0;
   }
 
-    .DropdownMenuComponent__button {
-      z-index: 9999;
+  .Scriptures_IndexItemComponent {
+    padding: 0.3em 0.5em;
+    margin: 0.5em 0;
+
+    .DropdownMenuComponent {
+      top: -2px
     }
+
+    &.level-1 {
+      background: #eee; 
+    }
+
+    &:hover {
+      background: #eee;
+    }
+  }
+
 
   ul {
     list-style: none;
-    li {
-      position: relative;
-    }
-
-    .Scriptures_IndexItemComponent {
-      padding: 2px 5px;
-
-      &:hover {
-        background: #eee;
-      }
-    }
+    margin-bottom: 1em; 
   }
 }

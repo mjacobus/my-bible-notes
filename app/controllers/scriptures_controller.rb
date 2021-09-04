@@ -19,6 +19,10 @@ class ScripturesController < ApplicationController
 
   private
 
+  def per_page
+    params[:per].presence || 200
+  end
+
   def record
     profile_owner.scriptures.find(params[:id])
   end

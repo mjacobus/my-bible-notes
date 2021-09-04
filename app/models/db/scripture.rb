@@ -19,6 +19,7 @@ class Db::Scripture < ApplicationRecord
   scope :with_dependencies, -> { includes([:related_scriptures]) }
 
   delegate :username, to: :user
+  max_paginates_per 200
 
   def to_s
     "#{book_instance.localized_name} #{verses}"

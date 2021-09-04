@@ -42,7 +42,11 @@ class ApplicationController < ActionController::Base
   end
 
   def paginate(scope)
-    scope.page(params[:page]).per(params[:per_page])
+    scope.page(params[:page]).per(per_page)
+  end
+
+  def per_page
+    params[:per]
   end
 
   def layout
