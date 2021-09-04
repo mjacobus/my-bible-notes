@@ -13,8 +13,10 @@ module Scriptures
     end
 
     def import
-      data[:scriptures].each do |scripture|
-        import_scripture(scripture)
+      Db::Scripture.transaction do
+        data[:scriptures].each do |scripture|
+          import_scripture(scripture)
+        end
       end
     end
 
@@ -74,7 +76,7 @@ module Scriptures
           import_scripture(related, parent_id: form.record.id)
         end
       else
-        p "Cannot import #{form.record}"
+        raise "Cannot import #{form.record}"
       end
     end
 
