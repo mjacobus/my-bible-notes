@@ -5,15 +5,22 @@
   }
 
   .Scriptures_IndexItemComponent {
-    padding: 0.3em 0.5em;
-    margin: 0.5em 0;
+    &__scripture {
+      min-width: 10em;
+
+      &.level-1 {
+        font-weight: bold;
+        background: #eee;
+        margin-right: 1em;
+        padding: 0em 0.3em;
+      }
+    }
 
     .DropdownMenuComponent {
       top: -2px
     }
 
-    &.level-1 {
-      background: #eee; 
+    &__scripture {
     }
 
     &:hover {
@@ -26,4 +33,5 @@
     list-style: none;
     margin-bottom: 1em; 
   }
+
 }

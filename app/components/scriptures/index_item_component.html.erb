@@ -1,6 +1,8 @@
 <div class="<%= bem %> position-relative level-<%= level %>">
-  <%= render attribute(scripture.to_s).with_label(:title).without_label.wrap_with(:span).with_link(urls.to(scripture)) %> -
-  <%= render attribute(scripture.title).with_label(:title).without_label.wrap_with(:span) %>
+  <p>
+    <%= render attribute(scripture.to_s).with_label(:title).without_label.wrap_with(:span, class: class_names(bem(:scripture), "level-#{level}")).with_link(urls.to(scripture)) %>
+    <%= render attribute(scripture.title).with_label(:title).without_label.wrap_with(:span, class: bem(:title)) %>
+  </p>
   <%= render attribute(scripture.description).with_label(:description).without_label.wrap_with(:small) %>
   <%= render menu %>
 </div>
