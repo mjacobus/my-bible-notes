@@ -16,7 +16,6 @@ class Db::Scripture < ApplicationRecord
 
   scope :ordered, -> { order(:book_number) }
   scope :parents, -> { where(parent_id: nil) }
-  scope :with_dependencies, -> { includes([:related_scriptures]) }
 
   delegate :username, to: :user
   max_paginates_per 200

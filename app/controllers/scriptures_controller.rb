@@ -12,7 +12,7 @@ class ScripturesController < ApplicationController
   form_class Scriptures::Form
 
   scope do
-    profile_owner.scriptures.ordered.with_dependencies
+    profile_owner.scriptures.ordered
   end
 
   component_class_template 'Scriptures::%{type}PageComponent'
@@ -21,10 +21,6 @@ class ScripturesController < ApplicationController
 
   def per_page
     params[:per].presence || 200
-  end
-
-  def record
-    profile_owner.scriptures.find(params[:id])
   end
 
   def before_show
