@@ -14,8 +14,12 @@ module Base
       end
     end
 
+    def title
+      nil
+    end
+
     def menu
-      @menu ||= DropdownMenuComponent.new(type: menu_type)
+      @menu ||= DropdownMenuComponent.new(type: menu_type, title: title)
     end
 
     def menu_type
