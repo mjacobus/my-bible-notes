@@ -6,7 +6,9 @@ class UrlAcl
   PUBLIC_URLS = [
     '/',
     '/logout',
-    '/profile'
+    '/profile',
+    '/:profile/scriptures',
+    '/:profile/timelines'
   ].freeze
 
   def initialize(url)
@@ -14,7 +16,9 @@ class UrlAcl
   end
 
   def authorized?(user)
-    if PUBLIC_URLS.include?(@url)
+    url = @url.sub(user.username.to_s, ':profile')
+
+    if PUBLIC_URLS.include?(url)
       return true
     end
 
