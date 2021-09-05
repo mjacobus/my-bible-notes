@@ -30,6 +30,20 @@ function prepareStringForComparison(string) {
     );
 }
 
+function limit(collection, to) {
+  let only = []
+
+  for (let i = 0; i < collection.length; i++) {
+    if (i === to) {
+      break;
+    }
+
+    only.push(collection[i]);
+  }
+
+  return only;
+}
+
 class InputSuggestions {
   constructor({ input, suggestions, list }) {
     this.input = input;
@@ -63,10 +77,10 @@ class InputSuggestions {
   }
 
   isMatch(matchString, candidate) {
-    return candidate.toLowerCase().match(matchString.toLowerCase());
+    return !!candidate.toLowerCase().match(matchString.toLowerCase());
   }
 }
 
 export default InputSuggestions;
 
-export { prepareStringForComparison };
+export { prepareStringForComparison, limit };
