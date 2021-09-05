@@ -1,0 +1,22 @@
+.input-suggestions { 
+  .suggestions {
+    position: absolute;
+    width: 100%;
+    z-index: 99999;
+    border: 1px solid #eee;
+  }
+
+  .suggestion-item {
+    width: 100%;
+    display: block;
+    height: 2em;
+    background: white;
+    padding: 0 1em;
+    line-height: 2em;
+    vertical-align: middle;
+
+    &:hover {
+      background: #eee;
+    }
+  }
+}

@@ -45,14 +45,27 @@ function limit(collection, to) {
 }
 
 class InputSuggestions {
-  constructor({ input, suggestions, list }) {
+  constructor({ input, suggestions, list, limit = 5 }) {
+    this.limit = limit;
     this.input = input;
     this.suggestions = suggestions;
     this.list = list;
-    this.input.addEventListener("keydown", () => {
+    this.input.addEventListener("keyup", () => {
+      if (this.input.value.length === 0) {
+        return this.hide();
+      }
+
       const matches = this.findMatches(this.input.value);
       this.populateSuggestions(matches);
     });
+  }
+
+  hide() {
+    this.list.hidden = true
+  }
+
+  show() {
+    this.list.hidden = false
   }
 
   findMatches(string) {
@@ -60,17 +73,18 @@ class InputSuggestions {
   }
 
   populateSuggestions(matches) {
+    matches = limit(matches, this.limit)
     this.list.innerHTML = "";
     matches.forEach((match) => this.addSuggestion(match));
     if (this.list.children.length === 0) {
-      return (this.list.hidden = true);
+      return (this.hide());
     }
 
-    this.list.hidden = false;
+    this.show();
   }
 
   addSuggestion(match) {
-    const element = document.createElement("span");
+    const element = document.createElement("div");
     element.classList.add("suggestion-item");
     element.innerText = match;
     this.list.appendChild(element);
