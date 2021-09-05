@@ -101,6 +101,12 @@ RSpec.describe ScripturesController, type: :request do
       )
       expect(renderer).to have_rendered_component(expected_component)
     end
+
+    it 'responds with 404 if parent id does not belong to the user' do
+      get(new_path, params: { parent_id: factory.scriptures.create.id })
+
+      expect(response).to have_http_status(404)
+    end
   end
 
   describe 'POST #create' do
@@ -179,6 +185,12 @@ RSpec.describe ScripturesController, type: :request do
         profile_owner: current_user
       )
       expect(renderer).to have_rendered_component(expected_component)
+    end
+
+    it 'responds with 404 if parent id does not belong to the user' do
+      get(edit_path, params: { parent_id: factory.scriptures.create.id })
+
+      expect(response).to have_http_status(404)
     end
   end
 
