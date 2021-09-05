@@ -13,6 +13,10 @@ module Scriptures
       )
     end
 
+    def children
+      record.related_scriptures.with_dependencies
+    end
+
     private
 
     def breadcrumb
