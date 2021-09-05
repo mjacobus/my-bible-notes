@@ -14,5 +14,13 @@ module InputElements
     def placeholder
       t('app.messages.tags_placeholder')
     end
+
+    def tags_suggestions
+      profile_owner.tags.scripture
+    end
+
+    def serialized_suggestions
+      tags_suggestions.pluck(:name).to_json
+    end
   end
 end

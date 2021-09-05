@@ -1,8 +1,11 @@
 <div class="<%= bem %>">
   <fieldset><legend><%= t('app.attributes.tags') %></legend>
-    <input type="text" class="form-control <%= bem('tag_input') %>" placeholder="<%= placeholder %>">
+    <span class="input-suggestions">
+      <input type="text" class="form-control <%= bem('tag_input') %>" placeholder="<%= placeholder %>" data-suggestions="<%= serialized_suggestions %>">
+      <div class="suggestions"></div>
+    </span>
 
-    <%= form_builder.input name, label: false, input_html: { placeholder: placeholder, hidden: true, class: class_names(bem('hidden_input'), 'js-input') } %>
+    <%= form_builder.input name, label: false, input_html: { placeholder: placeholder, hidden: true } %>
 
     <template>
       <span class="js-tag-container <%= bem('tag') %>" data-tag="{{tag}}">

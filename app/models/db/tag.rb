@@ -3,10 +3,11 @@
 class Db::Tag < ApplicationRecord
   has_and_belongs_to_many :scriptures
   belongs_to :user
+  default_scope -> { order(:name) }
 
   scope :scripture, -> { where(type: 'Db::ScriptureTag') }
 
-  validates :name, presence: true, uniqueness: { case_sensitive: false, scope: [:type] }
+  validates :name, presence: true, uniqueness: { case_sensitive: !false, scope: [:type] }
 
   def name=(value)
     self.slug = value.to_s.parameterize

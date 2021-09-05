@@ -18,7 +18,12 @@
     <%= f.input :parent_id, as: :hidden, input_html: { value: form.parent_id || params[:parent_id] } %>
   <% end %>
 
-  <%= render InputElements::TagsInputComponent.new(form_builder: f, form: form, name: :tags_string) %>
+  <%= render InputElements::TagsInputComponent.new(
+    form_builder: f,
+    form: form,
+    name: :tags_string,
+    profile_owner: profile_owner
+  ) %>
 
   <%= input_wrapper do %>
     <%= submit_button(f) %>
