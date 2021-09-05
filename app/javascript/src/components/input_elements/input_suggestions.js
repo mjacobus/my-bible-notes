@@ -15,7 +15,17 @@ class InputSuggestions {
     this.suggestions = suggestions
     this.list = list
     this.input.addEventListener("keydown", () => {
-      matched = this.findMatches();
+      const matches = this.findMatches(this.input.value);
+      this.populateSuggestions(matches)
     });
+  }
+
+  findMatches(string) {
+    console.log(string)
+    return ['foo']
+  }
+
+  populateSuggestions(matches) {
+    console.log(matches)
   }
 }
