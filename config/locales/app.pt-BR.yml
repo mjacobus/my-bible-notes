@@ -52,6 +52,8 @@ pt-BR:
   app:
     attributes:
       tags: "Tags"
+      verses: "Versículos"
+      book: "Livro"
       scripture: "Texto"
       explanation: "Explicação"
       color: "Cor"
