@@ -27,7 +27,7 @@ module Scriptures
       ids = tags.map do |tag|
         find_or_create_tag(tag, record.user_id)
       end
-      record.tag_ids = ids
+      record.tag_ids = ids.uniq
     end
 
     def verses_validation
