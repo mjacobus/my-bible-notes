@@ -3,6 +3,8 @@
 <%= render menu %>
 
 <%= content_for(:title) { "#{record.username}: #{record.scripture_and_title}" } %>
+
+<%= render Scriptures::TagsComponent.new(tags: record.tags, profile_owner: profile_owner) %>
 <%= render attribute(record.to_s).with_label(:scripture) %>
 <%= render attribute(record.title).with_label(:title) %>
 <%= render attribute(record.description).with_label(:description) %>
