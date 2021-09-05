@@ -59,4 +59,18 @@ RSpec.describe Db::Scripture, type: :model do
 
     expect(scripture.reload.tags.map(&:name)).to include(tag.name)
   end
+
+  describe '.search' do
+    it 'filters by tag slug' do
+      tag = factories.scripture_tags.create
+      other_tag = factories.scripture_tags.create
+      s1 = factory.create(tag_ids: [tag.id])
+      s2 = factory.create(tag_ids: [other_tag.id])
+      _s3 = factory.create
+
+      result = described_class.search(tags: "#{tag.slug},#{other_tag.slug}")
+
+      expect(result.pluck(:title)).to eq([s1.title, s2.title])
+    end
+  end
 end

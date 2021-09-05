@@ -3,6 +3,10 @@
 class ApplicationRecord < ActiveRecord::Base
   self.abstract_class = true
 
+  def self.search(*_args)
+    all
+  end
+
   private
 
   def t(key, **args)

@@ -43,6 +43,18 @@ class Db::Scripture < ApplicationRecord
     @bible = Bible::Factory.new.from_config
   end
 
+  def self.search(params = {})
+    params = SearchParams.new(params)
+    query = all
+
+    params.if(:tags) do |slugs|
+      tags = slugs.split(',').map(&:strip)
+      query = query.joins(:tags).where(tags: { slug: tags })
+    end
+
+    query
+  end
+
   private
 
   def set_book_number

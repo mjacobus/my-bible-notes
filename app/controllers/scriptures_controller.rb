@@ -12,7 +12,7 @@ class ScripturesController < ApplicationController
   form_class Scriptures::Form
 
   scope do
-    profile_owner.scriptures.ordered.with_dependencies
+    profile_owner.scriptures.ordered.with_dependencies.search(params)
   end
 
   component_class_template 'Scriptures::%{type}PageComponent'
