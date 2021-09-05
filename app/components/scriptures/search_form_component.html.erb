@@ -1,6 +1,11 @@
-<div class="<%= bem %>">
-  <% if has_filters? %>
-    <a class="clear btn btn-primary" href="<%= clear_url %>"><%= t('app.links.clear_filters') %></a>
-  <% end %>
-</div>
-
+<fieldset>
+  <legend><%= t('app.titles.search_form') %></legend>
+  <div class="<%= bem %>">
+    <% if selected_tags.any? %>
+      <div class="alert alert-primary"><%= selected_tags_message %></div>
+    <% end %>
+    <% if has_filters? %>
+      <a class="clear btn btn-primary" href="<%= clear_url %>"><%= t('app.links.clear_filters') %></a>
+    <% end %>
+  </div>
+</fieldset>
