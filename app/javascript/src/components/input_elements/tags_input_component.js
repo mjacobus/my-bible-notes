@@ -50,13 +50,15 @@ function addTagFromInput(input, container) {
 
   // Empty tag. Move on.
   if (!tag) {
-    return
+    return;
   }
 
   input.value = "";
   input.focus();
-  const list = container.querySelector(bem('tag_list'))
-  const newItem = new TemplateInstance(container.querySelector('template'), { tag })
-  list.appendChild(newItem)
-  updateInput(container)
+  const list = container.querySelector(bem("tag_list"));
+  const newItem = new TemplateInstance(container.querySelector("template"), {
+    tag,
+  });
+  list.appendChild(newItem);
+  updateInput(container);
 }
