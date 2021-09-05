@@ -9,7 +9,7 @@ module Scriptures
     end
 
     def children
-      scripture.related_scriptures
+      scripture.related_scriptures.with_dependencies
     end
 
     private
