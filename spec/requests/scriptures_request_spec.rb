@@ -105,7 +105,7 @@ RSpec.describe ScripturesController, type: :request do
     it 'responds with 404 if parent id does not belong to the user' do
       get(new_path, params: { parent_id: factory.scriptures.create.id })
 
-      expect(response).to have_http_status(404)
+      expect(response).to have_http_status(:not_found)
     end
   end
 
@@ -190,7 +190,7 @@ RSpec.describe ScripturesController, type: :request do
     it 'responds with 404 if parent id does not belong to the user' do
       get(edit_path, params: { parent_id: factory.scriptures.create.id })
 
-      expect(response).to have_http_status(404)
+      expect(response).to have_http_status(:not_found)
     end
   end
 
