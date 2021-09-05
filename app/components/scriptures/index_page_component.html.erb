@@ -4,7 +4,8 @@
 
 <div class="<%= bem %>">
   <% collection.parents.each do |record| %>
-    <%= render Scriptures::IndexItemComponent.new(profile_owner: profile_owner, scripture: record) %> <% end %>
-
-  <%= render pagination %>
+    <%= render Scriptures::IndexItemComponent.new(profile_owner: profile_owner, scripture: record) %> 
+  <% end %>
 </div>
+
+<%= render pagination %>
