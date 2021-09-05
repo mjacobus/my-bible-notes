@@ -7,7 +7,7 @@ module Scriptures
     has :form
 
     def book_input(form)
-      select_input(form, :book, books)
+      select_input(form, :book, books, label: t('app.attributes.book'))
     end
 
     private

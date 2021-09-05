@@ -26,8 +26,8 @@ module Base
 
     private
 
-    def select_input(form, name, collection)
-      form.input name, collection: collection, include_blank: true
+    def select_input(form, name, collection, options = {})
+      form.input name, options.merge(collection: collection, include_blank: true)
     end
 
     def index_link_name

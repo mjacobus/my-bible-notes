@@ -3,16 +3,16 @@
 
 <%= simple_form_for(form, url: form.target_url, as: form.param_key) do |f| %>
   <%= input_wrapper do %>
-    <%= f.input :title %>
+    <%= f.input :title, label: t('app.attributes.title') %>
   <% end %>
   <%= input_wrapper do %>
     <%= book_input(f) %>
   <% end %>
   <%= input_wrapper do %>
-    <%= f.input :verses %>
+    <%= f.input :verses, label: t('app.attributes.verses') %>
   <% end %>
   <%= input_wrapper do %>
-    <%= f.input :description, as: :text %>
+    <%= f.input :description, as: :text, label: t('app.attributes.description') %>
   <% end %>
   <%= input_wrapper do %>
     <%= f.input :parent_id, as: :hidden, input_html: { value: form.parent_id || params[:parent_id] } %>
