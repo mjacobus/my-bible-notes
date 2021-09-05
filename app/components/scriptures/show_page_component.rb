@@ -5,7 +5,7 @@ module Scriptures
     has :record
 
     def menu
-      @menu ||= IndexMenuComponent.new(
+      @menu ||= ContextMenuComponent.new(
         current_user: current_user,
         profile_owner: profile_owner,
         scripture: record,
