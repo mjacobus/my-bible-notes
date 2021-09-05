@@ -7,7 +7,7 @@ function bem(element) {
 }
 
 const submitKeys = [
-  9, // tab
+  // 9, // tab
   13, // enter
   188, // comma
 ];

@@ -3,6 +3,7 @@
 class Db::Tag < ApplicationRecord
   has_and_belongs_to_many :scriptures
   belongs_to :user
+  default_scope -> { order(:name) }
 
   scope :scripture, -> { where(type: 'Db::ScriptureTag') }
 
