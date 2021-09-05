@@ -2,9 +2,11 @@
   <div class="paragraph">
     <%= render menu %>
     <%= render attribute(scripture.title).with_label(:title).without_label.wrap_with(:span, class: bem(:title)) %>
+    <%= render Scriptures::TagsComponent.new(tags: scripture.tags, profile_owner: profile_owner) %>
   </div>
-  <%= render attribute(scripture.description).with_label(:description).without_label.wrap_with(:small) %>
 </div>
+
+<%= render attribute(scripture.description).with_label(:description).without_label.wrap_with(:small) %>
 
 <% if children.any? %>
   <ul>

@@ -1,0 +1,5 @@
+<div class="<%= bem %>">
+  <% tags.each do |tag| %>
+    <a class="tag" href="<%= tag_url(tag) %>"><%= tag.name %></a>
+  <% end %>
+</div>
