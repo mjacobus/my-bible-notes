@@ -8,3 +8,14 @@
 <%= render attribute(record.to_s).with_label(:scripture) %>
 <%= render attribute(record.title).with_label(:title) %>
 <%= render attribute(record.description).with_label(:description) %>
+
+
+<% if children.any? %>
+  <div class="Scriptures_IndexPageComponent">
+    <ul>
+      <% children.each do |scripture| %>
+        <li><%= render Scriptures::IndexItemComponent.new(profile_owner: profile_owner, scripture: scripture, level: 2) %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
