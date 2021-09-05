@@ -118,7 +118,11 @@ class InputSuggestions {
       return;
     }
 
-    this.input.value = current.innerText;
+    this.expand(current);
+  }
+
+  expand(option) {
+    this.input.value = option.innerText;
     this.hide();
   }
 
@@ -163,11 +167,18 @@ class InputSuggestions {
   }
 
   addSuggestion(match) {
-    const element = document.createElement("div");
+    let element = document.createElement("a");
+    element.href = "#";
     element.classList.add("suggestion-item");
     element.innerText = match;
     this.list.appendChild(element);
     this.options.push(element);
+    // element = this.list.lastChild;
+    element.addEventListener("click", (e) => {
+      // This is not picking up
+      e.preventDefault();
+      this.expand(element);
+    });
   }
 
   isMatch(matchString, candidate) {
