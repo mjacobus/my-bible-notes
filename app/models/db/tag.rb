@@ -7,7 +7,7 @@ class Db::Tag < ApplicationRecord
 
   scope :scripture, -> { where(type: 'Db::ScriptureTag') }
 
-  validates :name, presence: true, uniqueness: { case_sensitive: !false, scope: [:type] }
+  validates :name, presence: true, uniqueness: { case_sensitive: false, scope: [:type] }
 
   def name=(value)
     self.slug = value.to_s.parameterize
