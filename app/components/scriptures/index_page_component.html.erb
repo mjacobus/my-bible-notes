@@ -2,6 +2,8 @@
 <%= render flash %>
 <%= render menu %>
 
+<%= render Scriptures::SearchFormComponent.new(params: params, profile_owner: profile_owner) %>
+
 <div class="<%= bem %>">
   <% collection.parents.each do |record| %>
     <%= render Scriptures::IndexItemComponent.new(profile_owner: profile_owner, scripture: record) %> 
