@@ -15,6 +15,10 @@
     line-height: 2em;
     vertical-align: middle;
 
+    &.selected {
+      background: #eee;
+    }
+
     &:hover {
       background: #eee;
     }
