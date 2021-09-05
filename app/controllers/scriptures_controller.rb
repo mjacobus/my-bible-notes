@@ -17,12 +17,18 @@ class ScripturesController < ApplicationController
 
   component_class_template 'Scriptures::%{type}PageComponent'
 
-  def new
-    @record = scope.new(parent_id: params[:parent_id])
-    render form_component(record)
+  private
+
+  def form_component(record)
+    record.parent_id = parent_id
+    super(record)
   end
 
-  private
+  def parent_id
+    if params[:parent_id]
+      current_user.scriptures.find(params[:parent_id])
+    end
+  end
 
   def per_page
     params[:per].presence || 200
