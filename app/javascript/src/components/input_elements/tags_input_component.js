@@ -47,6 +47,12 @@ function getTags(container) {
 
 function addTagFromInput(input, container) {
   const tag = input.value;
+
+  // Empty tag. Move on.
+  if (!tag) {
+    return
+  }
+
   input.value = "";
   input.focus();
   const list = container.querySelector(bem('tag_list'))
