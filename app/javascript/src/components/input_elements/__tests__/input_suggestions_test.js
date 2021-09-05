@@ -31,10 +31,10 @@ describe("InputSuggestions", () => {
     });
   });
 
-  describe('.isMatch', () => {
-    it('returns true or false', () => {
-      expect(object.isMatch('coraçÃo', 'Meu CoraçÃo')).toBe(true)
-      expect(object.isMatch('x coraçÃo', 'Meu CoraçÃo')).toBe(false)
+  describe(".isMatch", () => {
+    it("returns true or false", () => {
+      expect(object.isMatch("coraçÃo", "Meu CoraçÃo")).toBe(true);
+      expect(object.isMatch("x coraçÃo", "Meu CoraçÃo")).toBe(false);
     });
   });
 });

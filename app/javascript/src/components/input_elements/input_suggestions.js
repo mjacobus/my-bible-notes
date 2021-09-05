@@ -31,7 +31,7 @@ function prepareStringForComparison(string) {
 }
 
 function limit(collection, to) {
-  let only = []
+  let only = [];
 
   for (let i = 0; i < collection.length; i++) {
     if (i === to) {
@@ -49,7 +49,7 @@ const keyCodes = {
   down: 40,
   tab: 9,
   enter: 13,
-}
+};
 
 function keyCodeIs(keyCode, key) {
   return keyCodes[key] === keyCode;
@@ -57,20 +57,20 @@ function keyCodeIs(keyCode, key) {
 
 class InputSuggestions {
   constructor({ input, suggestions, list, limit = 5 }) {
-    this.options = []
+    this.options = [];
     this.limit = limit;
     this.input = input;
     this.suggestions = suggestions;
     this.list = list;
-    this.selected = 0
+    this.selected = 0;
     this.input.addEventListener("keyup", (e) => {
       if (
-        keyCodeIs(e.keyCode, 'up') ||
-        keyCodeIs(e.keyCode, 'down') ||
-        keyCodeIs(e.keyCode, 'tab') ||
-        keyCodeIs(e.keyCode, 'enter')
+        keyCodeIs(e.keyCode, "up") ||
+        keyCodeIs(e.keyCode, "down") ||
+        keyCodeIs(e.keyCode, "tab") ||
+        keyCodeIs(e.keyCode, "enter")
       ) {
-        return
+        return;
       }
 
       const matches = this.findMatches(this.input.value);
@@ -80,21 +80,21 @@ class InputSuggestions {
     this.input.addEventListener("blur", () => this.hide());
 
     this.input.addEventListener("keydown", (e) => {
-      if (keyCodeIs(e.keyCode, 'enter')) return
+      if (keyCodeIs(e.keyCode, "enter")) return;
 
-      if (keyCodeIs(e.keyCode, 'esc')) {
+      if (keyCodeIs(e.keyCode, "esc")) {
         return this.hide();
       }
 
-      if (keyCodeIs(e.keyCode, 'down')) {
+      if (keyCodeIs(e.keyCode, "down")) {
         return this.selectNext();
       }
 
-      if (keyCodeIs(e.keyCode, 'up')) {
+      if (keyCodeIs(e.keyCode, "up")) {
         return this.selectPrevious();
       }
 
-      if (keyCodeIs(e.keyCode, 'tab')) {
+      if (keyCodeIs(e.keyCode, "tab")) {
         e.preventDefault();
         return this.selectCurrent();
       }
@@ -105,17 +105,17 @@ class InputSuggestions {
   }
 
   selectNext() {
-    this.select(this.selected + 1)
+    this.select(this.selected + 1);
   }
 
   selectPrevious() {
-    this.select(this.selected - 1)
+    this.select(this.selected - 1);
   }
 
   selectCurrent() {
     const current = this.getOption(this.selected);
     if (!current) {
-      return
+      return;
     }
 
     this.input.value = current.innerText;
@@ -123,26 +123,26 @@ class InputSuggestions {
   }
 
   select(number) {
-    this.selected = number
-    if (this.options.length === 0 ) {
-      return
+    this.selected = number;
+    if (this.options.length === 0) {
+      return;
     }
 
-    this.options.forEach(e => e.classList.remove('selected'))
-    this.getOption(this.selected).classList.add('selected')
+    this.options.forEach((e) => e.classList.remove("selected"));
+    this.getOption(this.selected).classList.add("selected");
   }
 
   getOption(index) {
-    index = Math.abs(index % this.options.length)
-    return this.options[index]
+    index = Math.abs(index % this.options.length);
+    return this.options[index];
   }
 
   hide() {
-    this.list.hidden = true
+    this.list.hidden = true;
   }
 
   show() {
-    this.list.hidden = false
+    this.list.hidden = false;
   }
 
   findMatches(string) {
@@ -150,16 +150,16 @@ class InputSuggestions {
   }
 
   populateSuggestions(matches) {
-    matches = limit(matches, this.limit)
+    matches = limit(matches, this.limit);
     this.list.innerHTML = "";
-    this.options = []
+    this.options = [];
     matches.forEach((match) => this.addSuggestion(match));
     if (this.list.children.length === 0) {
-      return (this.hide());
+      return this.hide();
     }
 
     this.show();
-    this.select(0)
+    this.select(0);
   }
 
   addSuggestion(match) {
@@ -167,7 +167,7 @@ class InputSuggestions {
     element.classList.add("suggestion-item");
     element.innerText = match;
     this.list.appendChild(element);
-    this.options.push(element)
+    this.options.push(element);
   }
 
   isMatch(matchString, candidate) {
