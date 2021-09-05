@@ -85,3 +85,13 @@ Shoulda::Matchers.configure do |config|
     with.library :active_model
   end
 end
+
+def with_bullet_disabled
+  log = Bullet.bullet_logger = true
+  raise_error = Bullet.raise = true # raise an error if n+1 query occurs
+  Bullet.bullet_logger = false
+  Bullet.raise = false
+  yield
+  Bullet.bullet_logger = log
+  Bullet.raise = raise_error
+end

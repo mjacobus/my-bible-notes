@@ -3,6 +3,10 @@
 require 'rails_helper'
 
 RSpec.describe ScripturesController, type: :request do
+  around do |example|
+    with_bullet_disabled { example.run }
+  end
+
   # general
   let(:record) { factory.create(user_id: current_user.id) }
   let(:factory) { factories.scriptures }
