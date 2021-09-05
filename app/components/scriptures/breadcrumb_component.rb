@@ -3,8 +3,17 @@
 module Scriptures
   class BreadcrumbComponent < Base::BreadcrumbComponent
     def form_for(record)
+      index(urls.scriptures_path(profile))
+
+      up_the_tree_from(record).each do |scripture|
+        if record == scripture
+          break
+        end
+
+        add(scripture, urls.to(scripture))
+      end
+
       if record.id
-        index(urls.scriptures_path(profile))
         add(record, urls.to(record))
         return add(t('app.links.edit'))
       end
@@ -16,7 +25,7 @@ module Scriptures
       index(urls.scriptures_path(profile))
       up_the_tree_from(record).each do |scripture|
         url = scripture == record ? nil : urls.to(scripture)
-        add(scripture.to_s, url)
+        add(scripture, url)
       end
       self
     end
