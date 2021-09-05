@@ -48,6 +48,7 @@ const keyCodes = {
   up: 38,
   down: 40,
   tab: 9,
+  enter: 13,
 }
 
 function keyCodeIs(keyCode, key) {
@@ -63,11 +64,11 @@ class InputSuggestions {
     this.list = list;
     this.selected = 0
     this.input.addEventListener("keyup", (e) => {
-
       if (
         keyCodeIs(e.keyCode, 'up') ||
         keyCodeIs(e.keyCode, 'down') ||
-        keyCodeIs(e.keyCode, 'tab')
+        keyCodeIs(e.keyCode, 'tab') ||
+        keyCodeIs(e.keyCode, 'enter')
       ) {
         return
       }
@@ -76,10 +77,15 @@ class InputSuggestions {
       this.populateSuggestions(matches);
     });
 
+    this.input.addEventListener("blur", () => this.hide());
+
     this.input.addEventListener("keydown", (e) => {
+      if (keyCodeIs(e.keyCode, 'enter')) return
+
       if (keyCodeIs(e.keyCode, 'esc')) {
         return this.hide();
       }
+
       if (keyCodeIs(e.keyCode, 'down')) {
         return this.selectNext();
       }
