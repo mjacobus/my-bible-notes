@@ -17,6 +17,11 @@ class ScripturesController < ApplicationController
 
   component_class_template 'Scriptures::%{type}PageComponent'
 
+  def new
+    @record = scope.new(parent_id: params[:parent_id])
+    render form_component(record)
+  end
+
   private
 
   def per_page
