@@ -3,7 +3,7 @@
 module Tags
   class BreadcrumbComponent < Base::BreadcrumbComponent
     def form_for(record)
-      index(urls.tags_path(profile))
+      index(urls.scripture_tags_path(profile))
 
       if record.id
         add(record.name, urls.to(record))
@@ -14,7 +14,7 @@ module Tags
     end
 
     def show(record)
-      index(urls.tags_path(profile))
+      index(urls.scripture_tags_path(profile))
       add(record.name)
     end
 
