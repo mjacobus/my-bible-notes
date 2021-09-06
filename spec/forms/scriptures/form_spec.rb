@@ -78,4 +78,23 @@ RSpec.describe Scriptures::Form, type: :model do
       expect { form.save }.to change { scripture.user.tags.count }.by(1)
     end
   end
+
+  describe '#parent_id=' do
+    let(:scripture) { scriptures.build(parent_id: parent.id) }
+    let(:parent) { scriptures.create }
+
+    it 'sets parent id when record is new' do
+      form.attributes = { parent_id: nil }
+
+      expect(form.parent_id).to be_nil
+    end
+
+    it 'does not return parent id when editing record' do
+      scripture.save!
+
+      form.attributes = { parent_id: nil }
+
+      expect(form.parent_id).to eq parent.id
+    end
+  end
 end

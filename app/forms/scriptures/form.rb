@@ -16,6 +16,12 @@ module Scriptures
       @tags_string ||= tags_to_string
     end
 
+    def parent_id=(value)
+      unless record.id
+        record.parent_id = value
+      end
+    end
+
     private
 
     def tags_to_string
