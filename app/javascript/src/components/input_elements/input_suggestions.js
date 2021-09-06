@@ -63,6 +63,7 @@ class InputSuggestions {
     this.suggestions = suggestions;
     this.list = list;
     this.selected = 0;
+
     this.input.addEventListener("keyup", (e) => {
       if (
         keyCodeIs(e.keyCode, "up") ||
@@ -77,7 +78,11 @@ class InputSuggestions {
       this.populateSuggestions(matches);
     });
 
-    this.input.addEventListener("blur", () => this.hide());
+    this.input.addEventListener("blur", () => {
+      setTimeout(() => {
+        this.hide();
+      }, 200);
+    });
 
     this.input.addEventListener("keydown", (e) => {
       if (keyCodeIs(e.keyCode, "enter")) return;
@@ -158,6 +163,7 @@ class InputSuggestions {
     this.list.innerHTML = "";
     this.options = [];
     matches.forEach((match) => this.addSuggestion(match));
+
     if (this.list.children.length === 0) {
       return this.hide();
     }
@@ -173,9 +179,8 @@ class InputSuggestions {
     element.innerText = match;
     this.list.appendChild(element);
     this.options.push(element);
-    // element = this.list.lastChild;
+
     element.addEventListener("click", (e) => {
-      // This is not picking up
       e.preventDefault();
       this.expand(element);
     });
