@@ -19,6 +19,7 @@ pt-BR:
         description: "Descrição"
         parent_id: "Relacionado a"
         parent: "Relacionado a"
+        sequence_number: "Ordem na sequência"
       db/timeline:
         name: "Nome"
         slug: "Url"
@@ -53,6 +54,7 @@ pt-BR:
         enabled: "Ativo"
   app:
     attributes:
+      sequence_number: "Ordem na sequência"
       tags: "Tags"
       verses: "Versículos"
       book: "Livro"

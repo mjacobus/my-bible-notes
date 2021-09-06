@@ -7,7 +7,7 @@ class ScripturesController < ApplicationController
 
   key :scripture
 
-  permit :title, :book, :verses, :description, :parent_id, :tags_string
+  permit :title, :book, :verses, :description, :parent_id, :tags_string, :sequence_number
 
   form_class Scriptures::Form
 

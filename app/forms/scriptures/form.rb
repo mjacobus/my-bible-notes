@@ -2,7 +2,7 @@
 
 module Scriptures
   class Form < Base::Form
-    attributes :title, :book, :verses, :description, :parent_id
+    attributes :title, :book, :verses, :description, :parent_id, :sequence_number
     validates :book, presence: true
     validates :verses, presence: true
     validates :title, presence: true
