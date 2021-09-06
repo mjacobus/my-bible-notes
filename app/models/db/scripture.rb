@@ -8,6 +8,7 @@ class Db::Scripture < ApplicationRecord
              inverse_of: :related_scriptures,
              optional: true
   has_many :related_scriptures,
+           -> { order(:sequence_number) },
            class_name: 'Scripture',
            foreign_key: 'parent_id',
            dependent: :restrict_with_exception,
