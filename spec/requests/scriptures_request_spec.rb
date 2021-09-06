@@ -115,10 +115,10 @@ RSpec.describe ScripturesController, type: :request do
     context 'when payload is valid' do
       let(:params) { { key => valid_attributes } }
 
-      it 'returns with success' do
+      it 'redirects to show' do
         perform_request
 
-        expect(response).to redirect_to(index_path)
+        expect(response).to redirect_to(routes.to(Db::Scripture.last))
       end
 
       it 'creates record' do
@@ -200,10 +200,10 @@ RSpec.describe ScripturesController, type: :request do
     context 'when payload is valid' do
       let(:params) { { key => valid_attributes } }
 
-      it 'redirects to index' do
+      it 'redirects to show' do
         perform_request
 
-        expect(response).to redirect_to(index_path)
+        expect(response).to redirect_to(routes.to(Db::Scripture.last))
       end
 
       it 'updates record' do
