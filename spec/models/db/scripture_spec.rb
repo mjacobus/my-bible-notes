@@ -71,7 +71,7 @@ RSpec.describe Db::Scripture, type: :model do
     expect(scripture.reload.tags.map(&:name)).to include(tag.name)
   end
 
-  describe '.search' do
+  describe '.search by tag' do
     it 'filters by tag slug' do
       tag = factories.scripture_tags.create
       other_tag = factories.scripture_tags.create
@@ -80,6 +80,18 @@ RSpec.describe Db::Scripture, type: :model do
       _s3 = factory.create
 
       result = described_class.search(tags: "#{tag.slug},#{other_tag.slug}")
+
+      expect(result.pluck(:title)).to eq([s1.title, s2.title])
+    end
+  end
+
+  describe '.search by title' do
+    it 'filters by title' do
+      s1 = factory.create(title: 'Para Pedro Pedro para')
+      s2 = factory.create(title: 'Este pedro é uma parada')
+      _s3 = factory.create
+
+      result = described_class.search(title: 'pedro')
 
       expect(result.pluck(:title)).to eq([s1.title, s2.title])
     end
