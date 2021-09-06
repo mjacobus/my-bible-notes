@@ -9,6 +9,8 @@ pt-BR:
       db/timeline: "Linha do Tempo"
       db/timeline_entry: "Evento"
       db/user: "Usuário"
+      db/tag: "Tag"
+      db/scripture_tag: "Tag"
     attributes:
       db/scripture:
         title: "Título"
