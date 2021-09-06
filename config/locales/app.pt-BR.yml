@@ -116,6 +116,7 @@ pt-BR:
         one: "%{count} contato"
         other: "%{count} contatos"
     links:
+      tags: "Tags"
       users: "Usuários"
       bible: "Bíblia"
       my_scriptures: "Meus textos bíblicos"

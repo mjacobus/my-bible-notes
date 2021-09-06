@@ -40,7 +40,7 @@ class Sidebar::SidebarComponent < ApplicationComponent
     unless current_user.pending_profile_changes?
       entry(t('app.links.bible'), '#', icon: 'book').tap do |section|
         section.append_child(scriptures_path)
-        section.append_child(tags_path)
+        section.append_child(scripture_tags)
       end
     end
   end
@@ -62,8 +62,8 @@ class Sidebar::SidebarComponent < ApplicationComponent
     entry(t('app.links.my_scriptures'), urls.scriptures_path(current_user), icon: 'book')
   end
 
-  def tags_path
-    entry(t('app.links.tags'), urls.tags_path(current_user), icon: 'book')
+  def scripture_tags
+    entry(t('app.links.tags'), urls.scripture_tags_path(current_user), icon: 'tag')
   end
 
   def users
