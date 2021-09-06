@@ -7,11 +7,23 @@ RSpec.describe Db::Tag, type: :model do
 
   it { is_expected.to belong_to(:user) }
   it { is_expected.to validate_presence_of(:name) }
-  it { is_expected.to validate_uniqueness_of(:name).case_insensitive.scoped_to([:type]) }
+  it { is_expected.to validate_uniqueness_of(:name).case_insensitive.scoped_to(%i[type user_id]) }
 
   it 'handles slug' do
     tag.name = 'Foo Bar'
 
     expect { tag.name = 'Baz Bar' }.to change { tag.slug }.from('foo-bar').to('baz-bar')
+  end
+
+  describe '#tag_name' do
+    specify 'two users can have the same tag name' do
+      user1 = factories.users.create
+      user2 = factories.users.create
+
+      expect do
+        factories.scripture_tags.create(user_id: user1.id, name: 'TagNameY')
+        factories.scripture_tags.create(user_id: user2.id, name: 'TagNameY')
+      end.to change(described_class, :count).by(2)
+    end
   end
 end
