@@ -29,6 +29,10 @@ module Scriptures
     end
 
     def persist_data
+      if parent_id
+        record.sequence_number = parent.related_scriptures.count
+      end
+
       record.save!
       ids = tags.map do |tag|
         find_or_create_tag(tag, record.user_id)
@@ -66,7 +70,7 @@ module Scriptures
     end
 
     def parent
-      record.class.where(id: parent_id).first
+      @parent ||= record.class.where(id: parent_id).first
     end
 
     def book_instance

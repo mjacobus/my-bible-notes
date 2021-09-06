@@ -5,6 +5,7 @@ require 'rails_helper'
 RSpec.describe Scriptures::Form, type: :model do
   subject(:form) { described_class.new(scripture) }
 
+  let(:user) { factories.users.create }
   let(:scripture) { scriptures.build }
   let(:scriptures) { factories.scriptures }
 
@@ -95,6 +96,18 @@ RSpec.describe Scriptures::Form, type: :model do
       form.attributes = { parent_id: nil }
 
       expect(form.parent_id).to eq parent.id
+    end
+  end
+
+  describe '#sequence_number' do
+    let(:scripture) { scriptures.create(parent_id: parent.id, user_id: user.id) }
+    let!(:other) { scriptures.create(parent_id: parent.id, user_id: user.id) }
+    let(:parent) { scriptures.create(user_id: user.id) }
+
+    it 'defaults to the last place' do
+      form.save
+
+      expect(form.record.reload.sequence_number).to eq(2)
     end
   end
 end
