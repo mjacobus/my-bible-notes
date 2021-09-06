@@ -2,5 +2,6 @@
 
 module Tags
   class IndexItemComponent < ApplicationComponent
+    has :record
   end
 end
