@@ -24,4 +24,3 @@ module Tags
     end
   end
 end
-

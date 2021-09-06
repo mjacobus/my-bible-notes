@@ -100,7 +100,6 @@ RSpec.describe Routes do
       expect(path).to eq("/#{user.username}/tags/#{tag.to_param}/edit")
     end
 
-
     it 'is compatible with #to' do
       path = routes.to(tag)
 
