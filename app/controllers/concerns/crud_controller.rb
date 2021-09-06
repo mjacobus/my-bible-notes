@@ -33,7 +33,7 @@ module CrudController
 
   def destroy
     record.destroy
-    redirect
+    after_destroy_redirect
   end
 
   private
@@ -83,7 +83,7 @@ module CrudController
     form.attributes = permitted_attributes
 
     if form.save
-      return redirect
+      return after_save_redirect(form)
     end
 
     render form_component(form), status: :unprocessable_entity
@@ -93,7 +93,11 @@ module CrudController
     @form ||= form_class.new(record).under_profile(profile_owner)
   end
 
-  def redirect
+  def after_save_redirect(_form)
+    redirect_to action: :index
+  end
+
+  def after_destroy_redirect
     redirect_to action: :index
   end
 

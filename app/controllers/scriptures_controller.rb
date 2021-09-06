@@ -19,6 +19,10 @@ class ScripturesController < ApplicationController
 
   private
 
+  def after_save_redirect(form)
+    redirect_to routes.to(form.record)
+  end
+
   def form_component(record)
     record.parent_id = parent_id
     super(record)
