@@ -54,6 +54,10 @@ class Db::Scripture < ApplicationRecord
     params = SearchParams.new(params)
     query = all
 
+    params.if(:title) do |title|
+      query = query.where('title ILIKE ?', "%#{title}%")
+    end
+
     params.if(:tags) do |slugs|
       tags = slugs.split(',').map(&:strip)
       query = query.joins(:tags).where(tags: { slug: tags })
