@@ -11,6 +11,7 @@ class Db::Tag < ApplicationRecord
 
   def name=(value)
     self.slug = value.to_s.parameterize
+    self.color ||= NameBasedColor.new(value.to_s)
     super(value)
   end
 

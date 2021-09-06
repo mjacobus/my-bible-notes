@@ -1,5 +1,5 @@
 <div class="<%= bem %>">
   <% tags.each do |tag| %>
-    <a class="tag" href="<%= tag_url(tag) %>"><%= tag.name %></a>
+    <a class="tag" href="<%= tag_url(tag) %>" style="background: <%= tag.color %>"><%= tag.name %></a>
   <% end %>
 </div>
