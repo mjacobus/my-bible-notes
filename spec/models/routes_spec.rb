@@ -95,7 +95,7 @@ RSpec.describe Routes do
     end
 
     it 'resolves #edit_path' do
-      path = routes.edit_scripture_tag_path(tag)
+      path = routes.edit_path(tag)
 
       expect(path).to eq("/#{user.username}/tags/#{tag.to_param}/edit")
     end

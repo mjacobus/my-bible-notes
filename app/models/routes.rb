@@ -63,12 +63,12 @@ class Routes
     send("edit_#{type}_path", record, args)
   end
 
-  def scripture_tag_path(tag, _params = {})
-    @helpers.tag_path(tag.user.username, tag, params = {})
+  def scripture_tag_path(tag, params = {})
+    @helpers.tag_path(tag.user.username, tag, params)
   end
 
-  def edit_scripture_tag_path(tag, _params = {})
-    @helpers.edit_tag_path(tag.user.username, tag, params = {})
+  def edit_scripture_tag_path(tag, params = {})
+    @helpers.edit_tag_path(tag.user.username, tag, params)
   end
 
   def scripture_tags_path(profile, params = {})
