@@ -14,7 +14,7 @@ class Db::Scripture < ApplicationRecord
            inverse_of: :parent_scripture
   has_and_belongs_to_many :tags
 
-  scope :ordered, -> { order(:book_number) }
+  scope :ordered, -> { order(:book_number, :first_chapter, :first_verse) }
   scope :parents, -> { where(parent_id: nil) }
   scope :with_dependencies, -> { includes(%i[tags related_scriptures]) }
 
@@ -33,6 +33,13 @@ class Db::Scripture < ApplicationRecord
     @book_instance = nil
     super(book)
     set_book_number
+  end
+
+  def verses=(value)
+    super(value)
+    parts = value.to_s.split(':')
+    self.first_chapter = parts[0].to_i
+    self.first_verse = parts[1].to_i
   end
 
   def book_instance

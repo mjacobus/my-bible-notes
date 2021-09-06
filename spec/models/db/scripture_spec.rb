@@ -40,14 +40,25 @@ RSpec.describe Db::Scripture, type: :model do
 
   describe '.ordered' do
     it 'orders by book' do
-      factory.create(book: 'matthew')
-      factory.create(book: 'psalms')
+      factory.create(book: 'matthew', verses: '2:3')
+      factory.create(book: 'psalms', verses: '22:3')
       factory.create(book: 'genesis')
       factory.create(book: 'exodus')
 
       ordered = described_class.ordered
 
       expect(ordered.pluck(:book)).to eq(%w[genesis exodus psalms matthew])
+    end
+
+    it 'orders also by verses' do
+      factory.create(book: 'genesis', verses: '2:3')
+      factory.create(book: 'psalms', verses: '22:3')
+      factory.create(book: 'psalms', verses: '2:13')
+      factory.create(book: 'psalms', verses: '21:2')
+
+      ordered = described_class.ordered
+
+      expect(ordered.pluck(:verses)).to eq(%w[2:3 2:13 21:2 22:3])
     end
   end
 
@@ -71,6 +82,22 @@ RSpec.describe Db::Scripture, type: :model do
       result = described_class.search(tags: "#{tag.slug},#{other_tag.slug}")
 
       expect(result.pluck(:title)).to eq([s1.title, s2.title])
+    end
+  end
+
+  describe '#first_chapter ' do
+    it 'is set via #verses=' do
+      scripture.verses = '10:3-10'
+
+      expect { scripture.verses = '22:3-10' }.to change { scripture.first_chapter }.from(10).to(22)
+    end
+  end
+
+  describe '#first_verse' do
+    it 'is set via #verses=' do
+      scripture.verses = '10:1-10'
+
+      expect { scripture.verses = '22:3-10' }.to change { scripture.first_verse }.from(1).to(3)
     end
   end
 end
