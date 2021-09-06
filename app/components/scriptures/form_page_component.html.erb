@@ -19,9 +19,7 @@
   <% end %>
 
   <% unless form.record.id %>
-    <%= input_wrapper do %>
-      <%= f.input :parent_id, as: :hidden, input_html: { value: form.parent_id || params[:parent_id] } %>
-    <% end %>
+      <%= f.input :parent_id, as: :text %>
   <% end %>
 
   <%= render InputElements::TagsInputComponent.new(

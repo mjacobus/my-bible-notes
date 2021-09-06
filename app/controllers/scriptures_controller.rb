@@ -7,7 +7,7 @@ class ScripturesController < ApplicationController
 
   key :scripture
 
-  permit :title, :book, :verses, :description, :parent_id, :tags_string, :sequence_number
+  permit :parent_id, :title, :book, :verses, :description, :parent_id, :tags_string, :sequence_number
 
   form_class Scriptures::Form
 
@@ -20,17 +20,16 @@ class ScripturesController < ApplicationController
   private
 
   def after_save_redirect(form)
-    redirect_to routes.to(form.record)
+    if form.record.parent_scripture
+      return redirect_to routes.to(form.record.parent_scripture)
+    end
+
+    super(form)
   end
 
-  def form_component(record)
-    record.parent_id = parent_id
-    super(record)
-  end
-
-  def parent_id
-    if params[:parent_id]
-      current_user.scriptures.find(params[:parent_id])
+  def form
+    super.tap do |f|
+      f.parent_id ||= params[:parent_id]
     end
   end
 

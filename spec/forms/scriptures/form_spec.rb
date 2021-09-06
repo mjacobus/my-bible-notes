@@ -81,11 +81,12 @@ RSpec.describe Scriptures::Form, type: :model do
   end
 
   describe '#parent_id=' do
-    let(:scripture) { scriptures.build(parent_id: parent.id) }
-    let(:parent) { scriptures.create }
+    let(:scripture) { scriptures.build(parent_id: parent.id, user_id: user.id) }
+    let!(:other) { scriptures.create(parent_id: parent.id, user_id: user.id) }
+    let(:parent) { scriptures.create(user_id: user.id) }
 
     it 'sets parent id when record is new' do
-      form.attributes = { parent_id: nil }
+      form.parent_id = nil
 
       expect(form.parent_id).to be_nil
     end
@@ -93,21 +94,29 @@ RSpec.describe Scriptures::Form, type: :model do
     it 'does not return parent id when editing record' do
       scripture.save!
 
-      form.attributes = { parent_id: nil }
+      form.parent_id = nil
 
       expect(form.parent_id).to eq parent.id
     end
-  end
 
-  describe '#sequence_number' do
-    let(:scripture) { scriptures.create(parent_id: parent.id, user_id: user.id) }
-    let!(:other) { scriptures.create(parent_id: parent.id, user_id: user.id) }
-    let(:parent) { scriptures.create(user_id: user.id) }
+    it 'sets the sequence number when none is set' do
+      form.parent_id = parent.id
 
-    it 'defaults to the last place' do
-      form.save
+      expect(form.sequence_number).to eq(2)
+    end
 
-      expect(form.record.reload.sequence_number).to eq(2)
+    it 'sets the sequence number when none is set' do
+      form.parent_id = parent.id
+
+      expect(form.sequence_number).to eq(2)
+    end
+
+    it 'does not set sequence number if number is not zero' do
+      form.sequence_number = 4
+
+      form.parent_id = parent.id
+
+      expect(form.sequence_number).to eq(4)
     end
   end
 end

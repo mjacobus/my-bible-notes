@@ -19,6 +19,10 @@ module Scriptures
     def parent_id=(value)
       unless record.id
         record.parent_id = value
+
+        if sequence_number.zero? && parent
+          self.sequence_number = parent.related_scriptures.count.next
+        end
       end
     end
 
@@ -29,11 +33,8 @@ module Scriptures
     end
 
     def persist_data
-      if parent_id
-        record.sequence_number = parent.related_scriptures.count
-      end
-
       record.save!
+
       ids = tags.map do |tag|
         find_or_create_tag(tag, record.user_id)
       end
