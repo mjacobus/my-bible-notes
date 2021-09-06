@@ -1,0 +1,4 @@
+<div class="list-item position-relative">
+  <%= render menu %>
+  <%= render attribute(record.name).with_label(:name).without_label.wrap_with(:div, class: :h5).with_link(urls.to(record)) %>
+</div>

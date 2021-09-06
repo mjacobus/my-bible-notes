@@ -40,6 +40,7 @@ class Sidebar::SidebarComponent < ApplicationComponent
     unless current_user.pending_profile_changes?
       entry(t('app.links.bible'), '#', icon: 'book').tap do |section|
         section.append_child(scriptures_path)
+        section.append_child(scripture_tags)
       end
     end
   end
@@ -54,19 +55,23 @@ class Sidebar::SidebarComponent < ApplicationComponent
   end
 
   def timelines_path
-    entry(Db::Timeline.model_name.human, urls.timelines_path(current_user), icon: 'clock-history')
+    entry(t('app.links.timelines'), urls.timelines_path(current_user), icon: 'clock-history')
   end
 
   def scriptures_path
     entry(t('app.links.my_scriptures'), urls.scriptures_path(current_user), icon: 'book')
   end
 
+  def scripture_tags
+    entry(t('app.links.tags'), urls.scripture_tags_path(current_user), icon: 'tag')
+  end
+
   def users
-    entry(Db::User.model_name.human, users_path, icon: 'people')
+    entry(t('app.links.users'), users_path, icon: 'people')
   end
 
   def admin_users
-    entry(Db::User.model_name.human, admin_db_users_path, icon: 'people')
+    entry(t('app.links.users'), admin_db_users_path, icon: 'people')
   end
 
   def logout

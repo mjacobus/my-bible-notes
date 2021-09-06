@@ -8,7 +8,8 @@ class UrlAcl
     '/logout',
     '/profile',
     '/:profile/scriptures',
-    '/:profile/timelines'
+    '/:profile/timelines',
+    '/:profile/tags'
   ].freeze
 
   def initialize(url)

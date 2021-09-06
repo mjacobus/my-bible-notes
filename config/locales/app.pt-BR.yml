@@ -9,6 +9,8 @@ pt-BR:
       db/timeline: "Linha do Tempo"
       db/timeline_entry: "Evento"
       db/user: "Usuário"
+      db/tag: "Tag"
+      db/scripture_tag: "Tag"
     attributes:
       db/scripture:
         title: "Título"
@@ -116,6 +118,8 @@ pt-BR:
         one: "%{count} contato"
         other: "%{count} contatos"
     links:
+      tags: "Tags"
+      users: "Usuários"
       bible: "Bíblia"
       my_scriptures: "Meus textos bíblicos"
       add_related_scripture: "Adicionar texto relacionado"

@@ -1,0 +1,12 @@
+<%= render breadcrumb  %>
+<%= render flash  %>
+
+<%= simple_form_for(form.record, url: form.target_url, as: :tag, method: form.method) do |f| %>
+  <%= input_wrapper do %>
+    <%= f.input :name %>
+  <% end %>
+  <%= input_wrapper do %>
+    <%= f.submit(class: 'btn btn-primary mt-3 float-right') %>
+  <% end %>
+<% end %>
+

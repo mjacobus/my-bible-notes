@@ -1,0 +1,9 @@
+<%= render breadcrumb %>
+<%= render flash %>
+<%= render menu %>
+
+<% collection.each do |record| %>
+  <%= render item_component(record) %>
+<% end %>
+
+<%= render pagination %>
