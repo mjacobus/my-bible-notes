@@ -1,11 +1,27 @@
 <fieldset>
   <legend><%= t('app.titles.search_form') %></legend>
-  <div class="<%= bem %>">
-    <% if selected_tags.any? %>
-      <div class="alert alert-primary"><%= selected_tags_message %></div>
-    <% end %>
-    <% if has_filters? %>
-      <a class="clear btn btn-primary" href="<%= clear_url %>"><%= t('app.links.clear_filters') %></a>
-    <% end %>
-  </div>
+
+  <%= form_with url: scriptures_path, method: :get, data: { remote: false } do |form| %>
+    <div class="row">
+      <div class="col-sm-12 col-md-4">
+        <div class="form-wrapper">
+          <label><%= t('app.attributes.title') %></label>
+          <%= title_input(form) %>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-8">
+        <div class="form-wrapper">
+          <% if selected_tags.any? %>
+            <label><%= t('app.attributes.tags') %></label>
+            <%= render Scriptures::TagsComponent.new(tags: selected_tags, profile_owner: profile_owner) %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <button class="my-2 btn btn-primary" type="submit"><%= icon(:search) { t('app.links.search') } %></button>
+      <%= link_to t('app.links.clear_filters'), scriptures_path, class: 'btn btn-primary' %>
+    </div>
+  <% end %>
 </fieldset>

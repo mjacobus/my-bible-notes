@@ -8,12 +8,8 @@ module Scriptures
       @search_params ||= SearchParams.new(params)
     end
 
-    def clear_url
+    def scriptures_path
       urls.scriptures_path(profile_owner)
-    end
-
-    def has_filters?
-      search_params.any?(:tags, :title)
     end
 
     def selected_tags
@@ -24,8 +20,14 @@ module Scriptures
       search_params[:tags].to_s.split(',').map(&:strip)
     end
 
-    def selected_tags_message
-      t('app.messages.selected_tags', tag_names: selected_tags.map(&:name).join(', '))
+    def title_input(form)
+      form.text_field(:title, input_options.merge(value: search_params[:title]))
+    end
+
+    private
+
+    def input_options
+      { class: 'form-control' }
     end
   end
 end

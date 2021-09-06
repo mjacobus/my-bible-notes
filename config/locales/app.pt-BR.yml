@@ -87,7 +87,6 @@ pt-BR:
       week_talks: "Discursos da semana"
       public_talks: "Discursos"
     messages:
-      selected_tags: "Tags selecionadas: %{tag_names}"
       tags_placeholder: "Digite e pressione <enter>"
       errors:
         invalid_chapter: "Capítulo não existe: %{chapter}"
