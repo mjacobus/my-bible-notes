@@ -5,7 +5,6 @@ require 'rails_helper'
 RSpec.describe TagsController, type: :request do
   # general
   let(:record) { factory.create(user_id: current_user.id) }
-  let(:new_record) { model_class.new(user_id: current_user.id) }
   let(:factory) { factories.scripture_tags }
   let(:scope) { current_user.tags.scripture.all }
   let(:key) { :tag }
@@ -18,8 +17,8 @@ RSpec.describe TagsController, type: :request do
   let(:form_component) { Tags::FormPageComponent }
 
   # paths
-  let(:index_path) { routes.timelines_path(current_user) }
-  let(:new_path) { routes.new_timeline_path(current_user) }
+  let(:index_path) { routes.scripture_tags_path(current_user) }
+  let(:new_path) { routes.new_scripture_tag_path(current_user) }
   let(:edit_path) { routes.edit_path(record) }
   let(:show_path) { routes.to(record) }
 
@@ -75,7 +74,7 @@ RSpec.describe TagsController, type: :request do
       expect(renderer).to have_rendered_component(expected_component)
     end
 
-    context 'when timeline belogongs to another user' do
+    context 'when tag belongs to another user' do
       before do
         login_user(another_user)
       end
@@ -177,7 +176,7 @@ RSpec.describe TagsController, type: :request do
     it 'deletes record' do
       record
 
-      expect { perform_request }.to change(current_user.timelines, :count).by(-1)
+      expect { perform_request }.to change(current_user.tags, :count).by(-1)
     end
   end
 end

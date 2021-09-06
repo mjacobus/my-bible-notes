@@ -3,6 +3,7 @@
 module Base
   class ContextMenuComponent < ApplicationComponent
     has :record
+    has :current_user
 
     def call
       render menu

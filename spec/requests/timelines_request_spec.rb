@@ -75,7 +75,7 @@ RSpec.describe TimelinesController, type: :request do
       expect(renderer).to have_rendered_component(expected_component)
     end
 
-    context 'when timeline belogongs to another user' do
+    context 'when timeline belongs to another user' do
       before do
         login_user(another_user)
       end
