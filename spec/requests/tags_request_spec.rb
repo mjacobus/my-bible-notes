@@ -24,7 +24,7 @@ RSpec.describe TagsController, type: :request do
 
   # attributes
   let(:valid_attributes) { factory.attributes.merge(name: 'new name') }
-  let(:invalid_attributes) { factory.attributes.merge(name: '') }
+  let(:invalid_attributes) { factory.attributes.merge(name: '', user_id: current_user.id) }
 
   describe 'GET #index' do
     before { record }
@@ -72,29 +72,6 @@ RSpec.describe TagsController, type: :request do
         profile_owner: current_user
       )
       expect(renderer).to have_rendered_component(expected_component)
-    end
-
-    context 'when tag belongs to another user' do
-      before do
-        login_user(another_user)
-      end
-
-      let(:another_user) { factories.users.create }
-
-      it 'responds with 404 when timeline is not public' do
-        perform_request
-
-        expect(response.status).to eq(404)
-      end
-
-      it 'responds with 200 when timeline is public' do
-        record.public = true
-        record.save!
-
-        perform_request
-
-        expect(response.status).to eq(200)
-      end
     end
   end
 
