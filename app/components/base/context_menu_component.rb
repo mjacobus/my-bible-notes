@@ -2,6 +2,8 @@
 
 module Base
   class ContextMenuComponent < ApplicationComponent
+    has :record
+
     def call
       render menu
     end

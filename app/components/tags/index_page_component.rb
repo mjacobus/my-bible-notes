@@ -11,6 +11,10 @@ module Tags
       )
     end
 
+    def item_component(record)
+      IndexItemComponent.new(record: record, profile_owner: profile_owner)
+    end
+
     private
 
     def breadcrumb
