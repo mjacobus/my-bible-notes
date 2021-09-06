@@ -8,7 +8,7 @@ RSpec.describe TagsController, type: :request do
   let(:new_record) { model_class.new(user_id: current_user.id) }
   let(:factory) { factories.scripture_tags }
   let(:scope) { current_user.tags.scripture.all }
-  let(:key) { model_class.to_s.underscore.split('/').last.to_sym }
+  let(:key) { :tag }
   let(:model_class) { Db::ScriptureTag }
   let(:form) { NullForm.new(record).under_profile(current_user) }
 
@@ -20,7 +20,7 @@ RSpec.describe TagsController, type: :request do
   # paths
   let(:index_path) { routes.timelines_path(current_user) }
   let(:new_path) { routes.new_timeline_path(current_user) }
-  let(:edit_path) { routes.edit_timeline_path(record) }
+  let(:edit_path) { routes.edit_path(record) }
   let(:show_path) { routes.to(record) }
 
   # attributes
