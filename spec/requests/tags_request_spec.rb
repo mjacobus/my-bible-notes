@@ -6,16 +6,16 @@ RSpec.describe TagsController, type: :request do
   # general
   let(:record) { factory.create(user_id: current_user.id) }
   let(:new_record) { model_class.new(user_id: current_user.id) }
-  let(:factory) { factories.timelines }
-  let(:scope) { current_user.timelines.all }
+  let(:factory) { factories.scripture_tags }
+  let(:scope) { current_user.tags.scripture.all }
   let(:key) { model_class.to_s.underscore.split('/').last.to_sym }
-  let(:model_class) { Db::Timeline }
+  let(:model_class) { Db::ScriptureTag }
   let(:form) { NullForm.new(record).under_profile(current_user) }
 
   # components
-  let(:index_component) { Timelines::IndexPageComponent }
-  let(:show_component) { Timelines::ShowPageComponent }
-  let(:form_component) { Timelines::FormPageComponent }
+  let(:index_component) { Tags::IndexPageComponent }
+  let(:show_component) { Tags::ShowPageComponent }
+  let(:form_component) { Tags::FormPageComponent }
 
   # paths
   let(:index_path) { routes.timelines_path(current_user) }
