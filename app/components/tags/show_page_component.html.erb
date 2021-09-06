@@ -1,0 +1,6 @@
+<%= render breadcrumb %>
+<%= render flash %>
+<%= render menu %>
+
+<%= content_for(:title) { "#{record.user.username}: #{record.name}" } %>
+<%= render attribute(record.name).with_label(:name) %>
