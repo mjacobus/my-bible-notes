@@ -26,4 +26,15 @@ RSpec.describe Db::Tag, type: :model do
       end.to change(described_class, :count).by(2)
     end
   end
+
+  describe '#color' do
+    it 'is first set when name is set' do
+      tag = described_class.new
+
+      tag.name = 'foo'
+      tag.name = 'bar'
+
+      expect(tag.color).to eq(NameBasedColor.new('foo').to_s)
+    end
+  end
 end
