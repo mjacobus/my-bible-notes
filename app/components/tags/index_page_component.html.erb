@@ -1,1 +1,9 @@
-<div>Add Tags::IndexPage template here</div>
+<%= render breadcrumb %>
+<%= render flash %>
+<%= render menu %>
+
+<% collection.each do |record| %>
+  <%= render Tags::IndexItemComponent.new(record: record, profile_owner: profile_owner) %>
+<% end %>
+
+<%= render pagination %>

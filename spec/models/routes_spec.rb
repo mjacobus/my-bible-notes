@@ -9,6 +9,7 @@ RSpec.describe Routes do
   let(:timeline) { factories.timelines.create(user_id: user.id) }
   let(:scripture) { factories.scriptures.create(user_id: user.id) }
   let(:entry) { factories.timeline_entries.create(timeline_id: timeline.id) }
+  let(:tag) { factories.scripture_tags.create(user_id: user.id) }
 
   describe 'timeline routes' do
     it 'resolves #timelines_path' do
@@ -71,6 +72,39 @@ RSpec.describe Routes do
       path = routes.to(scripture)
 
       expect(path).to eq("/#{user.username}/scriptures/#{scripture.to_param}")
+    end
+  end
+
+  describe 'scripture_tags routes' do
+    it 'resolves #scripture_tags_path' do
+      path = routes.scripture_tags_path(user)
+
+      expect(path).to eq("/#{user.username}/tags")
+    end
+
+    it 'resolves #scripture_tag_path' do
+      path = routes.scripture_tag_path(tag)
+
+      expect(path).to eq("/#{user.username}/tags/#{tag.to_param}")
+    end
+
+    it 'resolves #edit_scripture_tag_path' do
+      path = routes.edit_scripture_tag_path(tag)
+
+      expect(path).to eq("/#{user.username}/tags/#{tag.to_param}/edit")
+    end
+
+    it 'resolves #edit_path' do
+      path = routes.edit_scripture_tag_path(tag)
+
+      expect(path).to eq("/#{user.username}/tags/#{tag.to_param}/edit")
+    end
+
+
+    it 'is compatible with #to' do
+      path = routes.to(tag)
+
+      expect(path).to eq("/#{user.username}/tags/#{tag.to_param}")
     end
   end
 

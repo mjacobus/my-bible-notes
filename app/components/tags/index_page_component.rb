@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 module Tags
-  class IndexPageComponent < ApplicationComponent
+  class IndexPageComponent < PageComponent
     has :collection
 
     def menu
@@ -9,6 +9,12 @@ module Tags
         current_user: current_user,
         profile_owner: profile_owner
       )
+    end
+
+    private
+
+    def breadcrumb
+      @breadcrumb ||= BreadcrumbComponent.new.under_profile(profile_owner).index
     end
   end
 end

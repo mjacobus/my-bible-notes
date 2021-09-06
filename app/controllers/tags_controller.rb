@@ -5,6 +5,6 @@ class TagsController < ApplicationController
   skip_before_action :require_authorization
   key :tag
   permit(:name)
-  scope { timeline.entries }
+  scope { profile_owner.tags }
   component_class_template 'Tags::%{type}PageComponent'
 end
