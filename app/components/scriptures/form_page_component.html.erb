@@ -15,7 +15,11 @@
     <%= f.input :description, as: :text, label: t('app.attributes.description') %>
   <% end %>
   <%= input_wrapper do %>
-    <%= f.input :parent_id, as: :hidden, input_html: { value: form.parent_id || params[:parent_id] } %>
+    <%= f.input :sequence_number, label: t('app.attributes.sequence_number') %>
+  <% end %>
+
+  <% unless form.record.id %>
+      <%= f.input :parent_id, as: :hidden %>
   <% end %>
 
   <%= render InputElements::TagsInputComponent.new(

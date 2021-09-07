@@ -15,6 +15,15 @@ RSpec.describe Db::Scripture, type: :model do
       .dependent(:restrict_with_exception)
   end
 
+  it 'sorts related_scriptures by sequence_number' do
+    scripture = factory.create
+    factory.create(parent_id: scripture.id, book: 'mark', sequence_number: 2, title: 'two')
+    factory.create(parent_id: scripture.id, book: 'genesis', sequence_number: 3, title: 'three')
+    factory.create(parent_id: scripture.id, book: 'exodus', sequence_number: 1, title: 'one')
+
+    expect(scripture.related_scriptures.map(&:title)).to eq(%w[one two three])
+  end
+
   describe '#to_s' do
     it 'converts the bible scripture to string' do
       scripture.book = 'genesis'

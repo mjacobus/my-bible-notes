@@ -2,7 +2,7 @@
 
 module Scriptures
   class Form < Base::Form
-    attributes :title, :book, :verses, :description, :parent_id
+    attributes :title, :book, :verses, :description, :parent_id, :sequence_number
     validates :book, presence: true
     validates :verses, presence: true
     validates :title, presence: true
@@ -16,6 +16,16 @@ module Scriptures
       @tags_string ||= tags_to_string
     end
 
+    def parent_id=(value)
+      unless record.id
+        record.parent_id = value
+
+        if sequence_number.zero? && parent
+          self.sequence_number = parent.related_scriptures.count.next
+        end
+      end
+    end
+
     private
 
     def tags_to_string
@@ -24,6 +34,7 @@ module Scriptures
 
     def persist_data
       record.save!
+
       ids = tags.map do |tag|
         find_or_create_tag(tag, record.user_id)
       end
@@ -60,7 +71,7 @@ module Scriptures
     end
 
     def parent
-      record.class.where(id: parent_id).first
+      @parent ||= record.class.where(id: parent_id).first
     end
 
     def book_instance

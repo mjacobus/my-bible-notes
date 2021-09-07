@@ -94,6 +94,8 @@ RSpec.describe ScripturesController, type: :request do
 
       perform_request
 
+      form.parent_id = nil
+
       expected_component = form_component.new(
         form: form,
         current_user: current_user,
@@ -115,10 +117,10 @@ RSpec.describe ScripturesController, type: :request do
     context 'when payload is valid' do
       let(:params) { { key => valid_attributes } }
 
-      it 'redirects to show' do
+      it 'redirects to index' do
         perform_request
 
-        expect(response).to redirect_to(routes.to(Db::Scripture.last))
+        expect(response).to redirect_to(index_path)
       end
 
       it 'creates record' do
@@ -141,6 +143,7 @@ RSpec.describe ScripturesController, type: :request do
 
         perform_request
 
+        form.parent_id = nil
         form.valid?
 
         expected_component = form_component.new(
@@ -200,10 +203,10 @@ RSpec.describe ScripturesController, type: :request do
     context 'when payload is valid' do
       let(:params) { { key => valid_attributes } }
 
-      it 'redirects to show' do
+      it 'redirects to index' do
         perform_request
 
-        expect(response).to redirect_to(routes.to(Db::Scripture.last))
+        expect(response).to redirect_to(index_path)
       end
 
       it 'updates record' do
@@ -227,6 +230,7 @@ RSpec.describe ScripturesController, type: :request do
         perform_request
 
         form.attributes = invalid_attributes
+        form.parent_id = nil
         form.valid?
 
         record.attributes = invalid_attributes
