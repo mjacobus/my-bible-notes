@@ -82,8 +82,12 @@ RSpec.describe Scriptures::Form, type: :model do
 
   describe '#parent_id=' do
     let(:scripture) { scriptures.build(parent_id: parent.id, user_id: user.id) }
-    let!(:other) { scriptures.create(parent_id: parent.id, user_id: user.id) }
+    let(:other) { scriptures.create(parent_id: parent.id, user_id: user.id) }
     let(:parent) { scriptures.create(user_id: user.id) }
+
+    before do
+      other
+    end
 
     it 'sets parent id when record is new' do
       form.parent_id = nil
@@ -97,12 +101,6 @@ RSpec.describe Scriptures::Form, type: :model do
       form.parent_id = nil
 
       expect(form.parent_id).to eq parent.id
-    end
-
-    it 'sets the sequence number when none is set' do
-      form.parent_id = parent.id
-
-      expect(form.sequence_number).to eq(2)
     end
 
     it 'sets the sequence number when none is set' do
