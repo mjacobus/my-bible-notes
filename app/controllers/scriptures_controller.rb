@@ -25,7 +25,7 @@ class ScripturesController < ApplicationController
       return redirect_to routes.to(form.record.parent_scripture)
     end
 
-    super(form)
+    redirect_to routes.to(form.record)
   end
 
   def form
