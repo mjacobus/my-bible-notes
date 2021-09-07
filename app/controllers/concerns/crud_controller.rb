@@ -33,7 +33,7 @@ module CrudController
 
   def destroy
     record.destroy
-    after_destroy_redirect
+    after_destroy_redirect(record)
   end
 
   private
@@ -97,7 +97,7 @@ module CrudController
     redirect_to action: :index
   end
 
-  def after_destroy_redirect
+  def after_destroy_redirect(_record)
     redirect_to action: :index
   end
 
