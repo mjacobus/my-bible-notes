@@ -29,7 +29,13 @@ class ScripturesController < ApplicationController
 
   def form
     super.tap do |f|
-      f.parent_id ||= params[:parent_id]
+      f.parent_id ||= parent_id
+    end
+  end
+
+  def parent_id
+    if params[:parent_id]
+      current_user.scriptures.find(params[:parent_id]).id
     end
   end
 
