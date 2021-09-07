@@ -28,6 +28,14 @@ class ScripturesController < ApplicationController
     redirect_to routes.to(form.record)
   end
 
+  def after_destroy_redirect(record)
+    if record.parent_scripture
+      return redirect_to routes.to(record.parent_scripture)
+    end
+
+    super(record)
+  end
+
   def form
     super.tap do |f|
       f.parent_id ||= parent_id
