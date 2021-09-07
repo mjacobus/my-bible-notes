@@ -19,7 +19,7 @@
   <% end %>
 
   <% unless form.record.id %>
-      <%= f.input :parent_id, as: :text %>
+      <%= f.input :parent_id, as: :hidden %>
   <% end %>
 
   <%= render InputElements::TagsInputComponent.new(
