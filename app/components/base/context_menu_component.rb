@@ -48,5 +48,9 @@ module Base
     def context
       get(:context)
     end
+
+    def current_user
+      get(:current_user) || GuestUser.new
+    end
   end
 end
