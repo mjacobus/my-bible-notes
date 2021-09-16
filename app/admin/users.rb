@@ -7,6 +7,7 @@ ActiveAdmin.register Db::User do
     selectable_column
     column :name
     column :email
+    column :username
     column :enabled
     column :master
     column :updated_at
@@ -30,6 +31,7 @@ ActiveAdmin.register Db::User do
     attributes_table do
       row :name
       row :email
+      row :username
       row :avatar do |user|
         image_tag user.avatar
       end
