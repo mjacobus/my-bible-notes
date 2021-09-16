@@ -17,8 +17,16 @@ class ScriptureFinder < BaseFinder
     with_scope(query)
   end
 
-  def eager_load_dependencies
-    with_scope(includes(%i[tags related_scriptures]))
+  def eager_load
+    with_scope(scope.includes(%i[tags related_scriptures]))
+  end
+
+  def under_profile(user_profile)
+    with_scope(scope.where(user_id: user_profile.id))
+  end
+
+  def parents
+    with_scope(scope.parents)
   end
 
   private

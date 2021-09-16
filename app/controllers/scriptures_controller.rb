@@ -13,7 +13,7 @@ class ScripturesController < ApplicationController
   form_class Scriptures::Form
 
   scope do
-    profile_owner.scriptures.ordered.with_dependencies.search(params)
+    ScriptureFinder.new(current_user).under_profile(profile_owner).eager_load.search(params)
   end
 
   component_class_template 'Scriptures::%{type}PageComponent'
