@@ -12,6 +12,7 @@ gem 'dotenv-rails'
 gem 'omniauth', '~> 1.9.1'
 gem 'omniauth-google-oauth2'
 gem 'pg'
+gem "mysql2", "~> 0.5"
 gem 'puma', '~> 5.1'
 gem 'rails', '~> 6.1'
 gem 'sentry-rails'
